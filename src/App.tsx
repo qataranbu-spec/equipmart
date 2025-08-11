@@ -61,6 +61,16 @@ import PostServiceRequest from './pages/PostServiceRequest'
 import JoinAsServiceProvider from './pages/JoinAsServiceProvider'
 import ContactUs from './pages/ContactUs'
 
+// Import admin components
+import { AdminLayout } from './components/admin/AdminLayout'
+import AdminDashboard from './pages/admin/AdminDashboard'
+import EquipmentManagement from './pages/admin/equipment/EquipmentManagement'
+import AuctionManagement from './pages/admin/auctions/AuctionManagement'
+import UserManagement from './pages/admin/users/UserManagement'
+import ServiceManagement from './pages/admin/services/ServiceManagement'
+import Analytics from './pages/admin/analytics/Analytics'
+import Settings from './pages/admin/settings/Settings'
+
 function App() {
   return (
     <Router>
@@ -125,6 +135,44 @@ function App() {
           {/* New supplier network routes */}
           <Route path="/become-supplier" element={<BecomeSupplier />} />
           <Route path="/explore-network" element={<ExploreNetwork />} />
+          
+          {/* Admin routes */}
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="equipment" element={<EquipmentManagement />} />
+            <Route path="equipment/categories" element={<div className="p-6">Equipment Categories - Coming Soon</div>} />
+            <Route path="equipment/inventory" element={<div className="p-6">Equipment Inventory - Coming Soon</div>} />
+            <Route path="equipment/pricing" element={<div className="p-6">Equipment Pricing - Coming Soon</div>} />
+            <Route path="auctions" element={<AuctionManagement />} />
+            <Route path="auctions/live" element={<div className="p-6">Live Auctions - Coming Soon</div>} />
+            <Route path="auctions/scheduled" element={<div className="p-6">Scheduled Auctions - Coming Soon</div>} />
+            <Route path="auctions/completed" element={<div className="p-6">Completed Auctions - Coming Soon</div>} />
+            <Route path="users" element={<UserManagement />} />
+            <Route path="users/buyers" element={<div className="p-6">Buyers Management - Coming Soon</div>} />
+            <Route path="users/suppliers" element={<div className="p-6">Suppliers Management - Coming Soon</div>} />
+            <Route path="users/experts" element={<div className="p-6">Experts Management - Coming Soon</div>} />
+            <Route path="users/providers" element={<div className="p-6">Service Providers Management - Coming Soon</div>} />
+            <Route path="services" element={<ServiceManagement />} />
+            <Route path="services/requests" element={<div className="p-6">Service Requests - Coming Soon</div>} />
+            <Route path="services/providers" element={<div className="p-6">Service Providers - Coming Soon</div>} />
+            <Route path="services/categories" element={<div className="p-6">Service Categories - Coming Soon</div>} />
+            <Route path="network/buyers" element={<div className="p-6">Buyer Network - Coming Soon</div>} />
+            <Route path="network/suppliers" element={<div className="p-6">Supplier Network - Coming Soon</div>} />
+            <Route path="network/experts" element={<div className="p-6">Expert Network - Coming Soon</div>} />
+            <Route path="network/partnerships" element={<div className="p-6">Partnerships - Coming Soon</div>} />
+            <Route path="content/pages" element={<div className="p-6">Content Pages - Coming Soon</div>} />
+            <Route path="content/blog" element={<div className="p-6">Blog Management - Coming Soon</div>} />
+            <Route path="content/media" element={<div className="p-6">Media Library - Coming Soon</div>} />
+            <Route path="content/seo" element={<div className="p-6">SEO Settings - Coming Soon</div>} />
+            <Route path="analytics" element={<Analytics />} />
+            <Route path="analytics/users" element={<div className="p-6">User Analytics - Coming Soon</div>} />
+            <Route path="analytics/sales" element={<div className="p-6">Sales Reports - Coming Soon</div>} />
+            <Route path="analytics/traffic" element={<div className="p-6">Traffic Reports - Coming Soon</div>} />
+            <Route path="settings/general" element={<Settings />} />
+            <Route path="settings/permissions" element={<div className="p-6">Permissions - Coming Soon</div>} />
+            <Route path="settings/integrations" element={<div className="p-6">Integrations - Coming Soon</div>} />
+            <Route path="settings/backup" element={<div className="p-6">Backup Settings - Coming Soon</div>} />
+          </Route>
           
           <Route path="*" element={<NotFound />} />
         </Routes>
