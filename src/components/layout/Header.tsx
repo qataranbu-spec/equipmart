@@ -3,26 +3,21 @@ import { Link } from 'react-router-dom';
 import { Menu, X, Search, User, ShoppingCart, Bell, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AuthModal from '../auth/AuthModal';
-
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showNetworksDropdown, setShowNetworksDropdown] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [authModalTab, setAuthModalTab] = useState<'login' | 'signup'>('login');
-
   const openLoginModal = () => {
     setAuthModalTab('login');
     setAuthModalOpen(true);
   };
-
   const openSignupModal = () => {
     setAuthModalTab('signup');
     setAuthModalOpen(true);
   };
-
-  return (
-    <>
+  return <>
       <header className="bg-white shadow-lg border-b border-border">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
@@ -48,40 +43,23 @@ const Header = () => {
               <Link to="/auctions" className="text-foreground hover:text-primary transition-colors">
                 Auctions
               </Link>
-              <Link to="/procurement" className="text-foreground hover:text-primary transition-colors">
-                E-Procurement
-              </Link>
-              <div 
-                className="relative"
-                onMouseEnter={() => setShowNetworksDropdown(true)}
-                onMouseLeave={() => setShowNetworksDropdown(false)}
-              >
+              <Link to="/procurement" className="text-foreground hover:text-primary transition-colors">E-Trade</Link>
+              <div className="relative" onMouseEnter={() => setShowNetworksDropdown(true)} onMouseLeave={() => setShowNetworksDropdown(false)}>
                 <button className="flex items-center text-foreground hover:text-primary transition-colors">
                   Networks
                   <ChevronDown className="h-4 w-4 ml-1" />
                 </button>
-                {showNetworksDropdown && (
-                  <div className="absolute top-full left-0 mt-1 bg-white border border-border rounded-lg shadow-lg py-2 w-48 z-50">
-                    <Link 
-                      to="/buyer-network" 
-                      className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary"
-                    >
+                {showNetworksDropdown && <div className="absolute top-full left-0 mt-1 bg-white border border-border rounded-lg shadow-lg py-2 w-48 z-50">
+                    <Link to="/buyer-network" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
                       Buyer Network
                     </Link>
-                    <Link 
-                      to="/supplier-network" 
-                      className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary"
-                    >
+                    <Link to="/supplier-network" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
                       Supplier Network
                     </Link>
-                    <Link 
-                      to="/experts-network" 
-                      className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary"
-                    >
+                    <Link to="/experts-network" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
                       Experts Network
                     </Link>
-                  </div>
-                )}
+                  </div>}
               </div>
             </nav>
 
@@ -89,15 +67,10 @@ const Header = () => {
             <div className="hidden md:flex items-center space-x-4">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                <input
-                  type="text"
-                  placeholder="Search equipment..."
-                  className="pl-10 pr-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary w-64"
-                />
+                <input type="text" placeholder="Search equipment..." className="pl-10 pr-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary w-64" />
               </div>
               
-              {isLoggedIn ? (
-                <div className="flex items-center space-x-2">
+              {isLoggedIn ? <div className="flex items-center space-x-2">
                   <Button variant="ghost" size="sm">
                     <Bell className="h-4 w-4" />
                   </Button>
@@ -109,31 +82,24 @@ const Header = () => {
                       <User className="h-4 w-4" />
                     </Button>
                   </Link>
-                </div>
-              ) : (
-                <div className="flex items-center space-x-2">
+                </div> : <div className="flex items-center space-x-2">
                   <Button variant="outline" size="sm" onClick={openLoginModal}>
                     Login
                   </Button>
                   <Button size="sm" onClick={openSignupModal}>
                     Sign Up
                   </Button>
-                </div>
-              )}
+                </div>}
             </div>
 
             {/* Mobile Menu Button */}
-            <button
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
+            <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
 
           {/* Mobile Menu */}
-          {isMenuOpen && (
-            <div className="md:hidden py-4 border-t border-border">
+          {isMenuOpen && <div className="md:hidden py-4 border-t border-border">
               <nav className="flex flex-col space-y-4">
                 <Link to="/marketplace" className="text-foreground hover:text-primary transition-colors">
                   Marketplace
@@ -171,18 +137,11 @@ const Header = () => {
                   </Button>
                 </div>
               </nav>
-            </div>
-          )}
+            </div>}
         </div>
       </header>
 
-      <AuthModal 
-        isOpen={authModalOpen} 
-        onClose={() => setAuthModalOpen(false)} 
-        defaultTab={authModalTab}
-      />
-    </>
-  );
+      <AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} defaultTab={authModalTab} />
+    </>;
 };
-
 export default Header;
