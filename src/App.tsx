@@ -67,6 +67,7 @@ import ConcreteMixers from './pages/categories/ConcreteMixers'
 // Import procurement pages
 import StartFreeTrial from './pages/StartFreeTrial'
 import RequestDemo from './pages/RequestDemo'
+import InvestorProposal from './pages/InvestorProposal'
 
 // Import service pages
 import FindServiceProviders from './pages/FindServiceProviders'
@@ -127,6 +128,7 @@ function App() {
           {/* Service & procurement routes */}
           <Route path="/start-free-trial" element={<StartFreeTrial />} />
           <Route path="/request-demo" element={<RequestDemo />} />
+          <Route path="/investor-proposal" element={<InvestorProposal />} />
           <Route path="/find-service-providers" element={<FindServiceProviders />} />
           <Route path="/register-as-provider" element={<RegisterAsProvider />} />
           <Route path="/post-service-request" element={<PostServiceRequest />} />

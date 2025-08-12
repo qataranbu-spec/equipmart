@@ -44,6 +44,7 @@ const Header = () => {
                 Auctions
               </Link>
               <Link to="/procurement" className="text-foreground hover:text-primary transition-colors">E-Trade</Link>
+              <Link to="/investor-proposal" className="text-foreground hover:text-primary transition-colors">Investors</Link>
               <div className="relative" onMouseEnter={() => setShowNetworksDropdown(true)} onMouseLeave={() => setShowNetworksDropdown(false)}>
                 <button className="flex items-center text-foreground hover:text-primary transition-colors">
                   Networks
