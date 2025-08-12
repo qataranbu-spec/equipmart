@@ -227,9 +227,14 @@ const BuyerProfile = () => {
                       <div key={index} className="border rounded-lg p-4">
                         <div className="flex items-center justify-between mb-2">
                           <h4 className="font-semibold">{project.name}</h4>
-                          <Badge variant={project.status === 'Active' ? 'default' : 'secondary'}>
-                            {project.status}
-                          </Badge>
+                          <div className="flex items-center space-x-2">
+                            <Badge variant={project.status === 'Active' ? 'default' : 'secondary'}>
+                              {project.status}
+                            </Badge>
+                            <Button size="sm" variant="outline" onClick={() => window.location.href = `/project-profile/${index + 1}`}>
+                              View Details
+                            </Button>
+                          </div>
                         </div>
                         <p className="text-sm text-muted-foreground mb-3">Duration: {project.duration}</p>
                         <div>

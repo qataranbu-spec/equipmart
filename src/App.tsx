@@ -36,6 +36,7 @@ import JoinBuyerNetwork from './pages/JoinBuyerNetwork'
 import ExploreBuyers from './pages/ExploreBuyers'
 import BuyerProfile from './pages/BuyerProfile'
 import BuyerContact from './pages/BuyerContact'
+import ProjectProfile from './pages/ProjectProfile'
 
 // Import category pages
 import Excavators from './pages/categories/Excavators'
@@ -103,6 +104,7 @@ function App() {
           <Route path="/explore-buyers" element={<ExploreBuyers />} />
           <Route path="/buyer-profile" element={<BuyerProfile />} />
           <Route path="/buyer-contact" element={<BuyerContact />} />
+          <Route path="/project-profile/:projectId" element={<ProjectProfile />} />
           
           {/* Category routes */}
           <Route path="/categories/excavators" element={<Excavators />} />
