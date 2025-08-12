@@ -7,6 +7,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showNetworksDropdown, setShowNetworksDropdown] = useState(false);
+  const [showCompanyDropdown, setShowCompanyDropdown] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [authModalTab, setAuthModalTab] = useState<'login' | 'signup'>('login');
   const openLoginModal = () => {
@@ -44,7 +45,20 @@ const Header = () => {
                 Auctions
               </Link>
               <Link to="/procurement" className="text-foreground hover:text-primary transition-colors">E-Trade</Link>
-              <Link to="/investor-proposal" className="text-foreground hover:text-primary transition-colors">Investors</Link>
+              <div className="relative" onMouseEnter={() => setShowCompanyDropdown(true)} onMouseLeave={() => setShowCompanyDropdown(false)}>
+                <button className="flex items-center text-foreground hover:text-primary transition-colors">
+                  Company
+                  <ChevronDown className="h-4 w-4 ml-1" />
+                </button>
+                {showCompanyDropdown && <div className="absolute top-full left-0 mt-1 bg-white border border-border rounded-lg shadow-lg py-2 w-48 z-50">
+                    <Link to="/investor-proposal" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
+                      Investor Proposal
+                    </Link>
+                    <Link to="/partnership-opportunity" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
+                      Partnership Program
+                    </Link>
+                  </div>}
+              </div>
               <div className="relative" onMouseEnter={() => setShowNetworksDropdown(true)} onMouseLeave={() => setShowNetworksDropdown(false)}>
                 <button className="flex items-center text-foreground hover:text-primary transition-colors">
                   Networks
@@ -117,6 +131,15 @@ const Header = () => {
                 <Link to="/procurement" className="text-foreground hover:text-primary transition-colors">
                   E-Procurement
                 </Link>
+                <div className="border-l-2 border-primary pl-4 mb-4">
+                  <p className="text-sm font-semibold text-muted-foreground mb-2">Company</p>
+                  <Link to="/investor-proposal" className="block text-foreground hover:text-primary transition-colors mb-2">
+                    Investor Proposal
+                  </Link>
+                  <Link to="/partnership-opportunity" className="block text-foreground hover:text-primary transition-colors">
+                    Partnership Program
+                  </Link>
+                </div>
                 <div className="border-l-2 border-primary pl-4">
                   <p className="text-sm font-semibold text-muted-foreground mb-2">Networks</p>
                   <Link to="/buyer-network" className="block text-foreground hover:text-primary transition-colors mb-2">
