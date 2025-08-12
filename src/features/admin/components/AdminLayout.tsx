@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { TwoColumnLayout } from "@/components/layout/TwoColumnLayout"
-import { AdminSidebar } from "@/components/admin/AdminSidebar"
+import { AdminSidebar } from "./AdminSidebar"
 import Header from "@/components/layout/Header"
 
 export function AdminLayout() {
