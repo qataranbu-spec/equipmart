@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
-import Header from '../components/layout/Header';
-import Footer from '../components/layout/Footer';
-import AuthModal from '../components/auth/AuthModal';
+import Header from '../../../components/layout/Header';
+import Footer from '../../../components/layout/Footer';
+import AuthModal from '../components/AuthModal';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, Users, Zap, Globe } from 'lucide-react';

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Search, User, ShoppingCart, Bell, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import AuthModal from '../auth/AuthModal';
+import AuthModal from '../../features/auth/components/AuthModal';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
