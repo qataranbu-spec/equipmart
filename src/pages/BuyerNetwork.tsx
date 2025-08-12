@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
+import { TwoColumnLayout } from '@/components/layout/TwoColumnLayout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -107,6 +108,74 @@ const BuyerNetwork = () => {
     }
   ];
 
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedLocation, setSelectedLocation] = useState('all');
+  const [selectedSpending, setSelectedSpending] = useState('all');
+
+  const sidebarContent = (
+    <div className="space-y-6">
+      <div>
+        <label className="text-sm font-medium mb-2 block">Category</label>
+        <select 
+          value={selectedCategory} 
+          onChange={(e) => setSelectedCategory(e.target.value)}
+          className="w-full p-2 border rounded-md"
+        >
+          <option value="all">All Categories</option>
+          <option value="General Contractors">General Contractors</option>
+          <option value="Equipment Rental Companies">Equipment Rental Companies</option>
+          <option value="Infrastructure Developers">Infrastructure Developers</option>
+          <option value="Mining Companies">Mining Companies</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="text-sm font-medium mb-2 block">Location</label>
+        <select 
+          value={selectedLocation} 
+          onChange={(e) => setSelectedLocation(e.target.value)}
+          className="w-full p-2 border rounded-md"
+        >
+          <option value="all">All Locations</option>
+          <option value="UAE">UAE</option>
+          <option value="Qatar">Qatar</option>
+          <option value="Saudi Arabia">Saudi Arabia</option>
+          <option value="Kuwait">Kuwait</option>
+          <option value="Bahrain">Bahrain</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="text-sm font-medium mb-2 block">Annual Spending</label>
+        <select 
+          value={selectedSpending} 
+          onChange={(e) => setSelectedSpending(e.target.value)}
+          className="w-full p-2 border rounded-md"
+        >
+          <option value="all">Any Amount</option>
+          <option value="1-2M">$1M - $2M</option>
+          <option value="2-5M">$2M - $5M</option>
+          <option value="5M+">$5M+</option>
+        </select>
+      </div>
+
+      <div className="pt-4 border-t">
+        <h4 className="font-medium mb-3">Quick Filters</h4>
+        <div className="space-y-2">
+          <Button variant="outline" size="sm" className="w-full justify-start">
+            Verified Only
+          </Button>
+          <Button variant="outline" size="sm" className="w-full justify-start">
+            Active Projects
+          </Button>
+          <Button variant="outline" size="sm" className="w-full justify-start">
+            Premium Members
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -135,7 +204,11 @@ const BuyerNetwork = () => {
         </div>
       </section>
 
-      <main className="container mx-auto px-4 py-12">
+      <TwoColumnLayout 
+        sidebar={sidebarContent}
+        sidebarTitle="Filter Buyers"
+        defaultSidebarWidth={300}
+      >
         {/* Network Stats */}
         <section className="mb-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -327,7 +400,7 @@ const BuyerNetwork = () => {
             <Button variant="outline" size="lg">Learn More</Button>
           </div>
         </section>
-      </main>
+      </TwoColumnLayout>
 
       <Footer />
     </div>

@@ -1,24 +1,27 @@
 import { Outlet } from 'react-router-dom'
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { TwoColumnLayout } from "@/components/layout/TwoColumnLayout"
 import { AdminSidebar } from "@/components/admin/AdminSidebar"
+import Header from "@/components/layout/Header"
 
 export function AdminLayout() {
   return (
-    <SidebarProvider>
-      <div className="min-h-screen flex w-full">
-        <AdminSidebar />
-        <div className="flex-1 flex flex-col">
-          <header className="h-16 flex items-center border-b bg-background px-6">
-            <SidebarTrigger className="mr-4" />
-            <div className="flex items-center gap-4">
-              <h1 className="text-xl font-semibold text-foreground">Admin Panel</h1>
-            </div>
-          </header>
-          <main className="flex-1 p-6">
-            <Outlet />
-          </main>
+    <div className="min-h-screen bg-background">
+      <Header />
+      <TwoColumnLayout 
+        sidebar={<AdminSidebar />}
+        sidebarTitle="Admin Navigation"
+        defaultSidebarWidth={280}
+        minSidebarWidth={240}
+        maxSidebarWidth={400}
+      >
+        <div className="space-y-6">
+          <div className="border-b pb-4">
+            <h1 className="text-2xl font-bold">Admin Panel</h1>
+            <p className="text-muted-foreground">Manage your platform centrally</p>
+          </div>
+          <Outlet />
         </div>
-      </div>
-    </SidebarProvider>
+      </TwoColumnLayout>
+    </div>
   )
 }

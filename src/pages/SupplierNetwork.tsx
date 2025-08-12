@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
+import { TwoColumnLayout } from '@/components/layout/TwoColumnLayout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -120,6 +121,74 @@ const SupplierNetwork = () => {
     "Network events and training"
   ];
 
+  const [selectedTier, setSelectedTier] = useState('all');
+  const [selectedLocation, setSelectedLocation] = useState('all');
+  const [selectedSpecialty, setSelectedSpecialty] = useState('all');
+
+  const sidebarContent = (
+    <div className="space-y-6">
+      <div>
+        <label className="text-sm font-medium mb-2 block">Supplier Type</label>
+        <select 
+          value={selectedTier} 
+          onChange={(e) => setSelectedTier(e.target.value)}
+          className="w-full p-2 border rounded-md"
+        >
+          <option value="all">All Types</option>
+          <option value="Authorized Dealers">Authorized Dealers</option>
+          <option value="Rental Companies">Rental Companies</option>
+          <option value="Independent Dealers">Independent Dealers</option>
+          <option value="Manufacturers">Manufacturers</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="text-sm font-medium mb-2 block">Location</label>
+        <select 
+          value={selectedLocation} 
+          onChange={(e) => setSelectedLocation(e.target.value)}
+          className="w-full p-2 border rounded-md"
+        >
+          <option value="all">All Locations</option>
+          <option value="UAE">UAE</option>
+          <option value="KSA">Saudi Arabia</option>
+          <option value="Qatar">Qatar</option>
+          <option value="Kuwait">Kuwait</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="text-sm font-medium mb-2 block">Specialty</label>
+        <select 
+          value={selectedSpecialty} 
+          onChange={(e) => setSelectedSpecialty(e.target.value)}
+          className="w-full p-2 border rounded-md"
+        >
+          <option value="all">All Specialties</option>
+          <option value="Caterpillar">Caterpillar</option>
+          <option value="Komatsu">Komatsu</option>
+          <option value="Volvo">Volvo</option>
+          <option value="JCB">JCB</option>
+        </select>
+      </div>
+
+      <div className="pt-4 border-t">
+        <h4 className="font-medium mb-3">Quick Filters</h4>
+        <div className="space-y-2">
+          <Button variant="outline" size="sm" className="w-full justify-start">
+            Premium Suppliers
+          </Button>
+          <Button variant="outline" size="sm" className="w-full justify-start">
+            High Volume
+          </Button>
+          <Button variant="outline" size="sm" className="w-full justify-start">
+            Fast Delivery
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -148,7 +217,11 @@ const SupplierNetwork = () => {
         </div>
       </section>
 
-      <main className="container mx-auto px-4 py-12">
+      <TwoColumnLayout 
+        sidebar={sidebarContent}
+        sidebarTitle="Filter Suppliers"
+        defaultSidebarWidth={320}
+      >
         {/* Network Stats */}
         <section className="mb-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -387,7 +460,7 @@ const SupplierNetwork = () => {
             </Link>
           </div>
         </section>
-      </main>
+      </TwoColumnLayout>
 
       <Footer />
     </div>
