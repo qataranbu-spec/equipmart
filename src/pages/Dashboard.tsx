@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
+import { TwoColumnLayout } from '@/components/layout/TwoColumnLayout';
+import { DashboardSidebar } from '@/components/dashboard/DashboardSidebar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -26,6 +28,10 @@ import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   const [userRole, setUserRole] = useState('buyer'); // buyer, seller, service_provider
+
+  const handleRoleChange = (role: string) => {
+    setUserRole(role);
+  };
 
   const buyerStats = {
     totalOrders: 12,
@@ -102,7 +108,19 @@ const Dashboard = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <div className="container mx-auto px-4 py-8">
+      <TwoColumnLayout 
+        sidebar={
+          <DashboardSidebar 
+            userRole={userRole} 
+            onRoleChange={handleRoleChange}
+          />
+        }
+        sidebarTitle={`${userRole.charAt(0).toUpperCase() + userRole.slice(1)} Portal`}
+        defaultSidebarWidth={300}
+        minSidebarWidth={250}
+        maxSidebarWidth={400}
+        className="py-0"
+      >
         {/* Page Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
           <div>
@@ -114,15 +132,6 @@ const Dashboard = () => {
               <Settings className="h-4 w-4 mr-2" />
               Settings
             </Button>
-            <select 
-              value={userRole} 
-              onChange={(e) => setUserRole(e.target.value)}
-              className="px-3 py-2 border border-border rounded-lg text-sm"
-            >
-              <option value="buyer">Buyer View</option>
-              <option value="seller">Seller View</option>
-              <option value="service_provider">Service Provider</option>
-            </select>
           </div>
         </div>
 
@@ -431,7 +440,7 @@ const Dashboard = () => {
             </div>
           </TabsContent>
         </Tabs>
-      </div>
+      </TwoColumnLayout>
 
       <Footer />
     </div>
