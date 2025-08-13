@@ -89,6 +89,14 @@ import {
   SupplierManagementPage,
   EAuctionPage
 } from './features/procurement'
+import {
+  BrowseRentalsPage,
+  MyRentalsPage,
+  RentalRequestsPage,
+  ListEquipmentPage,
+  RentalListingsPage,
+  RentalBookingsPage
+} from './features/rentals'
 
 // Import service pages
 import FindServiceProviders from './pages/FindServiceProviders'
@@ -166,6 +174,16 @@ function App() {
           <Route path="/procurement/active-rfqs" element={<ActiveRFQsPage />} />
           <Route path="/procurement/supplier-management" element={<SupplierManagementPage />} />
           <Route path="/procurement/e-auction" element={<EAuctionPage />} />
+          
+          {/* Rental Platform Routes - Buyer Portal */}
+          <Route path="/rentals/browse" element={<BrowseRentalsPage />} />
+          <Route path="/rentals/my-rentals" element={<MyRentalsPage />} />
+          <Route path="/rentals/requests" element={<RentalRequestsPage />} />
+
+          {/* Rental Platform Routes - Seller Portal */}
+          <Route path="/rentals/seller/list-equipment" element={<ListEquipmentPage />} />
+          <Route path="/rentals/seller/listings" element={<RentalListingsPage />} />
+          <Route path="/rentals/seller/bookings" element={<RentalBookingsPage />} />
           <Route path="/find-service-providers" element={<FindServiceProviders />} />
           <Route path="/register-as-provider" element={<RegisterAsProvider />} />
           <Route path="/post-service-request" element={<PostServiceRequest />} />

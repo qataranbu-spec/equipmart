@@ -64,7 +64,7 @@ export default function RentalRequestsPage() {
     endDate: '',
     minBudget: '',
     maxBudget: '',
-    budgetPeriod: 'daily' as const,
+    budgetPeriod: 'daily' as 'daily' | 'weekly' | 'monthly',
     projectDetails: '',
     contactName: '',
     contactEmail: '',
