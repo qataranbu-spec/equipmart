@@ -23,9 +23,6 @@ import {
   BookEquipmentPage,
   ContactSellerPage 
 } from './features/marketplace'
-import {
-  ServicesMarketplace
-} from './features/services'
 import { 
   AuctionsPage,
   BrowseLiveAuctionsPage, 
@@ -128,7 +125,6 @@ function App() {
           <Route path="/marketplace/sell" element={<SellEquipmentPage />} />
           <Route path="/rentals" element={<Rentals />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/services/marketplace" element={<ServicesMarketplace />} />
           <Route path="/advertising" element={<Advertising />} />
           <Route path="/ad-marketplace" element={<AdMarketplace />} />
           <Route path="/auctions" element={<AuctionsPage />} />
