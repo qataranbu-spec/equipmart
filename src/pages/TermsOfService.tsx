@@ -1,10 +1,8 @@
 import React from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
-
 const TermsOfService = () => {
-  return (
-    <>
+  return <>
       <Header />
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         <h1 className="text-4xl font-bold mb-8">Terms of Service</h1>
@@ -184,16 +182,14 @@ const TermsOfService = () => {
         </section>
 
         <div className="bg-gray-50 p-6 rounded-lg mt-8">
-          <p className="text-sm text-gray-600">
-            These Terms of Service are effective as of January 2025 and will remain in effect during the beta testing period.
-            By continuing to use EQP MART, you agree to be bound by these terms.
-          </p>
+          <p className="text-sm text-gray-600">These Terms of Service are effective as of January 2025 and will remain in effect during the beta testing period. By continuing to use EQP MART, you agree to be bound by these terms.
+
+
+*Disclaimer: EQP Mart Partners are independent entities and are not employees of EQP Mart. Any services you receive will be provided directly by the EQP Partner, and EQP Mart is not responsible for those services.</p>
           </div>
         </div>
       </div>
       <Footer />
-    </>
-  );
+    </>;
 };
-
 export default TermsOfService;
