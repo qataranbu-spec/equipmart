@@ -28,11 +28,27 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Marketplace</h3>
             <ul className="space-y-2 text-muted-foreground">
-              <li><Link to="/marketplace" className="hover:text-primary">Buy Equipment</Link></li>
-              <li><Link to="/marketplace/sell" className="hover:text-primary">Sell Equipment</Link></li>
+              <li><Link to="/marketplace" className="hover:text-primary">Buy & Sell</Link></li>
               <li><Link to="/rentals" className="hover:text-primary">Rentals</Link></li>
               <li><Link to="/auctions" className="hover:text-primary">Auctions</Link></li>
               <li><Link to="/services" className="hover:text-primary">Services</Link></li>
+            </ul>
+          </div>
+
+          {/* Services & Solutions */}
+          <div>
+            <h3 className="font-semibold mb-4">Services & Solutions</h3>
+            <ul className="space-y-2 text-muted-foreground">
+              <li><Link to="/procurement" className="hover:text-primary">E-Trade</Link></li>
+            </ul>
+          </div>
+
+          {/* Business */}
+          <div>
+            <h3 className="font-semibold mb-4">Business</h3>
+            <ul className="space-y-2 text-muted-foreground">
+              <li><Link to="/investor-proposal" className="hover:text-primary">Investor Proposal</Link></li>
+              <li><Link to="/partnership-opportunity" className="hover:text-primary">Partnership Program</Link></li>
             </ul>
           </div>
 
@@ -40,10 +56,10 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Networks</h3>
             <ul className="space-y-2 text-muted-foreground">
+              <li><Link to="/networking-hub" className="hover:text-primary">Networking Hub</Link></li>
               <li><Link to="/buyer-network" className="hover:text-primary">Buyer Network</Link></li>
               <li><Link to="/supplier-network" className="hover:text-primary">Supplier Network</Link></li>
               <li><Link to="/experts-network" className="hover:text-primary">Experts Network</Link></li>
-              <li><Link to="/procurement" className="hover:text-primary">E-Procurement</Link></li>
             </ul>
           </div>
 
