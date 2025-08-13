@@ -6,8 +6,10 @@ import AuthModal from '../../features/auth/components/AuthModal';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showMarketplaceDropdown, setShowMarketplaceDropdown] = useState(false);
+  const [showServicesDropdown, setShowServicesDropdown] = useState(false);
+  const [showBusinessDropdown, setShowBusinessDropdown] = useState(false);
   const [showNetworksDropdown, setShowNetworksDropdown] = useState(false);
-  const [showCompanyDropdown, setShowCompanyDropdown] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [authModalTab, setAuthModalTab] = useState<'login' | 'signup'>('login');
   const openLoginModal = () => {
@@ -32,32 +34,51 @@ const Header = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              {/* Core Marketplace */}
-              <Link to="/marketplace" className="text-foreground hover:text-primary transition-colors">
-                Marketplace
-              </Link>
-              <Link to="/rentals" className="text-foreground hover:text-primary transition-colors">
-                Rentals
-              </Link>
-              <Link to="/auctions" className="text-foreground hover:text-primary transition-colors">
-                Auctions
-              </Link>
+              {/* Marketplace Group */}
+              <div className="relative" onMouseEnter={() => setShowMarketplaceDropdown(true)} onMouseLeave={() => setShowMarketplaceDropdown(false)}>
+                <button className="flex items-center text-foreground hover:text-primary transition-colors">
+                  Marketplace
+                  <ChevronDown className="h-4 w-4 ml-1" />
+                </button>
+                {showMarketplaceDropdown && <div className="absolute top-full left-0 mt-1 bg-background border border-border rounded-lg shadow-lg py-3 w-56 z-50">
+                    <p className="text-xs font-semibold text-muted-foreground px-4 pb-2 mb-2 border-b border-border">Marketplace</p>
+                    <Link to="/marketplace" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
+                      Buy & Sell
+                    </Link>
+                    <Link to="/rentals" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
+                      Rentals
+                    </Link>
+                    <Link to="/auctions" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
+                      Auctions
+                    </Link>
+                  </div>}
+              </div>
               
-              {/* Services & Solutions */}
-              <Link to="/services" className="text-foreground hover:text-primary transition-colors">
-                Services
-              </Link>
-              <Link to="/procurement" className="text-foreground hover:text-primary transition-colors">
-                E-Trade
-              </Link>
+              {/* Services & Solutions Group */}
+              <div className="relative" onMouseEnter={() => setShowServicesDropdown(true)} onMouseLeave={() => setShowServicesDropdown(false)}>
+                <button className="flex items-center text-foreground hover:text-primary transition-colors">
+                  Services & Solutions
+                  <ChevronDown className="h-4 w-4 ml-1" />
+                </button>
+                {showServicesDropdown && <div className="absolute top-full left-0 mt-1 bg-background border border-border rounded-lg shadow-lg py-3 w-56 z-50">
+                    <p className="text-xs font-semibold text-muted-foreground px-4 pb-2 mb-2 border-b border-border">Services & Solutions</p>
+                    <Link to="/services" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
+                      Services
+                    </Link>
+                    <Link to="/procurement" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
+                      E-Trade
+                    </Link>
+                  </div>}
+              </div>
               
-              {/* Business & Partnerships */}
-              <div className="relative" onMouseEnter={() => setShowCompanyDropdown(true)} onMouseLeave={() => setShowCompanyDropdown(false)}>
+              {/* Business Group */}
+              <div className="relative" onMouseEnter={() => setShowBusinessDropdown(true)} onMouseLeave={() => setShowBusinessDropdown(false)}>
                 <button className="flex items-center text-foreground hover:text-primary transition-colors">
                   Business
                   <ChevronDown className="h-4 w-4 ml-1" />
                 </button>
-                {showCompanyDropdown && <div className="absolute top-full left-0 mt-1 bg-background border border-border rounded-lg shadow-lg py-2 w-48 z-50">
+                {showBusinessDropdown && <div className="absolute top-full left-0 mt-1 bg-background border border-border rounded-lg shadow-lg py-3 w-56 z-50">
+                    <p className="text-xs font-semibold text-muted-foreground px-4 pb-2 mb-2 border-b border-border">Business</p>
                     <Link to="/investor-proposal" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
                       Investor Proposal
                     </Link>
@@ -67,13 +88,14 @@ const Header = () => {
                   </div>}
               </div>
               
-              {/* Networks & Community */}
+              {/* Networks Group */}
               <div className="relative" onMouseEnter={() => setShowNetworksDropdown(true)} onMouseLeave={() => setShowNetworksDropdown(false)}>
                 <button className="flex items-center text-foreground hover:text-primary transition-colors">
                   Networks
                   <ChevronDown className="h-4 w-4 ml-1" />
                 </button>
-                {showNetworksDropdown && <div className="absolute top-full left-0 mt-1 bg-background border border-border rounded-lg shadow-lg py-2 w-48 z-50">
+                {showNetworksDropdown && <div className="absolute top-full left-0 mt-1 bg-background border border-border rounded-lg shadow-lg py-3 w-56 z-50">
+                    <p className="text-xs font-semibold text-muted-foreground px-4 pb-2 mb-2 border-b border-border">Networks</p>
                     <Link to="/networking-hub" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
                       Networking Hub
                     </Link>
