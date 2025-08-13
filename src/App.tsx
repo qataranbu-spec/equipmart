@@ -46,7 +46,11 @@ import {
   ProjectProfilePage,
   FindExpertsPage,
   JoinAsExpertPage,
-  BecomeSupplierPage
+  BecomeSupplierPage,
+  ConnectionsPage,
+  MessagesPage,
+  FavoritesPage,
+  NetworkingHubPage
 } from './features/network'
 import { 
   AdminLayout,
@@ -116,6 +120,10 @@ function App() {
           <Route path="/buyer-profile/:id" element={<BuyerProfilePage />} />
           <Route path="/buyer-contact/:id" element={<BuyerContactPage />} />
           <Route path="/project-profile/:id" element={<ProjectProfilePage />} />
+          <Route path="/connections" element={<ConnectionsPage />} />
+          <Route path="/messages" element={<MessagesPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/networking-hub" element={<NetworkingHubPage />} />
           
           {/* Category routes */}
           <Route path="/categories/excavators" element={<Excavators />} />
