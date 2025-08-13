@@ -103,6 +103,13 @@ import FindServiceProviders from './pages/FindServiceProviders'
 import RegisterAsProvider from './pages/RegisterAsProvider'
 import PostServiceRequest from './pages/PostServiceRequest'
 import JoinAsServiceProvider from './pages/JoinAsServiceProvider'
+import {
+  ServicesMarketplace,
+  ServiceBuyerDashboard,
+  ServiceProviderDashboard,
+  ServiceBooking,
+  ServiceMessaging
+} from './features/services'
 import ContactUs from './pages/ContactUs'
 import TermsOfService from './pages/TermsOfService'
 import PrivacyPolicy from './pages/PrivacyPolicy'
@@ -184,6 +191,13 @@ function App() {
           <Route path="/rentals/seller/list-equipment" element={<ListEquipmentPage />} />
           <Route path="/rentals/seller/listings" element={<RentalListingsPage />} />
           <Route path="/rentals/seller/bookings" element={<RentalBookingsPage />} />
+          
+          {/* Service Platform Routes */}
+          <Route path="/services/marketplace" element={<ServicesMarketplace />} />
+          <Route path="/services/buyer/dashboard" element={<ServiceBuyerDashboard />} />
+          <Route path="/services/provider/dashboard" element={<ServiceProviderDashboard />} />
+          <Route path="/services/booking/:providerId" element={<ServiceBooking />} />
+          <Route path="/services/messages" element={<ServiceMessaging />} />
           <Route path="/find-service-providers" element={<FindServiceProviders />} />
           <Route path="/register-as-provider" element={<RegisterAsProvider />} />
           <Route path="/post-service-request" element={<PostServiceRequest />} />

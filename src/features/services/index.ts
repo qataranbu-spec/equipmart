@@ -8,6 +8,14 @@ export { default as JoinAsServiceProviderPage } from '../../pages/JoinAsServiceP
 // Enhanced marketplace exports
 export { ServicesMarketplace } from './pages/ServicesMarketplace';
 
+// Buyer and Seller Dashboard exports
+export { default as ServiceBuyerDashboard } from './pages/buyer/ServiceBuyerDashboard';
+export { default as ServiceProviderDashboard } from './pages/seller/ServiceProviderDashboard';
+
+// Service Management exports
+export { default as ServiceBooking } from './pages/ServiceBooking';
+export { default as ServiceMessaging } from './pages/ServiceMessaging';
+
 // Component exports
 export { ServiceProviderCard } from './components/ServiceProviderCard';
 export { ServiceRequestCard } from './components/ServiceRequestCard';
