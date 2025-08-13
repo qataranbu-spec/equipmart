@@ -7,5 +7,6 @@ export * from './pages/equipment';
 export * from './pages/users';
 export * from './pages/auctions';
 export * from './pages/services';
+export * from './pages/advertisements';
 export * from './pages/analytics';
 export * from './pages/settings';

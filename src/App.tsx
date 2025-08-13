@@ -59,9 +59,14 @@ import {
   AuctionManagement,
   UserManagement,
   ServiceManagement,
+  AdvertisementManagement,
   Analytics,
   Settings
 } from './features/admin'
+
+// Import advertisement pages
+import Advertising from './pages/Advertising'
+import AdMarketplace from './pages/AdMarketplace'
 
 // Import category pages
 import Excavators from './pages/categories/Excavators'
@@ -101,6 +106,8 @@ function App() {
           <Route path="/rentals" element={<Rentals />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/marketplace" element={<ServicesMarketplace />} />
+          <Route path="/advertising" element={<Advertising />} />
+          <Route path="/ad-marketplace" element={<AdMarketplace />} />
           <Route path="/auctions" element={<AuctionsPage />} />
           <Route path="/procurement" element={<Procurement />} />
           <Route path="/buyer-network" element={<BuyerNetworkPage />} />
@@ -160,6 +167,7 @@ function App() {
             <Route path="auctions" element={<AuctionManagement />} />
             <Route path="users" element={<UserManagement />} />
             <Route path="services" element={<ServiceManagement />} />
+            <Route path="advertisements" element={<AdvertisementManagement />} />
             <Route path="analytics" element={<Analytics />} />
             <Route path="settings" element={<Settings />} />
           </Route>
