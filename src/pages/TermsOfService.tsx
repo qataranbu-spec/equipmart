@@ -1,11 +1,15 @@
 import React from 'react';
+import Header from '../components/layout/Header';
+import Footer from '../components/layout/Footer';
 
 const TermsOfService = () => {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <h1 className="text-4xl font-bold mb-8">Terms of Service</h1>
-      
-      <div className="prose max-w-none">
+    <>
+      <Header />
+      <div className="container mx-auto px-4 py-12 max-w-4xl">
+        <h1 className="text-4xl font-bold mb-8">Terms of Service</h1>
+        
+        <div className="prose max-w-none text-justify">
         <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
           <div className="flex">
             <div className="ml-3">
@@ -184,9 +188,11 @@ const TermsOfService = () => {
             These Terms of Service are effective as of January 2025 and will remain in effect during the beta testing period.
             By continuing to use EQP MART, you agree to be bound by these terms.
           </p>
+          </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

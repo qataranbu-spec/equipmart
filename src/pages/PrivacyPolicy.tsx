@@ -1,11 +1,15 @@
 import React from 'react';
+import Header from '../components/layout/Header';
+import Footer from '../components/layout/Footer';
 
 const PrivacyPolicy = () => {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
-      
-      <div className="prose max-w-none">
+    <>
+      <Header />
+      <div className="container mx-auto px-4 py-12 max-w-4xl">
+        <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
+        
+        <div className="prose max-w-none text-justify">
         <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-8">
           <div className="flex">
             <div className="ml-3">
@@ -239,9 +243,11 @@ const PrivacyPolicy = () => {
             to improve our platform. This data helps us serve the MENA/GCC construction equipment market better. 
             Your participation helps build a better marketplace for the region.
           </p>
+          </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
