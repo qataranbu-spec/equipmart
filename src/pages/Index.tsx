@@ -6,6 +6,9 @@ import Hero from '../components/home/Hero';
 import FeaturesSection from '../components/home/FeaturesSection';
 import StatsSection from '../components/home/StatsSection';
 import CategoriesSection from '../components/home/CategoriesSection';
+import WhoWeServeSection from '../components/home/WhoWeServeSection';
+import KeyFeaturesSection from '../components/home/KeyFeaturesSection';
+import ServiceOfferingsSection from '../components/home/ServiceOfferingsSection';
 import Footer from '../components/layout/Footer';
 
 const Index = () => {
@@ -13,9 +16,12 @@ const Index = () => {
     <div className="min-h-screen">
       <Header />
       <Hero />
-      <FeaturesSection />
+      <WhoWeServeSection />
+      <KeyFeaturesSection />
+      <ServiceOfferingsSection />
       <StatsSection />
       <CategoriesSection />
+      <FeaturesSection />
       <Footer />
     </div>
   );
