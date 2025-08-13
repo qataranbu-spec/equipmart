@@ -100,13 +100,14 @@ import FindServiceProviders from './pages/FindServiceProviders'
 import RegisterAsProvider from './pages/RegisterAsProvider'
 import PostServiceRequest from './pages/PostServiceRequest'
 import JoinAsServiceProvider from './pages/JoinAsServiceProvider'
-import {
+import { 
   ServicesMarketplace,
   ServiceBuyerDashboard,
   ServiceProviderDashboard,
   ServiceBooking,
   ServiceMessaging
 } from './features/services'
+import { ContractorPortal } from './features/contractor'
 import ContactUs from './pages/ContactUs'
 import TermsOfService from './pages/TermsOfService'
 import PrivacyPolicy from './pages/PrivacyPolicy'
@@ -198,6 +199,10 @@ function App() {
           <Route path="/register-as-provider" element={<RegisterAsProvider />} />
           <Route path="/post-service-request" element={<PostServiceRequest />} />
           <Route path="/join-as-service-provider" element={<JoinAsServiceProvider />} />
+          
+          {/* Contractor Portal */}
+          <Route path="/contractor-portal" element={<ContractorPortal />} />
+          
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
