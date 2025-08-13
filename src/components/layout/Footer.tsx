@@ -35,18 +35,11 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services & Solutions */}
+          {/* Services & Business */}
           <div>
-            <h3 className="font-semibold mb-4">Services & Solutions</h3>
+            <h3 className="font-semibold mb-4">Services & Business</h3>
             <ul className="space-y-2 text-muted-foreground">
               <li><Link to="/procurement" className="hover:text-primary">E-Trade</Link></li>
-            </ul>
-          </div>
-
-          {/* Business */}
-          <div>
-            <h3 className="font-semibold mb-4">Business</h3>
-            <ul className="space-y-2 text-muted-foreground">
               <li><Link to="/investor-proposal" className="hover:text-primary">Investor Proposal</Link></li>
               <li><Link to="/partnership-opportunity" className="hover:text-primary">Partnership Program</Link></li>
             </ul>
