@@ -51,6 +51,9 @@ const Header = () => {
                     <Link to="/auctions" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
                       Auctions
                     </Link>
+                    <Link to="/services" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
+                      Services
+                    </Link>
                   </div>}
               </div>
               
@@ -60,11 +63,8 @@ const Header = () => {
                   Services & Solutions
                   <ChevronDown className="h-4 w-4 ml-1" />
                 </button>
-                {showServicesDropdown && <div className="absolute top-full left-0 mt-1 bg-background border border-border rounded-lg shadow-lg py-3 w-56 z-50">
+                 {showServicesDropdown && <div className="absolute top-full left-0 mt-1 bg-background border border-border rounded-lg shadow-lg py-3 w-56 z-50">
                     <p className="text-xs font-semibold text-muted-foreground px-4 pb-2 mb-2 border-b border-border">Services & Solutions</p>
-                    <Link to="/services" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
-                      Services
-                    </Link>
                     <Link to="/procurement" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
                       E-Trade
                     </Link>
@@ -154,17 +154,17 @@ const Header = () => {
                   <Link to="/rentals" className="block text-foreground hover:text-primary transition-colors mb-2">
                     Rentals
                   </Link>
-                  <Link to="/auctions" className="block text-foreground hover:text-primary transition-colors">
+                  <Link to="/auctions" className="block text-foreground hover:text-primary transition-colors mb-2">
                     Auctions
+                  </Link>
+                  <Link to="/services" className="block text-foreground hover:text-primary transition-colors">
+                    Services
                   </Link>
                 </div>
                 
                 {/* Services & Solutions */}
                 <div className="border-l-2 border-primary pl-4 mb-4">
                   <p className="text-sm font-semibold text-muted-foreground mb-2">Services & Solutions</p>
-                  <Link to="/services" className="block text-foreground hover:text-primary transition-colors mb-2">
-                    Services
-                  </Link>
                   <Link to="/procurement" className="block text-foreground hover:text-primary transition-colors">
                     E-Trade
                   </Link>
