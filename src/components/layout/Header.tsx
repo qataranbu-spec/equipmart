@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, User, ShoppingCart, Bell, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -12,13 +12,56 @@ const Header = () => {
   const [showNetworksDropdown, setShowNetworksDropdown] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [authModalTab, setAuthModalTab] = useState<'login' | 'signup'>('login');
+
+  // Timeout refs for hover delays
+  const marketplaceTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const businessTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const networksTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   const openLoginModal = () => {
     setAuthModalTab('login');
     setAuthModalOpen(true);
   };
+
   const openSignupModal = () => {
     setAuthModalTab('signup');
     setAuthModalOpen(true);
+  };
+
+  // Improved hover handlers with delays
+  const handleDropdownEnter = (dropdown: 'marketplace' | 'services' | 'business' | 'networks') => {
+    const timeoutRef = dropdown === 'marketplace' ? marketplaceTimeoutRef 
+                    : dropdown === 'services' ? servicesTimeoutRef
+                    : dropdown === 'business' ? businessTimeoutRef
+                    : networksTimeoutRef;
+
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    const setter = dropdown === 'marketplace' ? setShowMarketplaceDropdown
+                 : dropdown === 'services' ? setShowServicesDropdown
+                 : dropdown === 'business' ? setShowBusinessDropdown
+                 : setShowNetworksDropdown;
+    
+    setter(true);
+  };
+
+  const handleDropdownLeave = (dropdown: 'marketplace' | 'services' | 'business' | 'networks') => {
+    const timeoutRef = dropdown === 'marketplace' ? marketplaceTimeoutRef 
+                    : dropdown === 'services' ? servicesTimeoutRef
+                    : dropdown === 'business' ? businessTimeoutRef
+                    : networksTimeoutRef;
+
+    const setter = dropdown === 'marketplace' ? setShowMarketplaceDropdown
+                 : dropdown === 'services' ? setShowServicesDropdown
+                 : dropdown === 'business' ? setShowBusinessDropdown
+                 : setShowNetworksDropdown;
+
+    timeoutRef.current = setTimeout(() => {
+      setter(false);
+    }, 150);
   };
   return <>
       <header className="bg-white shadow-lg border-b border-border">
@@ -35,79 +78,87 @@ const Header = () => {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               {/* Marketplace Group */}
-              <div className="relative" onMouseEnter={() => setShowMarketplaceDropdown(true)} onMouseLeave={() => setShowMarketplaceDropdown(false)}>
-                <button className="flex items-center text-foreground hover:text-primary transition-colors">
+              <div className="relative group" onMouseEnter={() => handleDropdownEnter('marketplace')} onMouseLeave={() => handleDropdownLeave('marketplace')}>
+                <button className="flex items-center text-foreground hover:text-primary transition-colors py-2">
                   Marketplace
                   <ChevronDown className="h-4 w-4 ml-1" />
                 </button>
-                {showMarketplaceDropdown && <div className="absolute top-full left-0 mt-1 bg-background border border-border rounded-lg shadow-lg py-3 w-56 z-50">
-                    <p className="text-xs font-semibold text-muted-foreground px-4 pb-2 mb-2 border-b border-border">Marketplace</p>
-                    <Link to="/marketplace" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
-                      Buy & Sell
-                    </Link>
-                    <Link to="/rentals" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
-                      Rentals
-                    </Link>
-                    <Link to="/auctions" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
-                      Auctions
-                    </Link>
-                    <Link to="/services" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
-                      Services
-                    </Link>
+                {showMarketplaceDropdown && <div className="absolute top-full left-0 pt-1">
+                    <div className="bg-background border border-border rounded-lg shadow-lg py-3 w-56 z-50">
+                      <p className="text-xs font-semibold text-muted-foreground px-4 pb-2 mb-2 border-b border-border">Marketplace</p>
+                      <Link to="/marketplace" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                        Buy & Sell
+                      </Link>
+                      <Link to="/rentals" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                        Rentals
+                      </Link>
+                      <Link to="/auctions" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                        Auctions
+                      </Link>
+                      <Link to="/services" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                        Services
+                      </Link>
+                    </div>
                   </div>}
               </div>
               
               {/* Services & Solutions Group */}
-              <div className="relative" onMouseEnter={() => setShowServicesDropdown(true)} onMouseLeave={() => setShowServicesDropdown(false)}>
-                <button className="flex items-center text-foreground hover:text-primary transition-colors">
+              <div className="relative group" onMouseEnter={() => handleDropdownEnter('services')} onMouseLeave={() => handleDropdownLeave('services')}>
+                <button className="flex items-center text-foreground hover:text-primary transition-colors py-2">
                   Services & Solutions
                   <ChevronDown className="h-4 w-4 ml-1" />
                 </button>
-                 {showServicesDropdown && <div className="absolute top-full left-0 mt-1 bg-background border border-border rounded-lg shadow-lg py-3 w-56 z-50">
-                    <p className="text-xs font-semibold text-muted-foreground px-4 pb-2 mb-2 border-b border-border">Services & Solutions</p>
-                    <Link to="/procurement" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
-                      E-Trade
-                    </Link>
-                  </div>}
+                 {showServicesDropdown && <div className="absolute top-full left-0 pt-1">
+                     <div className="bg-background border border-border rounded-lg shadow-lg py-3 w-56 z-50">
+                       <p className="text-xs font-semibold text-muted-foreground px-4 pb-2 mb-2 border-b border-border">Services & Solutions</p>
+                       <Link to="/procurement" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                         E-Trade
+                       </Link>
+                     </div>
+                   </div>}
               </div>
               
               {/* Business Group */}
-              <div className="relative" onMouseEnter={() => setShowBusinessDropdown(true)} onMouseLeave={() => setShowBusinessDropdown(false)}>
-                <button className="flex items-center text-foreground hover:text-primary transition-colors">
+              <div className="relative group" onMouseEnter={() => handleDropdownEnter('business')} onMouseLeave={() => handleDropdownLeave('business')}>
+                <button className="flex items-center text-foreground hover:text-primary transition-colors py-2">
                   Business
                   <ChevronDown className="h-4 w-4 ml-1" />
                 </button>
-                {showBusinessDropdown && <div className="absolute top-full left-0 mt-1 bg-background border border-border rounded-lg shadow-lg py-3 w-56 z-50">
-                    <p className="text-xs font-semibold text-muted-foreground px-4 pb-2 mb-2 border-b border-border">Business</p>
-                    <Link to="/investor-proposal" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
-                      Investor Proposal
-                    </Link>
-                    <Link to="/partnership-opportunity" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
-                      Partnership Program
-                    </Link>
+                {showBusinessDropdown && <div className="absolute top-full left-0 pt-1">
+                    <div className="bg-background border border-border rounded-lg shadow-lg py-3 w-56 z-50">
+                      <p className="text-xs font-semibold text-muted-foreground px-4 pb-2 mb-2 border-b border-border">Business</p>
+                      <Link to="/investor-proposal" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                        Investor Proposal
+                      </Link>
+                      <Link to="/partnership-opportunity" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                        Partnership Program
+                      </Link>
+                    </div>
                   </div>}
               </div>
               
               {/* Networks Group */}
-              <div className="relative" onMouseEnter={() => setShowNetworksDropdown(true)} onMouseLeave={() => setShowNetworksDropdown(false)}>
-                <button className="flex items-center text-foreground hover:text-primary transition-colors">
+              <div className="relative group" onMouseEnter={() => handleDropdownEnter('networks')} onMouseLeave={() => handleDropdownLeave('networks')}>
+                <button className="flex items-center text-foreground hover:text-primary transition-colors py-2">
                   Networks
                   <ChevronDown className="h-4 w-4 ml-1" />
                 </button>
-                {showNetworksDropdown && <div className="absolute top-full left-0 mt-1 bg-background border border-border rounded-lg shadow-lg py-3 w-56 z-50">
-                    <p className="text-xs font-semibold text-muted-foreground px-4 pb-2 mb-2 border-b border-border">Networks</p>
-                    <Link to="/networking-hub" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
-                      Networking Hub
-                    </Link>
-                    <Link to="/buyer-network" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
-                      Buyer Network
-                    </Link>
-                    <Link to="/supplier-network" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
-                      Supplier Network
-                    </Link>
-                    <Link to="/experts-network" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
-                      Experts Network
-                    </Link>
+                {showNetworksDropdown && <div className="absolute top-full left-0 pt-1">
+                    <div className="bg-background border border-border rounded-lg shadow-lg py-3 w-56 z-50">
+                      <p className="text-xs font-semibold text-muted-foreground px-4 pb-2 mb-2 border-b border-border">Networks</p>
+                      <Link to="/networking-hub" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                        Networking Hub
+                      </Link>
+                      <Link to="/buyer-network" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                        Buyer Network
+                      </Link>
+                      <Link to="/supplier-network" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                        Supplier Network
+                      </Link>
+                      <Link to="/experts-network" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                        Experts Network
+                      </Link>
+                    </div>
                   </div>}
               </div>
             </nav>
