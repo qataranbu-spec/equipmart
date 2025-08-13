@@ -77,7 +77,10 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
-          <p>© 2025 EQP MART. All rights reserved. | Privacy Policy | Terms of Service</p>
+          <p>© 2025 EQP MART. All rights reserved. | 
+            <Link to="/privacy-policy" className="hover:text-primary ml-1">Privacy Policy</Link> | 
+            <Link to="/terms-of-service" className="hover:text-primary ml-1">Terms of Service</Link>
+          </p>
         </div>
       </div>
     </footer>;

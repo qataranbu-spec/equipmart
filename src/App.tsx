@@ -83,6 +83,8 @@ import RegisterAsProvider from './pages/RegisterAsProvider'
 import PostServiceRequest from './pages/PostServiceRequest'
 import JoinAsServiceProvider from './pages/JoinAsServiceProvider'
 import ContactUs from './pages/ContactUs'
+import TermsOfService from './pages/TermsOfService'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 
 function App() {
   return (
@@ -148,6 +150,8 @@ function App() {
           <Route path="/post-service-request" element={<PostServiceRequest />} />
           <Route path="/join-as-service-provider" element={<JoinAsServiceProvider />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           
           {/* Admin routes */}
           <Route path="/admin" element={<AdminLayout />}>
