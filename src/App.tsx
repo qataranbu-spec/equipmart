@@ -82,6 +82,14 @@ import RequestDemo from './pages/RequestDemo'
 import InvestorProposal from './pages/InvestorProposal'
 import PartnershipOpportunity from './pages/PartnershipOpportunity'
 
+// Import E-Procurement pages
+import {
+  CreateRFQPage,
+  ActiveRFQsPage,
+  SupplierManagementPage,
+  EAuctionPage
+} from './features/procurement'
+
 // Import service pages
 import FindServiceProviders from './pages/FindServiceProviders'
 import RegisterAsProvider from './pages/RegisterAsProvider'
@@ -152,6 +160,12 @@ function App() {
           <Route path="/request-demo" element={<RequestDemo />} />
           <Route path="/investor-proposal" element={<InvestorProposal />} />
           <Route path="/partnership-opportunity" element={<PartnershipOpportunity />} />
+          
+          {/* E-Procurement routes */}
+          <Route path="/procurement/create-rfq" element={<CreateRFQPage />} />
+          <Route path="/procurement/active-rfqs" element={<ActiveRFQsPage />} />
+          <Route path="/procurement/supplier-management" element={<SupplierManagementPage />} />
+          <Route path="/procurement/e-auction" element={<EAuctionPage />} />
           <Route path="/find-service-providers" element={<FindServiceProviders />} />
           <Route path="/register-as-provider" element={<RegisterAsProvider />} />
           <Route path="/post-service-request" element={<PostServiceRequest />} />
