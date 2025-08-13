@@ -1,11 +1,12 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
+import { Building, Truck, Calendar, Wrench, Settings, HardHat } from 'lucide-react';
 
 const WhoWeServeSection = () => {
   const customers = [
     {
-      icon: "🏗️",
+      icon: Building,
       title: "Construction Contractors",
       description: "Medium-large construction firms, project managers",
       needs: [
@@ -21,7 +22,7 @@ const WhoWeServeSection = () => {
       ]
     },
     {
-      icon: "🚛",
+      icon: Truck,
       title: "Equipment Vendors & Dealers", 
       description: "New & used equipment sellers, OEM reps",
       needs: [
@@ -37,7 +38,7 @@ const WhoWeServeSection = () => {
       ]
     },
     {
-      icon: "📅",
+      icon: Calendar,
       title: "Rental & Leasing Companies",
       description: "Equipment rental fleets, short-term leasing firms", 
       needs: [
@@ -53,7 +54,7 @@ const WhoWeServeSection = () => {
       ]
     },
     {
-      icon: "🔧",
+      icon: Wrench,
       title: "Service Providers",
       description: "Mechanics, inspection firms, on-site repair technicians",
       needs: [
@@ -68,7 +69,7 @@ const WhoWeServeSection = () => {
       ]
     },
     {
-      icon: "⚙️",
+      icon: Settings,
       title: "Spare Parts Sellers",
       description: "Dealers, importers, aftermarket part suppliers",
       needs: [
@@ -83,7 +84,7 @@ const WhoWeServeSection = () => {
       ]
     },
     {
-      icon: "👷",
+      icon: HardHat,
       title: "Small Contractors & Subcontractors",
       description: "Individual builders, SME firms",
       needs: [
@@ -110,19 +111,23 @@ const WhoWeServeSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {customers.map((customer, index) => (
-            <Card key={index} className="h-full hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="text-3xl">{customer.icon}</div>
-                  <div>
-                    <CardTitle className="text-xl">{customer.title}</CardTitle>
-                    <CardDescription className="text-sm">
-                      {customer.description}
-                    </CardDescription>
+          {customers.map((customer, index) => {
+            const IconComponent = customer.icon;
+            return (
+              <Card key={index} className="h-full hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full">
+                      <IconComponent className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl">{customer.title}</CardTitle>
+                      <CardDescription className="text-sm">
+                        {customer.description}
+                      </CardDescription>
+                    </div>
                   </div>
-                </div>
-              </CardHeader>
+                </CardHeader>
               <CardContent className="space-y-6">
                 <div>
                   <h4 className="font-semibold text-sm mb-3 text-destructive">Needs & Pain Points:</h4>
@@ -148,8 +153,9 @@ const WhoWeServeSection = () => {
                   </ul>
                 </div>
               </CardContent>
-            </Card>
-          ))}
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>

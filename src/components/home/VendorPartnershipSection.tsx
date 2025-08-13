@@ -2,12 +2,12 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Link } from 'react-router-dom';
-import { Store, Users, Wrench, Package, TrendingUp, Target, BarChart3, Settings } from 'lucide-react';
+import { Store, Users, Wrench, Package, TrendingUp, Target, BarChart3, Settings, Calendar } from 'lucide-react';
 
 const VendorPartnershipSection = () => {
   const vendorTypes = [
     {
-      icon: "🏪",
+      icon: Store,
       title: "Equipment Vendors & Dealers",
       description: "New & used equipment sellers, OEM representatives looking to expand their digital reach.",
       benefits: [
@@ -18,7 +18,7 @@ const VendorPartnershipSection = () => {
       ]
     },
     {
-      icon: "📅",
+      icon: Calendar,
       title: "Rental & Leasing Companies",
       description: "Companies with equipment rental fleets and short-term leasing firms aiming to optimize utilization.",
       benefits: [
@@ -29,7 +29,7 @@ const VendorPartnershipSection = () => {
       ]
     },
     {
-      icon: "🔧",
+      icon: Wrench,
       title: "Service Providers",
       description: "Mechanics, inspection firms, and on-site repair technicians seeking consistent demand.",
       benefits: [
@@ -39,7 +39,7 @@ const VendorPartnershipSection = () => {
       ]
     },
     {
-      icon: "⚙️",
+      icon: Settings,
       title: "Spare Parts Sellers",
       description: "Dealers, importers, and aftermarket part suppliers looking for a searchable online presence.",
       benefits: [
@@ -132,17 +132,21 @@ const VendorPartnershipSection = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {vendorTypes.map((vendor, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="text-3xl">{vendor.icon}</div>
-                    <div>
-                      <CardTitle className="text-xl">{vendor.title}</CardTitle>
-                      <CardDescription>{vendor.description}</CardDescription>
+            {vendorTypes.map((vendor, index) => {
+              const IconComponent = vendor.icon;
+              return (
+                <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full">
+                        <IconComponent className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <CardTitle className="text-xl">{vendor.title}</CardTitle>
+                        <CardDescription>{vendor.description}</CardDescription>
+                      </div>
                     </div>
-                  </div>
-                </CardHeader>
+                  </CardHeader>
                 <CardContent>
                   <h4 className="font-semibold mb-3 text-primary">Key Benefits:</h4>
                   <ul className="space-y-2">
@@ -154,8 +158,9 @@ const VendorPartnershipSection = () => {
                     ))}
                   </ul>
                 </CardContent>
-              </Card>
-            ))}
+                </Card>
+              );
+            })}
           </div>
         </div>
 

@@ -2,12 +2,12 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Link } from 'react-router-dom';
-import { Search, DollarSign, CheckCircle, Calendar, MessageCircle, FileText, Truck } from 'lucide-react';
+import { Search, DollarSign, CheckCircle, Calendar, MessageCircle, FileText, Truck, Building, Building2, ShoppingCart, Wrench } from 'lucide-react';
 
 const BuyersAdvantageSection = () => {
   const buyerTypes = [
     {
-      icon: "🏗️",
+      icon: Building,
       title: "Construction Contractors",
       description: "Medium-large construction firms and project managers.",
       benefits: [
@@ -18,7 +18,7 @@ const BuyersAdvantageSection = () => {
       ]
     },
     {
-      icon: "🏢",
+      icon: Building2,
       title: "Small Contractors & Subcontractors",
       description: "Individual builders and SME firms with cost-sensitive needs.",
       benefits: [
@@ -28,7 +28,7 @@ const BuyersAdvantageSection = () => {
       ]
     },
     {
-      icon: "🛒",
+      icon: ShoppingCart,
       title: "Equipment Buyers (New & Used)",
       description: "Individuals or companies looking to purchase equipment for long-term use.",
       benefits: [
@@ -38,7 +38,7 @@ const BuyersAdvantageSection = () => {
       ]
     },
     {
-      icon: "🔧",
+      icon: Wrench,
       title: "Maintenance & Workshop Teams", 
       description: "Teams responsible for equipment upkeep and needing spare parts.",
       benefits: [
@@ -130,17 +130,21 @@ const BuyersAdvantageSection = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {buyerTypes.map((buyer, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="text-3xl">{buyer.icon}</div>
-                    <div>
-                      <CardTitle className="text-xl">{buyer.title}</CardTitle>
-                      <CardDescription>{buyer.description}</CardDescription>
+            {buyerTypes.map((buyer, index) => {
+              const IconComponent = buyer.icon;
+              return (
+                <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full">
+                        <IconComponent className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <CardTitle className="text-xl">{buyer.title}</CardTitle>
+                        <CardDescription>{buyer.description}</CardDescription>
+                      </div>
                     </div>
-                  </div>
-                </CardHeader>
+                  </CardHeader>
                 <CardContent>
                   <h4 className="font-semibold mb-3 text-primary">Key Benefits:</h4>
                   <ul className="space-y-2">
@@ -152,8 +156,9 @@ const BuyersAdvantageSection = () => {
                     ))}
                   </ul>
                 </CardContent>
-              </Card>
-            ))}
+                </Card>
+              );
+            })}
           </div>
         </div>
 
