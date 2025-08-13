@@ -108,6 +108,7 @@ import {
   ServiceMessaging
 } from './features/services'
 import { ContractorPortal } from './features/contractor'
+import { SparePartsMarketplace, SupplierDashboard } from './features/spareparts'
 import ContactUs from './pages/ContactUs'
 import TermsOfService from './pages/TermsOfService'
 import PrivacyPolicy from './pages/PrivacyPolicy'
@@ -202,6 +203,10 @@ function App() {
           
           {/* Contractor Portal */}
           <Route path="/contractor-portal" element={<ContractorPortal />} />
+          
+          {/* Spare Parts Platform */}
+          <Route path="/spare-parts" element={<SparePartsMarketplace />} />
+          <Route path="/supplier-dashboard" element={<SupplierDashboard />} />
           
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
