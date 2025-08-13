@@ -25,7 +25,7 @@ const Header = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">E</span>
+                <span className="text-white font-bold text-xl">EQP</span>
               </div>
               <span className="text-2xl font-bold text-primary">EQP MART</span>
             </Link>
