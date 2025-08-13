@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Search, User, ShoppingCart, Bell, ChevronDown } from 'lucide-react';
+import { Menu, X, User, ShoppingCart, Bell, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AuthModal from '../../features/auth/components/AuthModal';
 const Header = () => {
@@ -32,25 +32,32 @@ const Header = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
+              {/* Core Marketplace */}
               <Link to="/marketplace" className="text-foreground hover:text-primary transition-colors">
                 Marketplace
               </Link>
               <Link to="/rentals" className="text-foreground hover:text-primary transition-colors">
                 Rentals
               </Link>
-              <Link to="/services" className="text-foreground hover:text-primary transition-colors">
-                Services
-              </Link>
               <Link to="/auctions" className="text-foreground hover:text-primary transition-colors">
                 Auctions
               </Link>
-              <Link to="/procurement" className="text-foreground hover:text-primary transition-colors">E-Trade</Link>
+              
+              {/* Services & Solutions */}
+              <Link to="/services" className="text-foreground hover:text-primary transition-colors">
+                Services
+              </Link>
+              <Link to="/procurement" className="text-foreground hover:text-primary transition-colors">
+                E-Trade
+              </Link>
+              
+              {/* Business & Partnerships */}
               <div className="relative" onMouseEnter={() => setShowCompanyDropdown(true)} onMouseLeave={() => setShowCompanyDropdown(false)}>
                 <button className="flex items-center text-foreground hover:text-primary transition-colors">
-                  Company
+                  Business
                   <ChevronDown className="h-4 w-4 ml-1" />
                 </button>
-                {showCompanyDropdown && <div className="absolute top-full left-0 mt-1 bg-white border border-border rounded-lg shadow-lg py-2 w-48 z-50">
+                {showCompanyDropdown && <div className="absolute top-full left-0 mt-1 bg-background border border-border rounded-lg shadow-lg py-2 w-48 z-50">
                     <Link to="/investor-proposal" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
                       Investor Proposal
                     </Link>
@@ -59,12 +66,17 @@ const Header = () => {
                     </Link>
                   </div>}
               </div>
+              
+              {/* Networks & Community */}
               <div className="relative" onMouseEnter={() => setShowNetworksDropdown(true)} onMouseLeave={() => setShowNetworksDropdown(false)}>
                 <button className="flex items-center text-foreground hover:text-primary transition-colors">
                   Networks
                   <ChevronDown className="h-4 w-4 ml-1" />
                 </button>
-                {showNetworksDropdown && <div className="absolute top-full left-0 mt-1 bg-white border border-border rounded-lg shadow-lg py-2 w-48 z-50">
+                {showNetworksDropdown && <div className="absolute top-full left-0 mt-1 bg-background border border-border rounded-lg shadow-lg py-2 w-48 z-50">
+                    <Link to="/networking-hub" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
+                      Networking Hub
+                    </Link>
                     <Link to="/buyer-network" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary">
                       Buyer Network
                     </Link>
@@ -80,11 +92,6 @@ const Header = () => {
 
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center space-x-4">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                <input type="text" placeholder="Search equipment..." className="pl-10 pr-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary w-64" />
-              </div>
-              
               {isLoggedIn ? <div className="flex items-center space-x-2">
                   <Button variant="ghost" size="sm">
                     <Bell className="h-4 w-4" />
@@ -116,23 +123,34 @@ const Header = () => {
           {/* Mobile Menu */}
           {isMenuOpen && <div className="md:hidden py-4 border-t border-border">
               <nav className="flex flex-col space-y-4">
-                <Link to="/marketplace" className="text-foreground hover:text-primary transition-colors">
-                  Marketplace
-                </Link>
-                <Link to="/rentals" className="text-foreground hover:text-primary transition-colors">
-                  Rentals
-                </Link>
-                <Link to="/services" className="text-foreground hover:text-primary transition-colors">
-                  Services
-                </Link>
-                <Link to="/auctions" className="text-foreground hover:text-primary transition-colors">
-                  Auctions
-                </Link>
-                <Link to="/procurement" className="text-foreground hover:text-primary transition-colors">
-                  E-Procurement
-                </Link>
+                {/* Core Marketplace */}
                 <div className="border-l-2 border-primary pl-4 mb-4">
-                  <p className="text-sm font-semibold text-muted-foreground mb-2">Company</p>
+                  <p className="text-sm font-semibold text-muted-foreground mb-2">Marketplace</p>
+                  <Link to="/marketplace" className="block text-foreground hover:text-primary transition-colors mb-2">
+                    Buy & Sell
+                  </Link>
+                  <Link to="/rentals" className="block text-foreground hover:text-primary transition-colors mb-2">
+                    Rentals
+                  </Link>
+                  <Link to="/auctions" className="block text-foreground hover:text-primary transition-colors">
+                    Auctions
+                  </Link>
+                </div>
+                
+                {/* Services & Solutions */}
+                <div className="border-l-2 border-primary pl-4 mb-4">
+                  <p className="text-sm font-semibold text-muted-foreground mb-2">Services & Solutions</p>
+                  <Link to="/services" className="block text-foreground hover:text-primary transition-colors mb-2">
+                    Services
+                  </Link>
+                  <Link to="/procurement" className="block text-foreground hover:text-primary transition-colors">
+                    E-Trade
+                  </Link>
+                </div>
+                
+                {/* Business & Partnerships */}
+                <div className="border-l-2 border-primary pl-4 mb-4">
+                  <p className="text-sm font-semibold text-muted-foreground mb-2">Business</p>
                   <Link to="/investor-proposal" className="block text-foreground hover:text-primary transition-colors mb-2">
                     Investor Proposal
                   </Link>
@@ -140,8 +158,13 @@ const Header = () => {
                     Partnership Program
                   </Link>
                 </div>
-                <div className="border-l-2 border-primary pl-4">
+                
+                {/* Networks & Community */}
+                <div className="border-l-2 border-primary pl-4 mb-4">
                   <p className="text-sm font-semibold text-muted-foreground mb-2">Networks</p>
+                  <Link to="/networking-hub" className="block text-foreground hover:text-primary transition-colors mb-2">
+                    Networking Hub
+                  </Link>
                   <Link to="/buyer-network" className="block text-foreground hover:text-primary transition-colors mb-2">
                     Buyer Network
                   </Link>
@@ -152,6 +175,7 @@ const Header = () => {
                     Experts Network
                   </Link>
                 </div>
+                
                 <div className="pt-4 border-t border-border">
                   <Button variant="outline" size="sm" className="w-full mb-2" onClick={openLoginModal}>
                     Login
