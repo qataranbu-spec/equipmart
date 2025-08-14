@@ -30,87 +30,144 @@ interface DashboardSidebarProps {
   onRoleChange: (role: string) => void;
 }
 
+interface MenuItem {
+  label: string;
+  path: string;
+  icon: React.ComponentType<any>;
+  badge?: string;
+}
+
+interface MenuSection {
+  title: string;
+  items: MenuItem[];
+}
+
 export function DashboardSidebar({ userRole, onRoleChange }: DashboardSidebarProps) {
   const location = useLocation();
   
-  const buyerMenuItems = [
+  const buyerMenuItems: MenuSection[] = [
     {
       title: "Overview",
       items: [
         { label: "Dashboard", path: "/dashboard", icon: BarChart3 },
-        { label: "Quick Stats", path: "/dashboard/stats", icon: TrendingUp },
-      ]
-    },
-    {
-      title: "Purchasing",
-      items: [
-        { label: "My Orders", path: "/dashboard/orders", icon: ShoppingBag },
-        { label: "Order History", path: "/dashboard/order-history", icon: FileText },
-        { label: "Pending Orders", path: "/dashboard/pending", icon: Package, badge: "3" },
-      ]
-    },
-    {
-      title: "E-Procurement",
-      items: [
-        { label: "Create RFQ", path: "/dashboard/rfq", icon: Plus },
-        { label: "Active RFQs", path: "/dashboard/active-rfq", icon: FileText, badge: "2" },
-        { label: "Supplier Management", path: "/dashboard/suppliers", icon: Users },
-        { label: "E-Auctions", path: "/dashboard/auctions", icon: Gavel },
+        { label: "Equipment Finder", path: "/equipments-finder", icon: Search },
       ]
     },
     {
       title: "Marketplace",
       items: [
         { label: "Browse Equipment", path: "/marketplace", icon: Search },
-        { label: "Favorites", path: "/dashboard/favorites", icon: Heart, badge: "8" },
-        { label: "Watch List", path: "/dashboard/watchlist", icon: Bookmark },
+        { label: "Buy Equipment", path: "/marketplace/buy", icon: ShoppingBag },
+        { label: "Equipment Details", path: "/equipment/1", icon: Eye },
+        { label: "Contact Seller", path: "/contact-seller", icon: MessageCircle },
+        { label: "Favorites", path: "/favorites", icon: Heart },
       ]
     },
     {
-      title: "Analytics & Reports",
+      title: "Rentals",
       items: [
-        { label: "Spending Analytics", path: "/dashboard/analytics", icon: BarChart3 },
-        { label: "Performance Reports", path: "/dashboard/reports", icon: FileText },
+        { label: "Browse Rentals", path: "/rentals/browse", icon: Search },
+        { label: "My Rentals", path: "/rentals/my-rentals", icon: Package },
+        { label: "Rental Requests", path: "/rentals/requests", icon: FileText },
+        { label: "Book Equipment", path: "/book-equipment", icon: Calendar },
+      ]
+    },
+    {
+      title: "Services",
+      items: [
+        { label: "Services Marketplace", path: "/services/marketplace", icon: Search },
+        { label: "Service Dashboard", path: "/services/buyer/dashboard", icon: BarChart3 },
+        { label: "Find Providers", path: "/find-service-providers", icon: Users },
+        { label: "Post Request", path: "/post-service-request", icon: Plus },
+        { label: "Messages", path: "/services/messages", icon: MessageCircle },
+      ]
+    },
+    {
+      title: "Auctions",
+      items: [
+        { label: "Live Auctions", path: "/browse-live-auctions", icon: Gavel },
+        { label: "Register to Bid", path: "/register-to-bid", icon: FileText },
+        { label: "Watch List", path: "/auction/watch-list", icon: Bookmark },
+        { label: "Auctions Hub", path: "/auctions", icon: Gavel },
+      ]
+    },
+    {
+      title: "E-Procurement",
+      items: [
+        { label: "Procurement", path: "/procurement", icon: Package },
+        { label: "Create RFQ", path: "/procurement/create-rfq", icon: Plus },
+        { label: "Active RFQs", path: "/procurement/active-rfqs", icon: FileText, badge: "2" },
+        { label: "Supplier Management", path: "/procurement/supplier-management", icon: Users },
+        { label: "E-Auction", path: "/procurement/e-auction", icon: Gavel },
+      ]
+    },
+    {
+      title: "Network",
+      items: [
+        { label: "Buyer Network", path: "/buyer-network", icon: Users },
+        { label: "Explore Network", path: "/explore-network", icon: Search },
+        { label: "Connections", path: "/connections", icon: Users },
+        { label: "Messages", path: "/messages", icon: MessageCircle },
+        { label: "Networking Hub", path: "/networking-hub", icon: Users },
       ]
     }
   ];
 
-  const sellerMenuItems = [
+  const sellerMenuItems: MenuSection[] = [
     {
       title: "Overview",
       items: [
         { label: "Dashboard", path: "/dashboard", icon: BarChart3 },
-        { label: "Sales Overview", path: "/dashboard/sales", icon: TrendingUp },
+        { label: "Equipment Finder", path: "/equipments-finder", icon: Search },
       ]
     },
     {
-      title: "Inventory Management",
+      title: "Sell Equipment",
       items: [
-        { label: "My Listings", path: "/dashboard/listings", icon: Package },
-        { label: "Add Equipment", path: "/dashboard/add-equipment", icon: Plus },
-        { label: "Pending Listings", path: "/dashboard/pending-listings", icon: Edit, badge: "2" },
+        { label: "Sell Equipment", path: "/marketplace/sell", icon: Plus },
+        { label: "My Listings", path: "/marketplace", icon: Package },
+        { label: "Consign Equipment", path: "/auction/consign-equipment", icon: Gavel },
       ]
     },
     {
-      title: "Sales & Orders",
+      title: "Rentals - Seller",
       items: [
-        { label: "Recent Orders", path: "/dashboard/orders", icon: ShoppingBag },
-        { label: "Inquiries", path: "/dashboard/inquiries", icon: MessageCircle, badge: "5" },
-        { label: "Proposals", path: "/dashboard/proposals", icon: FileText },
+        { label: "List Equipment", path: "/rentals/seller/list-equipment", icon: Plus },
+        { label: "My Listings", path: "/rentals/seller/listings", icon: Package },
+        { label: "Rental Bookings", path: "/rentals/seller/bookings", icon: Calendar },
       ]
     },
     {
-      title: "Marketing",
+      title: "Services",
       items: [
-        { label: "Listing Performance", path: "/dashboard/performance", icon: Eye },
-        { label: "Promotions", path: "/dashboard/promotions", icon: TrendingUp },
+        { label: "Provider Dashboard", path: "/services/provider/dashboard", icon: BarChart3 },
+        { label: "Register Provider", path: "/register-as-provider", icon: Plus },
+        { label: "Join as Provider", path: "/join-as-service-provider", icon: Users },
+        { label: "Messages", path: "/services/messages", icon: MessageCircle },
       ]
     },
     {
-      title: "Analytics & Reports",
+      title: "Network",
       items: [
-        { label: "Sales Analytics", path: "/dashboard/analytics", icon: BarChart3 },
-        { label: "Revenue Reports", path: "/dashboard/revenue", icon: DollarSign },
+        { label: "Supplier Network", path: "/supplier-network", icon: Users },
+        { label: "Become Supplier", path: "/become-supplier", icon: Plus },
+        { label: "Connections", path: "/connections", icon: Users },
+        { label: "Messages", path: "/messages", icon: MessageCircle },
+        { label: "Networking Hub", path: "/networking-hub", icon: Users },
+      ]
+    },
+    {
+      title: "Advertising",
+      items: [
+        { label: "Advertising", path: "/advertising", icon: TrendingUp },
+        { label: "Ad Marketplace", path: "/ad-marketplace", icon: ShoppingBag },
+      ]
+    },
+    {
+      title: "Spare Parts",
+      items: [
+        { label: "Spare Parts", path: "/spare-parts", icon: Package },
+        { label: "Supplier Dashboard", path: "/supplier-dashboard", icon: BarChart3 },
       ]
     }
   ];
