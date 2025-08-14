@@ -24,7 +24,17 @@ import {
   ClipboardCheck,
   Search,
   BadgeCheck,
-  Gavel
+  Gavel,
+  Wifi,
+  Activity,
+  BarChart3,
+  Leaf,
+  GraduationCap,
+  ShieldCheck,
+  TrendingUp,
+  Zap,
+  Cog,
+  RefreshCw
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -113,6 +123,76 @@ const Services = () => {
       icon: Gavel,
       providers: 19,
       avgRating: 4.7
+    },
+    {
+      title: "Telematics & Fleet Management",
+      description: "GPS tracking, usage analytics, fleet optimization solutions",
+      icon: Wifi,
+      providers: 42,
+      avgRating: 4.8
+    },
+    {
+      title: "Predictive Maintenance",
+      description: "AI-powered maintenance scheduling and failure prediction",
+      icon: Activity,
+      providers: 31,
+      avgRating: 4.9
+    },
+    {
+      title: "Equipment Monitoring & Diagnostics",
+      description: "Real-time performance monitoring and diagnostic services",
+      icon: BarChart3,
+      providers: 38,
+      avgRating: 4.8
+    },
+    {
+      title: "Environmental Compliance",
+      description: "Emissions testing, environmental permits, compliance audits",
+      icon: Leaf,
+      providers: 26,
+      avgRating: 4.9
+    },
+    {
+      title: "Operator Training Programs",
+      description: "Certified training courses, safety certification, skill development",
+      icon: GraduationCap,
+      providers: 58,
+      avgRating: 4.7
+    },
+    {
+      title: "Safety Training Services",
+      description: "OSHA compliance, safety protocols, risk assessment training",
+      icon: ShieldCheck,
+      providers: 47,
+      avgRating: 4.8
+    },
+    {
+      title: "Performance Analytics",
+      description: "Equipment efficiency analysis, cost optimization reporting",
+      icon: TrendingUp,
+      providers: 29,
+      avgRating: 4.9
+    },
+    {
+      title: "Fleet Optimization",
+      description: "Route planning, utilization analysis, operational efficiency",
+      icon: Zap,
+      providers: 23,
+      avgRating: 4.8
+    },
+    {
+      title: "Equipment Retrofitting",
+      description: "Technology upgrades, modernization, efficiency improvements",
+      icon: Cog,
+      providers: 35,
+      avgRating: 4.7
+    },
+    {
+      title: "Custom Modifications",
+      description: "Specialized attachments, custom fabrication, equipment adaptation",
+      icon: RefreshCw,
+      providers: 18,
+      avgRating: 4.9
     }
   ];
 
