@@ -463,6 +463,65 @@ const Manufacturers = () => {
           </div>
         </section>
 
+        {/* Popular Brands Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Popular brands</h2>
+              <p className="text-muted-foreground max-w-4xl mx-auto text-lg">
+                The industry's most trusted heavy equipment brands engineered for unmatched durability, 
+                cutting-edge technology, and peak job-site performance year after year.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+              {[
+                { name: 'Caterpillar', color: '#FFCD11' },
+                { name: 'JCB', color: '#FFCD00' },
+                { name: 'Volvo', color: '#1E3A8A' },
+                { name: 'Komatsu', color: '#0066CC' },
+                { name: 'Liebherr', color: '#004B87' },
+                { name: 'JLG', color: '#FF6600' },
+                { name: 'Hyundai', color: '#002C5F' },
+                { name: 'Mercedes', color: '#000000' },
+                { name: 'Bobcat', color: '#E31837' },
+                { name: 'Mitsubishi', color: '#E60012' },
+                { name: 'XCMG', color: '#FF6600' },
+                { name: 'Tadano', color: '#1E40AF' },
+                { name: 'Terex', color: '#E31837' },
+                { name: 'Generac', color: '#FF6600' },
+                { name: 'Toyota', color: '#E60012' },
+                { name: 'SANY', color: '#E60012' },
+                { name: 'Kato', color: '#1E40AF' },
+                { name: 'Zoomlion', color: '#0066CC' },
+                { name: 'Perkins', color: '#004B87' },
+                { name: 'Dynapac', color: '#FFCD11' },
+                { name: 'Demag', color: '#004B87' },
+                { name: 'Atlas', color: '#FF6600' },
+                { name: 'Doosan', color: '#1E40AF' },
+                { name: 'Case', color: '#FF6600' }
+              ].map((brand, index) => (
+                <div key={index} className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border hover:shadow-md transition-shadow duration-200 cursor-pointer group">
+                  <div className="text-center">
+                    <div 
+                      className="text-2xl font-bold group-hover:scale-110 transition-transform duration-200"
+                      style={{ color: brand.color }}
+                    >
+                      {brand.name}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <div className="text-center mt-8">
+              <Button variant="outline" className="text-muted-foreground">
+                Show less
+              </Button>
+            </div>
+          </div>
+        </section>
+
         {/* Manufacturers Section */}
         <section className="py-16">
           <div className="container mx-auto px-4">
