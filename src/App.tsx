@@ -72,6 +72,7 @@ import Bulldozers from './pages/categories/Bulldozers'
 import Loaders from './pages/categories/Loaders'
 import Trucks from './pages/categories/Trucks'
 import ConcreteMixers from './pages/categories/ConcreteMixers'
+import Manufacturers from './pages/Manufacturers'
 
 // Import procurement pages
 import StartFreeTrial from './pages/StartFreeTrial'
@@ -162,6 +163,7 @@ function App() {
           <Route path="/categories/loaders" element={<Loaders />} />
           <Route path="/categories/trucks" element={<Trucks />} />
           <Route path="/categories/concrete-mixers" element={<ConcreteMixers />} />
+          <Route path="/manufacturers" element={<Manufacturers />} />
 
           {/* Auction routes */}
           <Route path="/auction/bid-now/:id" element={<BidNowPage />} />
