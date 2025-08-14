@@ -22,15 +22,22 @@ import {
   Users,
   FileText,
   Gavel,
-  Bell
+  Bell,
+  Menu,
+  X
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   const [userRole, setUserRole] = useState('buyer'); // buyer, seller, service_provider
+  const [sidebarVisible, setSidebarVisible] = useState(true);
 
   const handleRoleChange = (role: string) => {
     setUserRole(role);
+  };
+
+  const handleSidebarToggle = (isVisible: boolean) => {
+    setSidebarVisible(isVisible);
   };
 
   const buyerStats = {
@@ -113,14 +120,34 @@ const Dashboard = () => {
         defaultSidebarWidth={280}
         minSidebarWidth={240}
         maxSidebarWidth={400}
+        onSidebarToggle={handleSidebarToggle}
       >
             {/* Page Header */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
-              <div>
-                <h1 className="text-3xl font-bold mb-2">Dashboard</h1>
-                <p className="text-muted-foreground">Welcome back, John Doe</p>
+              <div className="flex items-center space-x-4">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => setSidebarVisible(!sidebarVisible)}
+                  className="lg:hidden"
+                >
+                  {sidebarVisible ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+                </Button>
+                <div>
+                  <h1 className="text-3xl font-bold mb-2">Dashboard</h1>
+                  <p className="text-muted-foreground">Welcome back, John Doe</p>
+                </div>
               </div>
               <div className="flex items-center space-x-2 mt-4 sm:mt-0">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => setSidebarVisible(!sidebarVisible)}
+                  className="hidden lg:flex"
+                >
+                  {sidebarVisible ? <X className="h-4 w-4 mr-2" /> : <Menu className="h-4 w-4 mr-2" />}
+                  {sidebarVisible ? 'Hide' : 'Show'} Sidebar
+                </Button>
                 <Button variant="outline" size="sm">
                   <Settings className="h-4 w-4 mr-2" />
                   Settings

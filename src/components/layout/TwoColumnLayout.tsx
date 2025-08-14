@@ -11,6 +11,7 @@ interface TwoColumnLayoutProps {
   minSidebarWidth?: number;
   maxSidebarWidth?: number;
   className?: string;
+  onSidebarToggle?: (isVisible: boolean) => void;
 }
 
 export function TwoColumnLayout({
@@ -20,7 +21,8 @@ export function TwoColumnLayout({
   defaultSidebarWidth = 320,
   minSidebarWidth = 240,
   maxSidebarWidth = 480,
-  className = ""
+  className = "",
+  onSidebarToggle
 }: TwoColumnLayoutProps) {
   const [sidebarVisible, setSidebarVisible] = useState(true);
   const [sidebarWidth, setSidebarWidth] = useState(defaultSidebarWidth);
@@ -29,7 +31,9 @@ export function TwoColumnLayout({
   const startWidth = useRef(0);
 
   const toggleSidebar = () => {
-    setSidebarVisible(!sidebarVisible);
+    const newVisibility = !sidebarVisible;
+    setSidebarVisible(newVisibility);
+    onSidebarToggle?.(newVisibility);
   };
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
