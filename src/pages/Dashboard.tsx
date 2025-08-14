@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { TwoColumnLayout } from "@/components/layout/TwoColumnLayout"
 import { AppSidebar } from '@/components/AppSidebar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -105,29 +105,15 @@ const Dashboard = () => {
   };
 
   return (
-    <SidebarProvider>
-      <div className="min-h-screen bg-background w-full flex">
-        <AppSidebar userRole={userRole} onRoleChange={handleRoleChange} />
-        
-        <div className="flex-1 flex flex-col">
-          <header className="h-16 flex items-center border-b px-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <SidebarTrigger className="mr-4" />
-            <div className="flex-1 flex justify-between items-center">
-              <div>
-                <h2 className="text-lg font-semibold">Equipment Management Platform</h2>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Button variant="outline" size="sm">
-                  <Bell className="h-4 w-4" />
-                </Button>
-                <Button variant="outline" size="sm">
-                  Profile
-                </Button>
-              </div>
-            </div>
-          </header>
-          
-          <main className="flex-1 p-6">
+    <div className="min-h-screen bg-background">
+      <Header />
+      <TwoColumnLayout 
+        sidebar={<AppSidebar userRole={userRole} onRoleChange={handleRoleChange} />}
+        sidebarTitle="Dashboard Navigation"
+        defaultSidebarWidth={280}
+        minSidebarWidth={240}
+        maxSidebarWidth={400}
+      >
             {/* Page Header */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
               <div>
@@ -447,12 +433,9 @@ const Dashboard = () => {
                 </div>
               </TabsContent>
             </Tabs>
-          </main>
-          
-          <Footer />
-        </div>
-      </div>
-    </SidebarProvider>
+      </TwoColumnLayout>
+      <Footer />
+    </div>
   );
 };
 
