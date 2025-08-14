@@ -71,7 +71,7 @@ export function TwoColumnLayout({
 
   return (
     <div className={`container mx-auto px-4 py-8 ${className}`}>
-      <div className="flex flex-col lg:flex-row gap-8">
+      <div className="flex flex-col lg:flex-row gap-2">
         {/* Sidebar */}
         <div 
           className={`transition-all duration-300 ${
@@ -115,11 +115,11 @@ export function TwoColumnLayout({
         {/* Vertical Resizer */}
         {sidebarVisible && (
           <div
-            className="hidden lg:flex w-1 bg-border hover:bg-primary/20 cursor-col-resize transition-colors duration-200 relative group"
+            className="hidden lg:flex w-0.5 bg-border hover:bg-primary/20 cursor-col-resize transition-colors duration-200 relative group mx-1"
             onMouseDown={handleMouseDown}
             style={{ cursor: isDragging ? 'col-resize' : 'col-resize' }}
           >
-            <div className="absolute inset-0 w-3 -mx-1" />
+            <div className="absolute inset-0 w-2 -mx-1" />
             <div className="w-full bg-border group-hover:bg-primary/40 transition-colors" />
           </div>
         )}
