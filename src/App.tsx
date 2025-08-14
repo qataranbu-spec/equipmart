@@ -9,6 +9,7 @@ import Rentals from './pages/Rentals'
 import Services from './pages/Services'
 import Procurement from './pages/Procurement'
 import NotFound from './pages/NotFound'
+import EquipmentsFinderPage from './pages/EquipmentsFinderPage'
 
 // Import feature modules
 import { 
@@ -120,6 +121,7 @@ function App() {
       <div className="min-h-screen bg-background">
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/equipments-finder" element={<EquipmentsFinderPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
