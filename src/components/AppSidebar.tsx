@@ -33,18 +33,6 @@ import {
   ChevronDown,
 } from "lucide-react"
 
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarTrigger,
-  useSidebar,
-} from "@/components/ui/sidebar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -69,9 +57,7 @@ interface AppSidebarProps {
 }
 
 export function AppSidebar({ userRole, onRoleChange }: AppSidebarProps) {
-  const { state } = useSidebar()
   const location = useLocation()
-  const collapsed = state === "collapsed"
   const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({
     overview: true,
     marketplace: true,
@@ -222,165 +208,142 @@ export function AppSidebar({ userRole, onRoleChange }: AppSidebarProps) {
   }
 
   return (
-    <Sidebar
-      className={collapsed ? "w-14" : "w-80"}
-      collapsible="icon"
-    >
-      <SidebarContent className="gap-0">
-        {/* Role Selector */}
-        {!collapsed && (
-          <div className="p-4 border-b">
-            <Card>
-              <CardContent className="p-4">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Switch View</label>
-                  <select 
-                    value={userRole} 
-                    onChange={(e) => onRoleChange(e.target.value)}
-                    className="w-full px-3 py-2 border border-border rounded-lg text-sm bg-background"
-                  >
-                    <option value="buyer">Buyer Portal</option>
-                    <option value="seller">Seller Portal</option>
-                    <option value="service_provider">Service Provider</option>
-                  </select>
-                </div>
-              </CardContent>
-            </Card>
+    <div className="space-y-4">
+      {/* Role Selector */}
+      <Card>
+        <CardContent className="p-4">
+          <div className="space-y-2">
+            <label className="text-sm font-medium">Switch View</label>
+            <select 
+              value={userRole} 
+              onChange={(e) => onRoleChange(e.target.value)}
+              className="w-full px-3 py-2 border border-border rounded-lg text-sm bg-background"
+            >
+              <option value="buyer">Buyer Portal</option>
+              <option value="seller">Seller Portal</option>
+              <option value="service_provider">Service Provider</option>
+            </select>
           </div>
-        )}
+        </CardContent>
+      </Card>
 
-        {/* Quick Actions */}
-        {!collapsed && (
-          <div className="p-4 border-b">
-            <Card>
-              <CardContent className="p-4">
-                <div className="space-y-3">
-                  <h4 className="font-medium text-sm">Quick Actions</h4>
-                  {userRole === 'buyer' ? (
-                    <div className="space-y-2">
-                      <Button size="sm" className="w-full justify-start">
-                        <Plus className="h-4 w-4 mr-2" />
-                        Create RFQ
-                      </Button>
-                      <Button size="sm" variant="outline" className="w-full justify-start">
-                        <Search className="h-4 w-4 mr-2" />
-                        Browse Equipment
-                      </Button>
-                    </div>
-                  ) : (
-                    <div className="space-y-2">
-                      <Button size="sm" className="w-full justify-start">
-                        <Plus className="h-4 w-4 mr-2" />
-                        Add Equipment
-                      </Button>
-                      <Button size="sm" variant="outline" className="w-full justify-start">
-                        <MessageCircle className="h-4 w-4 mr-2" />
-                        View Inquiries
-                      </Button>
-                    </div>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
+      {/* Quick Actions */}
+      <Card>
+        <CardContent className="p-4">
+          <div className="space-y-3">
+            <h4 className="font-medium text-sm">Quick Actions</h4>
+            {userRole === 'buyer' ? (
+              <div className="space-y-2">
+                <Button size="sm" className="w-full justify-start">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Create RFQ
+                </Button>
+                <Button size="sm" variant="outline" className="w-full justify-start">
+                  <Search className="h-4 w-4 mr-2" />
+                  Browse Equipment
+                </Button>
+              </div>
+            ) : (
+              <div className="space-y-2">
+                <Button size="sm" className="w-full justify-start">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Add Equipment
+                </Button>
+                <Button size="sm" variant="outline" className="w-full justify-start">
+                  <MessageCircle className="h-4 w-4 mr-2" />
+                  View Inquiries
+                </Button>
+              </div>
+            )}
           </div>
-        )}
+        </CardContent>
+      </Card>
 
-        {/* Navigation Menu */}
-        <div className="flex-1 p-2">
-          {currentMenuSections.map((section) => (
-            <SidebarGroup key={section.title}>
-              <Collapsible 
-                open={isExpanded(section.title)} 
-                onOpenChange={() => toggleGroup(section.title)}
-              >
-                <CollapsibleTrigger asChild>
-                  <SidebarGroupLabel className="flex items-center justify-between cursor-pointer hover:bg-muted rounded-md p-2">
-                    <span>{!collapsed && section.title}</span>
-                    {!collapsed && (
-                      <ChevronDown className={`h-4 w-4 transition-transform ${
-                        isExpanded(section.title) ? 'rotate-180' : ''
-                      }`} />
-                    )}
-                  </SidebarGroupLabel>
-                </CollapsibleTrigger>
-                
-                <CollapsibleContent>
-                  <SidebarGroupContent>
-                    <SidebarMenu>
-                      {section.items.map((item) => {
-                        const Icon = item.icon
-                        return (
-                          <SidebarMenuItem key={item.url}>
-                            <SidebarMenuButton asChild>
-                              <NavLink
-                                to={item.url}
-                                className={({ isActive }) =>
-                                  `flex items-center justify-between w-full ${
-                                    isActive
-                                      ? 'bg-primary text-primary-foreground'
-                                      : 'hover:bg-muted'
-                                  }`
-                                }
-                              >
-                                <div className="flex items-center">
-                                  <Icon className="h-4 w-4 mr-3" />
-                                  {!collapsed && <span>{item.title}</span>}
-                                </div>
-                                {!collapsed && item.badge && (
-                                  <Badge variant="secondary" className="ml-auto">
-                                    {item.badge}
-                                  </Badge>
-                                )}
-                              </NavLink>
-                            </SidebarMenuButton>
-                          </SidebarMenuItem>
-                        )
-                      })}
-                    </SidebarMenu>
-                  </SidebarGroupContent>
-                </CollapsibleContent>
-              </Collapsible>
-            </SidebarGroup>
-          ))}
-        </div>
-
-        {/* Recent Activity */}
-        {!collapsed && (
-          <div className="p-4 border-t">
-            <Card>
-              <CardContent className="p-4">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="font-medium text-sm">Recent Activity</h4>
-                  <Bell className="h-4 w-4 text-muted-foreground" />
-                </div>
-                <div className="space-y-3 text-sm">
-                  <div className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
-                    <div>
-                      <p className="text-foreground">New inquiry received</p>
-                      <p className="text-xs text-muted-foreground">2 hours ago</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-                    <div>
-                      <p className="text-foreground">Payment confirmed</p>
-                      <p className="text-xs text-muted-foreground">5 hours ago</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2"></div>
-                    <div>
-                      <p className="text-foreground">RFQ deadline approaching</p>
-                      <p className="text-xs text-muted-foreground">1 day ago</p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+      {/* Navigation Menu */}
+      <div className="space-y-2">
+        {currentMenuSections.map((section) => (
+          <div key={section.title} className="space-y-1">
+            <Collapsible 
+              open={isExpanded(section.title)} 
+              onOpenChange={() => toggleGroup(section.title)}
+            >
+              <CollapsibleTrigger asChild>
+                <Button 
+                  variant="ghost" 
+                  className="w-full justify-between text-sm font-medium"
+                >
+                  <span>{section.title}</span>
+                  <ChevronDown className={`h-4 w-4 transition-transform ${
+                    isExpanded(section.title) ? 'rotate-180' : ''
+                  }`} />
+                </Button>
+              </CollapsibleTrigger>
+              
+              <CollapsibleContent className="space-y-1 pl-2">
+                {section.items.map((item) => {
+                  const Icon = item.icon
+                  return (
+                    <NavLink
+                      key={item.url}
+                      to={item.url}
+                      className={({ isActive }) =>
+                        `flex items-center justify-between w-full px-3 py-2 text-sm rounded-md transition-colors ${
+                          isActive
+                            ? 'bg-primary text-primary-foreground'
+                            : 'hover:bg-muted text-muted-foreground hover:text-foreground'
+                        }`
+                      }
+                    >
+                      <div className="flex items-center">
+                        <Icon className="h-4 w-4 mr-3" />
+                        <span>{item.title}</span>
+                      </div>
+                      {item.badge && (
+                        <Badge variant="secondary" className="ml-auto">
+                          {item.badge}
+                        </Badge>
+                      )}
+                    </NavLink>
+                  )
+                })}
+              </CollapsibleContent>
+            </Collapsible>
           </div>
-        )}
-      </SidebarContent>
-    </Sidebar>
+        ))}
+      </div>
+
+      {/* Recent Activity */}
+      <Card>
+        <CardContent className="p-4">
+          <div className="flex items-center justify-between mb-3">
+            <h4 className="font-medium text-sm">Recent Activity</h4>
+            <Bell className="h-4 w-4 text-muted-foreground" />
+          </div>
+          <div className="space-y-3 text-sm">
+            <div className="flex items-start space-x-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+              <div>
+                <p className="text-foreground">New inquiry received</p>
+                <p className="text-xs text-muted-foreground">2 hours ago</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-2">
+              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+              <div>
+                <p className="text-foreground">Payment confirmed</p>
+                <p className="text-xs text-muted-foreground">5 hours ago</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-2">
+              <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2"></div>
+              <div>
+                <p className="text-foreground">RFQ deadline approaching</p>
+                <p className="text-xs text-muted-foreground">1 day ago</p>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   )
 }
