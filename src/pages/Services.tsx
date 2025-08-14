@@ -20,7 +20,11 @@ import {
   Fuel,
   Package,
   UserCheck,
-  FileText
+  FileText,
+  ClipboardCheck,
+  Search,
+  BadgeCheck,
+  Gavel
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -81,6 +85,34 @@ const Services = () => {
       icon: Shield,
       providers: 67,
       avgRating: 4.8
+    },
+    {
+      title: "Equipment Appraisals",
+      description: "Professional valuation for insurance, financing, and sales",
+      icon: Search,
+      providers: 34,
+      avgRating: 4.9
+    },
+    {
+      title: "Equipment Inspections",
+      description: "Safety assessments, compliance checks, pre-purchase inspections",
+      icon: ClipboardCheck,
+      providers: 52,
+      avgRating: 4.8
+    },
+    {
+      title: "Certifications",
+      description: "Equipment compliance, operator certifications, safety standards",
+      icon: BadgeCheck,
+      providers: 28,
+      avgRating: 4.9
+    },
+    {
+      title: "Asset Liquidation",
+      description: "Equipment fleet disposal, auctions, and asset recovery services",
+      icon: Gavel,
+      providers: 19,
+      avgRating: 4.7
     }
   ];
 
