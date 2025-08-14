@@ -1,9 +1,7 @@
-import React, { useState, ReactNode } from 'react';
+import React, { useState, ReactNode, useCallback, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Slider } from '@/components/ui/slider';
-import { ChevronLeft, ChevronRight, Settings } from 'lucide-react';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface TwoColumnLayoutProps {
   sidebar: ReactNode;
@@ -26,14 +24,50 @@ export function TwoColumnLayout({
 }: TwoColumnLayoutProps) {
   const [sidebarVisible, setSidebarVisible] = useState(true);
   const [sidebarWidth, setSidebarWidth] = useState(defaultSidebarWidth);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartX = useRef(0);
+  const startWidth = useRef(0);
 
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
   };
 
-  const handleWidthChange = (value: number[]) => {
-    setSidebarWidth(value[0]);
-  };
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    setIsDragging(true);
+    dragStartX.current = e.clientX;
+    startWidth.current = sidebarWidth;
+    document.body.style.cursor = 'col-resize';
+    document.body.style.userSelect = 'none';
+  }, [sidebarWidth]);
+
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    if (!isDragging) return;
+    
+    const deltaX = e.clientX - dragStartX.current;
+    const newWidth = Math.max(
+      minSidebarWidth,
+      Math.min(maxSidebarWidth, startWidth.current + deltaX)
+    );
+    setSidebarWidth(newWidth);
+  }, [isDragging, minSidebarWidth, maxSidebarWidth]);
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+    document.body.style.cursor = '';
+    document.body.style.userSelect = '';
+  }, []);
+
+  React.useEffect(() => {
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+      
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      };
+    }
+  }, [isDragging, handleMouseMove, handleMouseUp]);
 
   return (
     <div className={`container mx-auto px-4 py-8 ${className}`}>
@@ -56,37 +90,6 @@ export function TwoColumnLayout({
                   <h3 className="font-semibold text-lg">{sidebarTitle}</h3>
                 )}
                 <div className="flex items-center gap-2">
-                  {/* Width Adjuster */}
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button variant="ghost" size="sm">
-                        <Settings className="h-4 w-4" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-64">
-                      <div className="space-y-4">
-                        <div>
-                          <label className="text-sm font-medium">Sidebar Width</label>
-                          <div className="mt-2">
-                            <Slider
-                              value={[sidebarWidth]}
-                              onValueChange={handleWidthChange}
-                              max={maxSidebarWidth}
-                              min={minSidebarWidth}
-                              step={20}
-                              className="w-full"
-                            />
-                            <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                              <span>{minSidebarWidth}px</span>
-                              <span className="font-medium">{sidebarWidth}px</span>
-                              <span>{maxSidebarWidth}px</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </PopoverContent>
-                  </Popover>
-                  
                   {/* Hide/Show Button */}
                   <Button 
                     variant="ghost" 
@@ -108,6 +111,18 @@ export function TwoColumnLayout({
             </div>
           </Card>
         </div>
+
+        {/* Vertical Resizer */}
+        {sidebarVisible && (
+          <div
+            className="hidden lg:flex w-1 bg-border hover:bg-primary/20 cursor-col-resize transition-colors duration-200 relative group"
+            onMouseDown={handleMouseDown}
+            style={{ cursor: isDragging ? 'col-resize' : 'col-resize' }}
+          >
+            <div className="absolute inset-0 w-3 -mx-1" />
+            <div className="w-full bg-border group-hover:bg-primary/40 transition-colors" />
+          </div>
+        )}
 
         {/* Toggle Button for Hidden Sidebar */}
         {!sidebarVisible && (
