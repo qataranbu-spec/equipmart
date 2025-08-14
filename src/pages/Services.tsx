@@ -16,39 +16,71 @@ import {
   Award,
   Phone,
   Calendar,
-  DollarSign
+  DollarSign,
+  Fuel,
+  Package,
+  UserCheck,
+  FileText
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Services = () => {
   const serviceCategories = [
     {
-      title: "Equipment Maintenance",
-      description: "Preventive and corrective maintenance services",
-      icon: Wrench,
-      providers: 156,
-      avgRating: 4.8
-    },
-    {
-      title: "Transportation & Logistics",
-      description: "Heavy equipment transportation and delivery",
-      icon: Truck,
+      title: "Fuel Door Delivery",
+      description: "Diesel at site, usage tracking",
+      icon: Fuel,
       providers: 89,
       avgRating: 4.7
     },
     {
-      title: "Installation Services",
-      description: "Professional equipment installation and setup",
-      icon: Users,
+      title: "Lubricants & Consumables Delivery",
+      description: "DEF, oils, filters delivered to site",
+      icon: Package,
+      providers: 124,
+      avgRating: 4.8
+    },
+    {
+      title: "Mobile Repair Services",
+      description: "On-site diagnostics and minor repairs",
+      icon: Wrench,
+      providers: 156,
+      avgRating: 4.9
+    },
+    {
+      title: "Spare Parts Express Delivery",
+      description: "Same-day critical parts logistics",
+      icon: Package,
+      providers: 78,
+      avgRating: 4.8
+    },
+    {
+      title: "Operator Leasing",
+      description: "Trained operator staffing",
+      icon: UserCheck,
+      providers: 267,
+      avgRating: 4.6
+    },
+    {
+      title: "Subscription Support Bundles",
+      description: "All-in-one: service, fuel, insurance, analytics",
+      icon: FileText,
       providers: 134,
       avgRating: 4.9
     },
     {
-      title: "Operator Services",
-      description: "Certified equipment operators and technicians",
-      icon: Users,
-      providers: 267,
-      avgRating: 4.6
+      title: "Equipment Financing",
+      description: "Loans, leases, EaaS",
+      icon: DollarSign,
+      providers: 45,
+      avgRating: 4.7
+    },
+    {
+      title: "Equipment Insurance",
+      description: "Damage, theft, liability, downtime coverage",
+      icon: Shield,
+      providers: 67,
+      avgRating: 4.8
     }
   ];
 
@@ -126,17 +158,17 @@ const Services = () => {
         {/* Service Categories */}
         <section className="mb-12">
           <h2 className="text-3xl font-bold mb-8">Service Categories</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {serviceCategories.map((category, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer">
-                <CardContent className="p-6">
-                  <category.icon className="h-12 w-12 text-primary mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">{category.title}</h3>
-                  <p className="text-muted-foreground mb-4 text-sm">{category.description}</p>
-                  <div className="flex justify-between items-center text-sm">
+                <CardContent className="p-4">
+                  <category.icon className="h-8 w-8 text-primary mb-3" />
+                  <h3 className="text-base font-semibold mb-2">{category.title}</h3>
+                  <p className="text-muted-foreground mb-3 text-xs">{category.description}</p>
+                  <div className="flex justify-between items-center text-xs">
                     <span className="text-muted-foreground">{category.providers} providers</span>
                     <div className="flex items-center">
-                      <Star className="h-4 w-4 fill-yellow-400 text-yellow-400 mr-1" />
+                      <Star className="h-3 w-3 fill-yellow-400 text-yellow-400 mr-1" />
                       <span>{category.avgRating}</span>
                     </div>
                   </div>
