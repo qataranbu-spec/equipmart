@@ -31,6 +31,10 @@ import {
   Star,
   Handshake,
   ChevronDown,
+  CreditCard,
+  Calculator,
+  Banknote,
+  PiggyBank,
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -65,6 +69,7 @@ export function AppSidebar({ userRole, onRoleChange }: AppSidebarProps) {
     services: true,
     auctions: true,
     procurement: true,
+    financing: true,
     network: true,
   })
 
@@ -122,6 +127,15 @@ export function AppSidebar({ userRole, onRoleChange }: AppSidebarProps) {
         { title: "Active RFQs", url: "/procurement/active-rfqs", icon: FileText, badge: "2" },
         { title: "Supplier Management", url: "/procurement/supplier-management", icon: Users },
         { title: "E-Auction", url: "/procurement/e-auction", icon: Gavel },
+      ]
+    },
+    {
+      title: "Financing",
+      items: [
+        { title: "Browse Financing", url: "/financing/marketplace", icon: Search },
+        { title: "Loan Application", url: "/financing/application", icon: FileText },
+        { title: "My Financing", url: "/financing/dashboard", icon: CreditCard },
+        { title: "Loan Calculator", url: "/financing/calculator", icon: Calculator },
       ]
     },
     {
@@ -187,6 +201,16 @@ export function AppSidebar({ userRole, onRoleChange }: AppSidebarProps) {
       ]
     },
     {
+      title: "Financing Company",
+      items: [
+        { title: "Company Dashboard", url: "/financing/company/dashboard", icon: BarChart3 },
+        { title: "Product Management", url: "/financing/company/products", icon: Package },
+        { title: "Application Management", url: "/financing/company/applications", icon: FileText },
+        { title: "Customer Accounts", url: "/financing/company/customers", icon: Users },
+        { title: "Recovery Center", url: "/financing/company/recovery", icon: DollarSign },
+      ]
+    },
+    {
       title: "Spare Parts",
       items: [
         { title: "Spare Parts", url: "/spare-parts", icon: Package },
@@ -195,7 +219,24 @@ export function AppSidebar({ userRole, onRoleChange }: AppSidebarProps) {
     }
   ]
 
-  const currentMenuSections = userRole === 'buyer' ? buyerMenuSections : sellerMenuSections
+  const currentMenuSections = userRole === 'buyer' ? buyerMenuSections : 
+                              userRole === 'financing_company' ? 
+                              [{
+                                title: "Overview",
+                                items: [
+                                  { title: "Dashboard", url: "/financing/company/dashboard", icon: BarChart3 },
+                                ]
+                              },
+                              {
+                                title: "Financing Management",
+                                items: [
+                                  { title: "Product Management", url: "/financing/company/products", icon: Package },
+                                  { title: "Application Management", url: "/financing/company/applications", icon: FileText },
+                                  { title: "Customer Accounts", url: "/financing/company/customers", icon: Users },
+                                  { title: "Recovery Center", url: "/financing/company/recovery", icon: DollarSign },
+                                ]
+                              }] : 
+                              sellerMenuSections
 
   const isActive = (path: string) => location.pathname === path
   const isExpanded = (section: string) => openGroups[section.toLowerCase()]
@@ -222,6 +263,7 @@ export function AppSidebar({ userRole, onRoleChange }: AppSidebarProps) {
               <option value="buyer">Buyer Portal</option>
               <option value="seller">Seller Portal</option>
               <option value="service_provider">Service Provider</option>
+              <option value="financing_company">Financing Company</option>
             </select>
           </div>
         </CardContent>
@@ -241,6 +283,10 @@ export function AppSidebar({ userRole, onRoleChange }: AppSidebarProps) {
                 <Button size="sm" variant="outline" className="w-full justify-start">
                   <Search className="h-4 w-4 mr-2" />
                   Browse Equipment
+                </Button>
+                <Button size="sm" variant="outline" className="w-full justify-start">
+                  <Calculator className="h-4 w-4 mr-2" />
+                  Loan Calculator
                 </Button>
               </div>
             ) : (

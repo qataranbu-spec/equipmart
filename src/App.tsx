@@ -208,6 +208,11 @@ function App() {
           {/* Contractor Portal */}
           <Route path="/contractor-portal" element={<ContractorPortal />} />
           
+          {/* Financing Platform Routes */}
+          <Route path="/financing/marketplace" element={<div>Financing Marketplace Coming Soon</div>} />
+          <Route path="/financing/dashboard" element={<div>Buyer Financing Dashboard Coming Soon</div>} />
+          <Route path="/financing/company/dashboard" element={<div>Company Dashboard Coming Soon</div>} />
+          
           {/* Spare Parts Platform */}
           <Route path="/spare-parts" element={<SparePartsMarketplace />} />
           <Route path="/supplier-dashboard" element={<SupplierDashboard />} />
