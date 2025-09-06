@@ -5,3 +5,6 @@ export { default as LoanApplicationPage } from './buyer/LoanApplicationPage';
 export { default as CompanyDashboard } from './company/CompanyDashboard';
 export { default as ProductManagement } from './company/ProductManagement';
 export { default as RecoveryCenter } from './company/RecoveryCenter';
+
+// Marketplace pages exports
+export * from './marketplace';

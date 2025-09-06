@@ -1,4 +1,5 @@
 // Financing platform types
+export * from './marketplace';
 
 export interface FinancingCompany {
   id: string;

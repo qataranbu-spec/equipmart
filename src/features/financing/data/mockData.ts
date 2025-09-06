@@ -7,6 +7,7 @@ import {
   CreditProfile,
   FinancingStats 
 } from '../types';
+export * from './marketplaceMockData';
 
 export const mockFinancingCompanies: FinancingCompany[] = [
   {

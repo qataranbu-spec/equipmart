@@ -61,6 +61,18 @@ import {
   Analytics,
   Settings
 } from './features/admin'
+import { MarketplaceManagement } from './features/admin/pages/marketplace'
+import { 
+  FinancingMarketplace, 
+  BuyerFinancingDashboard, 
+  LoanApplicationPage,
+  CompanyDashboard,
+  ProductManagement,
+  RecoveryCenter,
+  BuyerMarketplace,
+  SellerDashboard,
+  FinancierDashboard
+} from './features/financing'
 
 // Import advertisement pages
 import Advertising from './pages/Advertising'
@@ -89,15 +101,7 @@ import {
   EAuctionPage
 } from './features/procurement'
 
-// Import Financing pages
-import {
-  FinancingMarketplace,
-  BuyerFinancingDashboard,
-  LoanApplicationPage,
-  CompanyDashboard,
-  ProductManagement,
-  RecoveryCenter
-} from './features/financing'
+// Import Financing pages - already imported above
 import {
   BrowseRentalsPage,
   MyRentalsPage,
