@@ -32,6 +32,7 @@ const Footer = () => {
               <li><Link to="/rentals" className="hover:text-primary">Rentals</Link></li>
               <li><Link to="/auctions" className="hover:text-primary">Auctions</Link></li>
               <li><Link to="/services" className="hover:text-primary">Services</Link></li>
+              <li><Link to="/financing/marketplace/buyer" className="hover:text-primary">Equipment Finance</Link></li>
             </ul>
           </div>
 
@@ -42,6 +43,7 @@ const Footer = () => {
               <li><Link to="/procurement" className="hover:text-primary">E-Trade</Link></li>
               <li><Link to="/investor-proposal" className="hover:text-primary">Investor Proposal</Link></li>
               <li><Link to="/partnership-opportunity" className="hover:text-primary">Partnership Program</Link></li>
+              <li><Link to="/financing/company/dashboard" className="hover:text-primary">Financing Solutions</Link></li>
             </ul>
           </div>
 

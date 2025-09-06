@@ -98,6 +98,14 @@ const Header = () => {
                       <Link to="/services" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
                         Services
                       </Link>
+                      <div className="border-t border-border my-2"></div>
+                      <p className="text-xs font-semibold text-muted-foreground px-4 pb-2">Financing</p>
+                      <Link to="/financing/marketplace/buyer" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                        Equipment Finance
+                      </Link>
+                      <Link to="/financing/buyer/dashboard" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                        Loan Dashboard
+                      </Link>
                     </div>
                   </div>}
               </div>
@@ -111,9 +119,15 @@ const Header = () => {
                  {showServicesDropdown && <div className="absolute top-full left-0 pt-1">
                      <div className="bg-background border border-border rounded-lg shadow-lg py-3 w-56 z-50">
                        <p className="text-xs font-semibold text-muted-foreground px-4 pb-2 mb-2 border-b border-border">Services & Solutions</p>
-                       <Link to="/procurement" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
-                         E-Trade
-                       </Link>
+                        <Link to="/procurement" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                          E-Trade
+                        </Link>
+                        <Link to="/financing/company/dashboard" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                          Financing Solutions
+                        </Link>
+                        <Link to="/financing/marketplace/seller" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                          Equipment Liquidation
+                        </Link>
                      </div>
                    </div>}
               </div>
@@ -208,16 +222,22 @@ const Header = () => {
                   <Link to="/auctions" className="block text-foreground hover:text-primary transition-colors mb-2">
                     Auctions
                   </Link>
-                  <Link to="/services" className="block text-foreground hover:text-primary transition-colors">
+                  <Link to="/services" className="block text-foreground hover:text-primary transition-colors mb-2">
                     Services
+                  </Link>
+                  <Link to="/financing/marketplace/buyer" className="block text-foreground hover:text-primary transition-colors">
+                    Equipment Finance
                   </Link>
                 </div>
                 
                 {/* Services & Solutions */}
                 <div className="border-l-2 border-primary pl-4 mb-4">
                   <p className="text-sm font-semibold text-muted-foreground mb-2">Services & Solutions</p>
-                  <Link to="/procurement" className="block text-foreground hover:text-primary transition-colors">
+                  <Link to="/procurement" className="block text-foreground hover:text-primary transition-colors mb-2">
                     E-Trade
+                  </Link>
+                  <Link to="/financing/company/dashboard" className="block text-foreground hover:text-primary transition-colors">
+                    Financing Solutions
                   </Link>
                 </div>
                 
