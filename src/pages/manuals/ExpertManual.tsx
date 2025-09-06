@@ -19,63 +19,88 @@ import Header from "@/components/layout/Header"
 
 const sections = [
   {
-    title: "Expert Profile Setup",
+    title: "Expert Profile Management (CRUD Operations)",
     icon: Users,
     items: [
-      "Professional profile creation",
-      "Expertise area specification",
-      "Certification uploads",
-      "Portfolio development"
+      "CREATE: Build professional profile → Upload certifications → Set expertise areas → Create service offerings",
+      "READ: View profile analytics → Monitor engagement metrics → Check certification status → Access performance data",
+      "UPDATE: Modify expertise areas → Update certifications → Change service rates → Adjust availability schedule",
+      "DELETE: Remove outdated certifications → Archive old services → Clear inactive content → Deactivate profile sections"
     ]
   },
   {
-    title: "Knowledge Sharing",
+    title: "Content & Knowledge Sharing",
     icon: BookOpen,
     items: [
-      "Article and guide publishing",
-      "Video content creation",
-      "Webinar hosting",
-      "Best practice documentation"
+      "CREATE: Publish articles and guides → Create video tutorials → Build training courses → Generate technical content",
+      "READ: View content performance → Monitor engagement rates → Check user feedback → Access analytics data",
+      "UPDATE: Modify existing content → Update training materials → Change course structures → Refresh technical guides",
+      "DELETE: Remove outdated articles → Archive old courses → Clear obsolete content → Purge expired materials"
     ]
   },
   {
-    title: "Consultation Services",
+    title: "Consultation & Advisory Services",
     icon: MessageSquare,
     items: [
-      "One-on-one consultations",
-      "Group advisory sessions",
-      "Equipment evaluation services",
-      "Technical troubleshooting"
+      "CREATE: Schedule consultations → Generate assessment reports → Create advisory plans → Build solution recommendations",
+      "READ: View consultation history → Monitor client progress → Check service feedback → Access consultation analytics",
+      "UPDATE: Modify consultation schedules → Update assessment criteria → Change advisory approaches → Adjust recommendations",
+      "DELETE: Complete consultation records → Archive client reports → Clear sensitive data → Remove expired schedules"
     ]
   },
   {
-    title: "Training Programs",
+    title: "Training Program Development",
     icon: Award,
     items: [
-      "Online course development",
-      "Certification program creation",
-      "Workshop facilitation",
-      "Skill assessment tools"
+      "CREATE: Design training curricula → Build assessment tools → Create certification programs → Generate learning materials",
+      "READ: View training effectiveness → Monitor learner progress → Check completion rates → Access training analytics",
+      "UPDATE: Modify training content → Update assessment criteria → Change certification requirements → Adjust learning paths",
+      "DELETE: Archive completed programs → Remove outdated curricula → Clear old assessments → Purge training records"
     ]
   },
   {
-    title: "Revenue Management",
+    title: "Revenue & Business Management",
     icon: DollarSign,
     items: [
-      "Service pricing strategies",
-      "Payment processing",
-      "Revenue tracking",
-      "Tax documentation"
+      "CREATE: Set service pricing → Generate invoices → Create revenue reports → Build business analytics",
+      "READ: View earnings history → Monitor payment status → Check service utilization → Access financial reports",
+      "UPDATE: Modify pricing structures → Change payment terms → Update service offerings → Adjust business models",
+      "DELETE: Archive completed transactions → Clear old invoices → Remove outdated pricing → Purge financial history"
     ]
   },
   {
-    title: "Community Engagement",
+    title: "Community Engagement & Networking",
     icon: Star,
     items: [
-      "Forum participation",
-      "Question answering",
-      "Network building",
-      "Reputation management"
+      "CREATE: Start forum discussions → Build professional networks → Create collaborative projects → Generate thought leadership",
+      "READ: View community engagement → Monitor reputation scores → Check network growth → Access engagement analytics",
+      "UPDATE: Modify engagement strategies → Update professional connections → Change collaboration approaches → Adjust networking",
+      "DELETE: Archive old discussions → Remove inactive connections → Clear outdated collaborations → Purge engagement history"
+    ]
+  }
+]
+
+const businessProcesses = [
+  {
+    title: "Expert Onboarding & Profile Development",
+    steps: [
+      "1. Registration → Complete expert application → Verify credentials → Submit portfolio → Set initial expertise areas",
+      "2. Profile Creation → Build comprehensive profile → Upload certifications → Define service offerings → Set pricing structure",
+      "3. Content Development → Create initial content pieces → Develop training materials → Build knowledge base → Establish thought leadership",
+      "4. Platform Integration → Familiarize with platform tools → Set up communication preferences → Configure availability → Join relevant communities",
+      "5. Launch Strategy → Publish initial content → Engage with community → Offer introductory services → Build initial reputation",
+      "6. Ongoing Optimization → Monitor performance metrics → Refine service offerings → Update expertise → Expand professional network"
+    ]
+  },
+  {
+    title: "Consultation Service Delivery Process",
+    steps: [
+      "1. Service Inquiry → Receive consultation request → Assess client needs → Determine service fit → Provide initial response",
+      "2. Scope Definition → Conduct needs assessment → Define service parameters → Establish deliverables → Set timeline and pricing",
+      "3. Engagement Setup → Execute service agreement → Schedule consultations → Prepare materials → Set communication protocols",
+      "4. Service Delivery → Conduct consultations → Provide expert guidance → Deliver assessments → Monitor progress regularly",
+      "5. Value Delivery → Complete service objectives → Provide recommendations → Deliver final reports → Ensure client satisfaction",
+      "6. Follow-up → Collect feedback → Monitor implementation → Provide ongoing support → Build long-term relationship"
     ]
   }
 ]
@@ -157,22 +182,20 @@ export default function ExpertManual() {
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <Video className="h-5 w-5 mr-2 text-blue-500" />
-                  Service Types
+                  Business Process Workflows
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="p-3 bg-muted rounded-lg">
-                  <Badge className="mb-2" variant="secondary">Consultation</Badge>
-                  <p className="text-sm">$150-500/hour for one-on-one expert advice</p>
-                </div>
-                <div className="p-3 bg-muted rounded-lg">
-                  <Badge className="mb-2" variant="secondary">Training</Badge>
-                  <p className="text-sm">$100-300/person for group training sessions</p>
-                </div>
-                <div className="p-3 bg-muted rounded-lg">
-                  <Badge className="mb-2" variant="secondary">Content</Badge>
-                  <p className="text-sm">Revenue sharing on premium content and courses</p>
-                </div>
+                {businessProcesses.map((process, index) => (
+                  <div key={index} className="p-3 bg-muted rounded-lg">
+                    <Badge className="mb-3">{process.title}</Badge>
+                    <div className="space-y-1">
+                      {process.steps.map((step, stepIndex) => (
+                        <p key={stepIndex} className="text-xs leading-relaxed">{step}</p>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </CardContent>
             </Card>
 

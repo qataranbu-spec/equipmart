@@ -18,63 +18,89 @@ import Header from "@/components/layout/Header"
 
 const sections = [
   {
-    title: "Getting Started",
+    title: "Account Management (CRUD Operations)",
     icon: Search,
     items: [
-      "Creating your buyer account",
-      "Setting up your company profile",
-      "Verifying your business credentials",
-      "Understanding the dashboard"
+      "CREATE: Register new buyer account → Complete profile → Verify business credentials → Set preferences",
+      "READ: Access dashboard → View account details → Check verification status → Monitor activity",
+      "UPDATE: Edit company profile → Update contact information → Modify preferences → Change payment methods",
+      "DELETE: Deactivate account → Export data → Cancel subscriptions → Remove stored payment info"
     ]
   },
   {
-    title: "Finding Equipment",
+    title: "Equipment Search & Management",
     icon: Filter,
     items: [
-      "Using search and filters effectively",
-      "Understanding equipment categories",
-      "Comparing specifications",
-      "Saving favorites and watchlists"
+      "CREATE: Save custom searches → Build watchlists → Set price alerts → Create comparison lists",
+      "READ: Browse categories → Filter by specifications → View detailed listings → Check availability",
+      "UPDATE: Modify search criteria → Edit watchlist items → Update alert preferences → Refine filters",
+      "DELETE: Remove watchlist items → Clear search history → Delete saved searches → Remove alerts"
     ]
   },
   {
-    title: "Making Purchases",
+    title: "Purchase Order Processing",
     icon: ShoppingCart,
     items: [
-      "Direct purchase process",
-      "Requesting quotes",
-      "Negotiating prices",
-      "Bulk order procedures"
+      "CREATE: Generate RFQ → Submit purchase orders → Create bulk orders → Initialize lease applications",
+      "READ: View order status → Track shipments → Access order history → Monitor approvals",
+      "UPDATE: Modify pending orders → Change delivery details → Update quantities → Adjust specifications",
+      "DELETE: Cancel pending orders → Return equipment → Process refunds → Archive completed orders"
     ]
   },
   {
-    title: "Communication",
+    title: "Supplier Communication Workflow",
     icon: MessageSquare,
     items: [
-      "Contacting suppliers",
-      "Using the messaging system",
-      "Scheduling inspections",
-      "Video call consultations"
+      "CREATE: Initiate conversations → Schedule inspections → Book video calls → Send inquiries",
+      "READ: View message history → Check response times → Access contact details → Monitor communications",
+      "UPDATE: Modify appointment times → Update inquiry details → Change communication preferences",
+      "DELETE: Archive conversations → Block suppliers → Clear message history → End subscriptions"
     ]
   },
   {
-    title: "Documentation",
+    title: "Document & Contract Management",
     icon: FileText,
     items: [
-      "Managing purchase orders",
-      "Tracking delivery status",
-      "Accessing warranties",
-      "Downloading certificates"
+      "CREATE: Generate contracts → Create inspection reports → Build compliance docs → Submit warranties",
+      "READ: Access all documents → View contract terms → Check warranty status → Download certificates",
+      "UPDATE: Modify contract terms → Update delivery addresses → Change warranty details → Edit documents",
+      "DELETE: Archive old contracts → Remove expired warranties → Delete drafts → Clear document cache"
     ]
   },
   {
-    title: "Payment & Financing",
+    title: "Financial Operations & Reporting",
     icon: CreditCard,
     items: [
-      "Payment methods accepted",
-      "Financing options available",
-      "Lease-to-own programs",
-      "Invoice management"
+      "CREATE: Set up payment methods → Apply for financing → Create expense reports → Generate invoices",
+      "READ: View payment history → Check financing status → Access financial reports → Monitor budgets",
+      "UPDATE: Modify payment settings → Change financing terms → Update billing info → Adjust budgets",
+      "DELETE: Remove payment methods → Cancel financing → Archive old reports → Clear payment history"
+    ]
+  }
+]
+
+const businessProcesses = [
+  {
+    title: "Equipment Procurement Workflow",
+    steps: [
+      "1. Define Requirements → Specify equipment type, capacity, features, budget constraints",
+      "2. Market Research → Search platform → Compare suppliers → Check reviews and ratings",
+      "3. RFQ Process → Send inquiries → Collect quotes → Negotiate terms → Evaluate proposals",
+      "4. Due Diligence → Schedule inspections → Verify documentation → Check maintenance history",
+      "5. Purchase Decision → Final negotiations → Contract signing → Payment processing",
+      "6. Delivery & Acceptance → Coordinate logistics → Inspect on delivery → Complete acceptance testing",
+      "7. Post-Purchase → Warranty registration → Service setup → Performance monitoring"
+    ]
+  },
+  {
+    title: "Supplier Evaluation Process",
+    steps: [
+      "1. Initial Screening → Check business verification → Review ratings → Assess response time",
+      "2. Technical Evaluation → Equipment condition → Specifications match → Age and hours",
+      "3. Financial Assessment → Pricing comparison → Payment terms → Warranty coverage",
+      "4. Risk Analysis → Location factors → Delivery capabilities → Support services",
+      "5. Reference Checks → Previous buyer feedback → Industry reputation → Complaint history",
+      "6. Final Selection → Score evaluation → Contract negotiation → Partnership agreement"
     ]
   }
 ]
@@ -155,22 +181,20 @@ export default function BuyerManual() {
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <Star className="h-5 w-5 mr-2 text-yellow-500" />
-                  Pro Tips
+                  Business Process Workflows
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="p-3 bg-muted rounded-lg">
-                  <Badge className="mb-2">Tip 1</Badge>
-                  <p className="text-sm">Use advanced filters to narrow down equipment by age, hours, and location for better results.</p>
-                </div>
-                <div className="p-3 bg-muted rounded-lg">
-                  <Badge className="mb-2">Tip 2</Badge>
-                  <p className="text-sm">Set up price alerts for equipment you're interested in to get notified of price drops.</p>
-                </div>
-                <div className="p-3 bg-muted rounded-lg">
-                  <Badge className="mb-2">Tip 3</Badge>
-                  <p className="text-sm">Always request inspection reports and maintenance history before making large purchases.</p>
-                </div>
+                {businessProcesses.map((process, index) => (
+                  <div key={index} className="p-3 bg-muted rounded-lg">
+                    <Badge className="mb-3">{process.title}</Badge>
+                    <div className="space-y-1">
+                      {process.steps.map((step, stepIndex) => (
+                        <p key={stepIndex} className="text-xs leading-relaxed">{step}</p>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </CardContent>
             </Card>
 

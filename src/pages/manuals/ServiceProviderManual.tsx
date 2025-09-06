@@ -19,63 +19,88 @@ import Header from "@/components/layout/Header"
 
 const sections = [
   {
-    title: "Service Setup",
+    title: "Service Provider Profile Management (CRUD)",
     icon: Wrench,
     items: [
-      "Creating service provider profile",
-      "Listing your specializations",
-      "Setting service areas and rates",
-      "Uploading certifications"
+      "CREATE: Register provider account → Upload certifications → Set service areas → Define specializations → Set rates",
+      "READ: View profile status → Check certification validity → Monitor service areas → Review rate cards",
+      "UPDATE: Modify service offerings → Update certifications → Change service areas → Adjust pricing → Edit availability",
+      "DELETE: Remove services → Archive certifications → Close service areas → Deactivate profile → Export data"
     ]
   },
   {
-    title: "Job Management",
+    title: "Work Order & Job Management",
     icon: Calendar,
     items: [
-      "Accepting service requests",
-      "Scheduling appointments",
-      "Managing work orders",
-      "Emergency service protocols"
+      "CREATE: Accept service requests → Generate work orders → Schedule appointments → Create task checklists → Set priorities",
+      "READ: View job queue → Check appointment details → Monitor work progress → Access customer info → Review requirements",
+      "UPDATE: Modify schedules → Update job status → Change priorities → Edit work orders → Reschedule appointments",
+      "DELETE: Cancel jobs → Close completed orders → Archive old requests → Remove cancelled appointments → Clear job history"
     ]
   },
   {
-    title: "Field Operations",
+    title: "Field Service Operations",
     icon: MapPin,
     items: [
-      "On-site service procedures",
-      "Mobile app usage",
-      "Parts ordering system",
-      "Safety compliance"
+      "CREATE: Start service sessions → Log work activities → Order parts → Generate field reports → Create photo documentation",
+      "READ: Access job details → Check equipment history → View parts inventory → Review safety protocols → Monitor time tracking",
+      "UPDATE: Modify work logs → Update part usage → Change service notes → Edit time entries → Adjust completion status",
+      "DELETE: Remove incorrect entries → Clear draft reports → Cancel part orders → Archive completed sessions → Reset timers"
     ]
   },
   {
-    title: "Documentation",
+    title: "Documentation & Reporting System",
     icon: FileText,
     items: [
-      "Service report creation",
-      "Photo documentation",
-      "Parts usage tracking",
-      "Customer sign-offs"
+      "CREATE: Generate service reports → Create inspection documents → Build maintenance schedules → Document findings → Submit invoices",
+      "READ: View report history → Access customer documents → Check compliance records → Review work summaries → Monitor billing",
+      "UPDATE: Edit draft reports → Modify findings → Update recommendations → Change billing details → Adjust documentation",
+      "DELETE: Remove draft documents → Archive completed reports → Clear temporary files → Delete obsolete records → Purge old data"
     ]
   },
   {
-    title: "Quality Assurance",
+    title: "Quality Management & Feedback",
     icon: Award,
     items: [
-      "Quality control checklists",
-      "Customer satisfaction surveys",
-      "Follow-up procedures",
-      "Warranty management"
+      "CREATE: Build quality checklists → Generate satisfaction surveys → Create follow-up schedules → Set quality metrics",
+      "READ: View customer feedback → Check quality scores → Monitor performance metrics → Access improvement areas → Review complaints",
+      "UPDATE: Modify quality standards → Update survey questions → Change follow-up procedures → Adjust performance targets",
+      "DELETE: Archive old feedback → Remove outdated checklists → Clear resolved complaints → Delete obsolete metrics"
     ]
   },
   {
-    title: "Business Growth",
+    title: "Business Development & Analytics",
     icon: Star,
     items: [
-      "Building client relationships",
-      "Expanding service offerings",
-      "Performance analytics",
-      "Certification programs"
+      "CREATE: Build customer relationships → Develop service packages → Create marketing materials → Set growth targets → Generate analytics reports",
+      "READ: View performance dashboards → Monitor customer retention → Check revenue trends → Access market insights → Review competitor analysis",
+      "UPDATE: Modify service packages → Update marketing content → Change pricing strategies → Adjust growth targets → Refresh analytics",
+      "DELETE: Archive old campaigns → Remove outdated packages → Clear old analytics → Delete inactive customer data → Purge expired content"
+    ]
+  }
+]
+
+const businessProcesses = [
+  {
+    title: "Service Request Processing Workflow",
+    steps: [
+      "1. Request Reception → Receive service alert → Review customer details → Assess urgency level → Check availability",
+      "2. Initial Response → Acknowledge within SLA → Gather additional details → Provide initial estimate → Schedule assessment",
+      "3. Job Preparation → Review equipment specs → Prepare tools and parts → Plan route and logistics → Confirm appointment",
+      "4. On-Site Service → Arrive punctually → Conduct safety assessment → Perform diagnostic → Execute service plan",
+      "5. Documentation → Create service report → Take before/after photos → Document parts used → Get customer approval",
+      "6. Completion → Clean work area → Provide service summary → Submit invoice → Schedule follow-up if needed"
+    ]
+  },
+  {
+    title: "Emergency Service Protocol",
+    steps: [
+      "1. Emergency Alert → Receive priority notification → Assess severity → Confirm availability → Provide ETA",
+      "2. Rapid Response → Mobilize within 2 hours → Bring emergency kit → Contact customer en route → Coordinate access",
+      "3. Emergency Assessment → Evaluate safety risks → Identify immediate solutions → Prioritize critical repairs",
+      "4. Temporary Stabilization → Implement safety measures → Provide temporary fixes → Document emergency actions",
+      "5. Full Resolution Planning → Schedule comprehensive repair → Order specialized parts → Coordinate extended service",
+      "6. Follow-up → Monitor equipment performance → Provide maintenance recommendations → Document lessons learned"
     ]
   }
 ]
@@ -157,22 +182,20 @@ export default function ServiceProviderManual() {
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <Clock className="h-5 w-5 mr-2 text-blue-500" />
-                  Response Standards
+                  Business Process Workflows
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="p-3 bg-muted rounded-lg">
-                  <Badge className="mb-2" variant="secondary">Emergency</Badge>
-                  <p className="text-sm">Respond within 2 hours, arrive within 4 hours</p>
-                </div>
-                <div className="p-3 bg-muted rounded-lg">
-                  <Badge className="mb-2" variant="secondary">Urgent</Badge>
-                  <p className="text-sm">Respond within 4 hours, schedule within 24 hours</p>
-                </div>
-                <div className="p-3 bg-muted rounded-lg">
-                  <Badge className="mb-2" variant="secondary">Standard</Badge>
-                  <p className="text-sm">Respond within 8 hours, schedule within 3 days</p>
-                </div>
+                {businessProcesses.map((process, index) => (
+                  <div key={index} className="p-3 bg-muted rounded-lg">
+                    <Badge className="mb-3">{process.title}</Badge>
+                    <div className="space-y-1">
+                      {process.steps.map((step, stepIndex) => (
+                        <p key={stepIndex} className="text-xs leading-relaxed">{step}</p>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </CardContent>
             </Card>
 

@@ -19,63 +19,88 @@ import Header from "@/components/layout/Header"
 
 const sections = [
   {
-    title: "Getting Started",
+    title: "Supplier Account Management (CRUD)",
     icon: Upload,
     items: [
-      "Creating your supplier account",
-      "Business verification process",
-      "Setting up payment methods",
-      "Understanding seller dashboard"
+      "CREATE: Register supplier account → Upload business documents → Set up payment processing → Complete profile",
+      "READ: Access seller dashboard → View account metrics → Check verification status → Monitor performance",
+      "UPDATE: Modify business info → Update payment details → Change notification preferences → Edit profile",
+      "DELETE: Deactivate listings → Remove payment methods → Archive old data → Close account permanently"
     ]
   },
   {
-    title: "Listing Equipment",
+    title: "Equipment Inventory Management",
     icon: Package,
     items: [
-      "Creating compelling listings",
-      "Photography best practices",
-      "Pricing strategies",
-      "Managing inventory"
+      "CREATE: Add new listings → Upload photos → Set pricing → Create detailed descriptions → Publish equipment",
+      "READ: View all listings → Check availability → Monitor views/inquiries → Access listing analytics",
+      "UPDATE: Edit descriptions → Update pricing → Modify photos → Change availability → Refresh listings",
+      "DELETE: Remove sold equipment → Archive old listings → Delete drafts → Bulk remove expired items"
     ]
   },
   {
-    title: "Sales Management",
+    title: "Order & Sales Processing",
     icon: DollarSign,
     items: [
-      "Processing orders",
-      "Managing negotiations",
-      "Handling bulk inquiries",
-      "Auction participation"
+      "CREATE: Generate quotes → Create sales contracts → Process orders → Initialize delivery schedules",
+      "READ: View pending orders → Check payment status → Monitor sales pipeline → Access order history",
+      "UPDATE: Modify quotes → Change delivery dates → Update order status → Adjust pricing → Edit contracts",
+      "DELETE: Cancel rejected orders → Remove expired quotes → Archive completed sales → Clear old data"
     ]
   },
   {
-    title: "Customer Relations",
+    title: "Customer Relationship Management",
     icon: Users,
     items: [
-      "Responding to buyer inquiries",
-      "Providing technical support",
-      "Managing reviews and ratings",
-      "Building long-term relationships"
+      "CREATE: Build customer profiles → Start conversations → Schedule meetings → Create follow-up tasks",
+      "READ: View customer history → Check communication logs → Monitor satisfaction scores → Access feedback",
+      "UPDATE: Modify customer details → Update preferences → Change communication settings → Edit notes",
+      "DELETE: Archive inactive customers → Remove blocked contacts → Clear old communications → End relationships"
     ]
   },
   {
-    title: "Analytics & Reporting",
+    title: "Business Analytics & Reporting",
     icon: BarChart,
     items: [
-      "Sales performance metrics",
-      "Market trend analysis",
-      "Inventory turnover reports",
-      "Customer insights"
+      "CREATE: Generate performance reports → Build custom dashboards → Create market analysis → Set KPI targets",
+      "READ: View sales metrics → Check conversion rates → Monitor market trends → Access competitor data",
+      "UPDATE: Modify report parameters → Change dashboard layouts → Update KPI settings → Refresh data views",
+      "DELETE: Archive old reports → Clear cached data → Remove outdated metrics → Reset analytics settings"
     ]
   },
   {
-    title: "Logistics & Delivery",
+    title: "Logistics & Fulfillment Operations",
     icon: Truck,
     items: [
-      "Shipping arrangements",
-      "Delivery tracking",
-      "International shipping",
-      "Insurance requirements"
+      "CREATE: Set up shipping profiles → Create delivery schedules → Generate shipping labels → Book transporters",
+      "READ: Track shipments → Monitor delivery status → Check logistics costs → View delivery performance",
+      "UPDATE: Modify shipping details → Change delivery dates → Update tracking info → Adjust logistics",
+      "DELETE: Cancel shipments → Remove old tracking → Archive delivery records → Clear logistics history"
+    ]
+  }
+]
+
+const businessProcesses = [
+  {
+    title: "Equipment Listing Workflow",
+    steps: [
+      "1. Inventory Assessment → Inspect equipment → Document condition → Gather specifications",
+      "2. Market Research → Analyze comparable sales → Set competitive pricing → Check demand trends",
+      "3. Content Creation → Professional photography → Write compelling descriptions → Highlight key features",
+      "4. Listing Optimization → SEO-friendly titles → Proper categorization → Competitive positioning",
+      "5. Publication → Publish listing → Monitor performance → Respond to inquiries promptly",
+      "6. Ongoing Management → Update pricing → Refresh photos → Promote featured listings"
+    ]
+  },
+  {
+    title: "Sales Order Processing",
+    steps: [
+      "1. Inquiry Management → Respond within 2 hours → Qualify buyer requirements → Provide detailed quotes",
+      "2. Negotiation Phase → Discuss terms → Address concerns → Finalize pricing → Confirm specifications",
+      "3. Contract Generation → Create sales agreement → Define payment terms → Set delivery schedule",
+      "4. Payment Processing → Verify payment method → Process deposits → Monitor payment status",
+      "5. Delivery Coordination → Arrange logistics → Schedule pickup → Coordinate with buyer",
+      "6. Post-Sale Support → Confirm delivery → Handle documentation → Provide ongoing support"
     ]
   }
 ]
@@ -156,22 +181,20 @@ export default function SupplierManual() {
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <Camera className="h-5 w-5 mr-2 text-blue-500" />
-                  Listing Best Practices
+                  Business Process Workflows
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="p-3 bg-muted rounded-lg">
-                  <Badge className="mb-2">Photos</Badge>
-                  <p className="text-sm">Include 8-12 high-quality photos showing all angles, including any damage or wear.</p>
-                </div>
-                <div className="p-3 bg-muted rounded-lg">
-                  <Badge className="mb-2">Description</Badge>
-                  <p className="text-sm">Provide detailed specifications, maintenance history, and operating hours.</p>
-                </div>
-                <div className="p-3 bg-muted rounded-lg">
-                  <Badge className="mb-2">Pricing</Badge>
-                  <p className="text-sm">Research market prices and consider condition, age, and location factors.</p>
-                </div>
+                {businessProcesses.map((process, index) => (
+                  <div key={index} className="p-3 bg-muted rounded-lg">
+                    <Badge className="mb-3">{process.title}</Badge>
+                    <div className="space-y-1">
+                      {process.steps.map((step, stepIndex) => (
+                        <p key={stepIndex} className="text-xs leading-relaxed">{step}</p>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </CardContent>
             </Card>
 

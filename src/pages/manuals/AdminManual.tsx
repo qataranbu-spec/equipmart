@@ -19,63 +19,88 @@ import Header from "@/components/layout/Header"
 
 const sections = [
   {
-    title: "Platform Management",
+    title: "Platform Management (CRUD Operations)",
     icon: Settings,
     items: [
-      "Admin dashboard overview",
-      "System configuration settings",
-      "Feature flags and toggles",
-      "Platform announcements"
+      "CREATE: Add new features → Create system configurations → Build admin workflows → Generate system reports",
+      "READ: Monitor platform health → View system logs → Check performance metrics → Access audit trails",
+      "UPDATE: Modify system settings → Update configurations → Change user permissions → Adjust parameters",
+      "DELETE: Remove obsolete features → Archive old data → Clear system logs → Purge inactive records"
     ]
   },
   {
-    title: "User Management",
+    title: "User Account Administration",
     icon: Users,
     items: [
-      "User account administration",
-      "Role and permission management",
-      "Account verification process",
-      "Dispute resolution"
+      "CREATE: Provision new accounts → Set user roles → Create access permissions → Generate user credentials",
+      "READ: View user profiles → Monitor user activity → Check login history → Access user analytics",
+      "UPDATE: Modify user permissions → Change user roles → Update profile information → Reset passwords",
+      "DELETE: Deactivate accounts → Remove user access → Archive user data → Purge deleted accounts"
     ]
   },
   {
-    title: "Content Moderation",
-    icon: Shield,
+    title: "Content & Listing Management",
+    icon: FileText,
     items: [
-      "Listing approval workflows",
-      "Content quality standards",
-      "Fraud detection systems",
-      "Reporting mechanisms"
+      "CREATE: Approve new listings → Create content policies → Build moderation rules → Generate content reports",
+      "READ: Review pending listings → Monitor content quality → Check compliance status → Access moderation logs",
+      "UPDATE: Edit listing details → Modify content policies → Update moderation rules → Change approval status",
+      "DELETE: Remove violating content → Archive old listings → Clear moderation queue → Delete spam content"
     ]
   },
   {
-    title: "Analytics & Monitoring",
+    title: "System Analytics & Reporting",
     icon: BarChart3,
     items: [
-      "Platform performance metrics",
-      "User behavior analytics",
-      "Financial reporting",
-      "System health monitoring"
+      "CREATE: Build custom dashboards → Generate performance reports → Create KPI tracking → Set up alerts",
+      "READ: View system metrics → Monitor user engagement → Check business intelligence → Access trend analysis",
+      "UPDATE: Modify dashboard layouts → Update report parameters → Change KPI definitions → Adjust alert thresholds",
+      "DELETE: Archive old reports → Clear cached analytics → Remove outdated metrics → Purge historical data"
     ]
   },
   {
     title: "Security Administration",
     icon: Key,
     items: [
-      "Access control management",
-      "Security audit procedures",
-      "Incident response protocols",
-      "Data protection compliance"
+      "CREATE: Set security policies → Create compliance checklists → Build audit procedures → Generate security reports",
+      "READ: Monitor security events → Review compliance status → Check vulnerability reports → Access security logs",
+      "UPDATE: Modify security settings → Update compliance rules → Change access controls → Adjust security policies",
+      "DELETE: Clear security logs → Archive compliance records → Remove old policies → Purge security incidents"
     ]
   },
   {
-    title: "System Operations",
+    title: "System Operations Management",
     icon: Database,
     items: [
-      "Database maintenance",
-      "Backup and recovery",
-      "Performance optimization",
-      "Integration management"
+      "CREATE: Build maintenance schedules → Create backup procedures → Generate operational reports → Set monitoring rules",
+      "READ: View system performance → Monitor database health → Check backup status → Access operational logs",
+      "UPDATE: Modify maintenance windows → Update backup configs → Change monitoring thresholds → Adjust operational procedures",
+      "DELETE: Archive old backups → Clear operational logs → Remove obsolete procedures → Purge system data"
+    ]
+  }
+]
+
+const businessProcesses = [
+  {
+    title: "User Verification Workflow",
+    steps: [
+      "1. Initial Application → Receive verification request → Check submitted documents → Validate business information",
+      "2. Document Review → Verify business licenses → Check tax ID numbers → Validate bank account details",
+      "3. Background Checks → Run credit checks → Verify references → Check compliance history",
+      "4. Risk Assessment → Evaluate business risk → Check industry compliance → Assess financial stability",
+      "5. Approval Decision → Review all data → Make approval decision → Set account permissions → Notify user",
+      "6. Ongoing Monitoring → Regular compliance checks → Monitor account activity → Update verification status"
+    ]
+  },
+  {
+    title: "Content Moderation Process",
+    steps: [
+      "1. Content Submission → Receive new listing → Run automated checks → Flag potential issues",
+      "2. Initial Review → Check content policies → Verify image quality → Validate information accuracy",
+      "3. Compliance Check → Ensure legal compliance → Check safety standards → Verify equipment specifications",
+      "4. Quality Assurance → Review content quality → Check completeness → Validate pricing reasonableness",
+      "5. Approval/Rejection → Make final decision → Provide feedback → Update listing status → Notify submitter",
+      "6. Post-Publication Monitoring → Monitor user reports → Check performance metrics → Update if needed"
     ]
   }
 ]
@@ -137,16 +162,20 @@ export default function AdminManual() {
           <div className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Admin Roles</CardTitle>
+                <CardTitle>Business Process Workflows</CardTitle>
                 <CardDescription>
-                  Different administrative access levels
+                  Critical administrative processes and procedures
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-3">
-                {adminRoles.map((admin, index) => (
+              <CardContent className="space-y-4">
+                {businessProcesses.map((process, index) => (
                   <div key={index} className="p-3 bg-muted rounded-lg">
-                    <Badge className="mb-2">{admin.role}</Badge>
-                    <p className="text-sm text-muted-foreground">{admin.permissions}</p>
+                    <Badge className="mb-3">{process.title}</Badge>
+                    <div className="space-y-1">
+                      {process.steps.map((step, stepIndex) => (
+                        <p key={stepIndex} className="text-xs leading-relaxed">{step}</p>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </CardContent>

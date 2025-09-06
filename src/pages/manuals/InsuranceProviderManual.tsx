@@ -19,63 +19,88 @@ import Header from "@/components/layout/Header"
 
 const sections = [
   {
-    title: "Provider Setup",
+    title: "Insurance Provider Setup (CRUD Operations)",
     icon: Shield,
     items: [
-      "Insurance company registration",
-      "License verification process",
-      "Product catalog setup",
-      "Underwriting guidelines"
+      "CREATE: Register insurance company → Upload licenses → Set up policy products → Create underwriting rules",
+      "READ: View provider dashboard → Monitor policy portfolios → Check regulatory compliance → Access claims data",
+      "UPDATE: Modify policy terms → Update coverage limits → Change premium rates → Adjust underwriting criteria",
+      "DELETE: Discontinue policies → Archive expired coverage → Remove old products → Clear outdated underwriting rules"
     ]
   },
   {
-    title: "Policy Management",
+    title: "Policy & Coverage Management",
     icon: FileText,
     items: [
-      "Creating policy templates",
-      "Premium calculation setup",
-      "Coverage options configuration",
-      "Terms and conditions"
+      "CREATE: Design policy templates → Set coverage options → Create premium structures → Build policy workflows",
+      "READ: View policy performance → Monitor coverage utilization → Check market penetration → Access policy analytics",
+      "UPDATE: Modify coverage terms → Update policy conditions → Change deductibles → Adjust premium calculations",
+      "DELETE: Retire old policies → Archive historical coverage → Remove discontinued products → Clear obsolete templates"
     ]
   },
   {
-    title: "Risk Assessment",
+    title: "Risk Assessment & Underwriting",
     icon: Calculator,
     items: [
-      "Equipment valuation methods",
-      "Risk factor analysis",
-      "Claims history review",
-      "Underwriting automation"
+      "CREATE: Build risk models → Create assessment criteria → Generate underwriting guidelines → Set evaluation parameters",
+      "READ: Review risk profiles → Monitor loss ratios → Check equipment valuations → Access underwriting reports",
+      "UPDATE: Modify risk criteria → Update assessment models → Change underwriting rules → Adjust evaluation methods",
+      "DELETE: Remove outdated models → Archive old assessments → Clear obsolete criteria → Purge evaluation data"
     ]
   },
   {
-    title: "Customer Relations",
+    title: "Customer & Quote Management",
     icon: Users,
     items: [
-      "Lead management system",
-      "Quote generation process",
-      "Policy renewal procedures",
-      "Customer support protocols"
+      "CREATE: Generate customer quotes → Build client profiles → Create policy proposals → Set renewal schedules",
+      "READ: View customer history → Monitor policy status → Check payment records → Access customer communications",
+      "UPDATE: Modify quote details → Update customer information → Change policy terms → Adjust renewal dates",
+      "DELETE: Cancel expired quotes → Archive closed policies → Remove inactive customers → Clear old communications"
     ]
   },
   {
-    title: "Claims Processing",
+    title: "Claims Processing & Management",
     icon: AlertCircle,
     items: [
-      "Claims intake procedures",
-      "Investigation workflows",
-      "Settlement authorization",
-      "Fraud detection systems"
+      "CREATE: Register new claims → Generate investigation workflows → Create settlement procedures → Build fraud detection",
+      "READ: View claims status → Monitor investigation progress → Check settlement amounts → Access claims analytics",
+      "UPDATE: Modify claim status → Update investigation findings → Change settlement amounts → Adjust processing timelines",
+      "DELETE: Close settled claims → Archive claim records → Remove fraudulent claims → Clear investigation data"
     ]
   },
   {
-    title: "Business Analytics",
+    title: "Business Analytics & Performance",
     icon: TrendingUp,
     items: [
-      "Portfolio performance metrics",
-      "Loss ratio analysis",
-      "Market opportunity tracking",
-      "Competitive analysis"
+      "CREATE: Build performance dashboards → Generate profitability reports → Create market analysis → Set performance KPIs",
+      "READ: View loss ratios → Monitor premium income → Check market share → Access competitive analysis",
+      "UPDATE: Modify dashboard metrics → Update performance targets → Change analysis parameters → Adjust KPI definitions",
+      "DELETE: Archive old reports → Clear cached analytics → Remove outdated metrics → Purge performance history"
+    ]
+  }
+]
+
+const businessProcesses = [
+  {
+    title: "Policy Underwriting Workflow",
+    steps: [
+      "1. Application Intake → Receive insurance request → Collect equipment details → Gather risk information",
+      "2. Risk Assessment → Evaluate equipment value → Analyze usage patterns → Review loss history → Check location risks",
+      "3. Underwriting Decision → Apply risk criteria → Calculate premium rates → Determine coverage limits → Set policy terms",
+      "4. Quote Generation → Create policy proposal → Define payment terms → Set effective dates → Present to customer",
+      "5. Policy Issuance → Process application → Collect premium → Generate policy documents → Activate coverage",
+      "6. Policy Management → Monitor renewals → Process endorsements → Handle policy changes → Manage cancellations"
+    ]
+  },
+  {
+    title: "Claims Processing Workflow",
+    steps: [
+      "1. Claim Reporting → Receive loss notification → Verify policy coverage → Assign claim number → Notify stakeholders",
+      "2. Initial Investigation → Gather incident details → Collect documentation → Schedule inspections → Estimate damages",
+      "3. Coverage Analysis → Review policy terms → Determine coverage applicability → Calculate deductibles → Identify exclusions",
+      "4. Loss Assessment → Conduct field investigation → Obtain repair estimates → Verify ownership → Document findings",
+      "5. Settlement Decision → Calculate settlement amount → Negotiate with claimant → Process payment → Close claim file",
+      "6. Post-Settlement → Update claim records → Analyze loss patterns → Adjust underwriting if needed → Report to regulators"
     ]
   }
 ]
@@ -157,22 +182,20 @@ export default function InsuranceProviderManual() {
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <DollarSign className="h-5 w-5 mr-2 text-green-500" />
-                  Pricing Guidelines
+                  Business Process Workflows
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="p-3 bg-muted rounded-lg">
-                  <Badge className="mb-2" variant="secondary">Equipment Age</Badge>
-                  <p className="text-sm">0-5 years: Standard rates, 5-10 years: +15%, 10+ years: +30%</p>
-                </div>
-                <div className="p-3 bg-muted rounded-lg">
-                  <Badge className="mb-2" variant="secondary">Usage Type</Badge>
-                  <p className="text-sm">Light duty: Base rate, Heavy duty: +20%, Extreme conditions: +40%</p>
-                </div>
-                <div className="p-3 bg-muted rounded-lg">
-                  <Badge className="mb-2" variant="secondary">Location Risk</Badge>
-                  <p className="text-sm">Low risk: -10%, Standard: Base rate, High risk: +25%</p>
-                </div>
+                {businessProcesses.map((process, index) => (
+                  <div key={index} className="p-3 bg-muted rounded-lg">
+                    <Badge className="mb-3">{process.title}</Badge>
+                    <div className="space-y-1">
+                      {process.steps.map((step, stepIndex) => (
+                        <p key={stepIndex} className="text-xs leading-relaxed">{step}</p>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </CardContent>
             </Card>
 

@@ -19,63 +19,88 @@ import Header from "@/components/layout/Header"
 
 const sections = [
   {
-    title: "Lender Setup",
+    title: "Financing Account Management (CRUD)",
     icon: DollarSign,
     items: [
-      "Financial institution registration",
-      "Licensing and compliance setup",
-      "Lending product configuration",
-      "Risk management framework"
+      "CREATE: Register financing institution → Set up loan products → Create underwriting criteria → Build rate tables",
+      "READ: View application pipeline → Monitor loan portfolios → Check performance metrics → Access risk reports",
+      "UPDATE: Modify loan terms → Update interest rates → Change approval criteria → Adjust risk parameters",
+      "DELETE: Discontinue products → Archive old applications → Remove expired offers → Clear outdated criteria"
     ]
   },
   {
-    title: "Loan Products",
+    title: "Loan Product Configuration",
     icon: CreditCard,
     items: [
-      "Equipment financing options",
-      "Lease program setup",
-      "Rental purchase agreements",
-      "Working capital solutions"
+      "CREATE: Design loan products → Set eligibility criteria → Create term structures → Build rate matrices",
+      "READ: View product performance → Monitor market adoption → Check competitor rates → Access product analytics",
+      "UPDATE: Modify product terms → Update eligibility rules → Change rate structures → Adjust loan limits",
+      "DELETE: Retire old products → Archive historical data → Remove discontinued terms → Clear obsolete criteria"
     ]
   },
   {
-    title: "Credit Assessment",
+    title: "Application & Credit Assessment",
     icon: FileCheck,
     items: [
-      "Application review process",
-      "Credit scoring models",
-      "Collateral evaluation",
-      "Risk rating systems"
+      "CREATE: Process applications → Generate credit reports → Create risk assessments → Build approval workflows",
+      "READ: Review credit histories → Monitor application status → Check verification documents → Access bureau reports",
+      "UPDATE: Modify assessment criteria → Update credit scores → Change approval status → Adjust risk ratings",
+      "DELETE: Reject applications → Archive completed assessments → Clear temporary data → Remove withdrawn applications"
     ]
   },
   {
-    title: "Portfolio Management",
+    title: "Portfolio Management & Analytics",
     icon: BarChart3,
     items: [
-      "Loan portfolio tracking",
-      "Performance monitoring",
-      "Default management",
-      "Collection procedures"
+      "CREATE: Build performance dashboards → Generate portfolio reports → Create profitability analysis → Set KPIs",
+      "READ: View loan performance → Monitor collection rates → Check yield metrics → Access market analysis",
+      "UPDATE: Modify reporting parameters → Update dashboard metrics → Change performance targets → Adjust analytics",
+      "DELETE: Archive old reports → Clear cached analytics → Remove outdated metrics → Purge performance history"
     ]
   },
   {
-    title: "Customer Relations",
+    title: "Customer Relationship Management",
     icon: Users,
     items: [
-      "Application processing",
-      "Customer onboarding",
-      "Account management",
-      "Support services"
+      "CREATE: Build customer profiles → Start loan applications → Create communication logs → Set follow-up schedules",
+      "READ: View customer history → Check payment patterns → Monitor account health → Access customer feedback",
+      "UPDATE: Modify customer details → Update loan terms → Change communication preferences → Edit account notes",
+      "DELETE: Archive closed accounts → Remove inactive profiles → Clear old communications → Purge customer data"
     ]
   },
   {
-    title: "Analytics & Reporting",
+    title: "Risk & Compliance Management",
     icon: TrendingUp,
     items: [
-      "Financial performance metrics",
-      "Risk analysis reports",
-      "Market trend analysis",
-      "Regulatory reporting"
+      "CREATE: Set risk parameters → Create monitoring rules → Build compliance frameworks → Generate audit reports",
+      "READ: Monitor portfolio health → Check delinquency rates → Review compliance status → Access regulatory updates",
+      "UPDATE: Modify risk thresholds → Update compliance procedures → Change monitoring criteria → Adjust risk models",
+      "DELETE: Archive compliance records → Clear resolved issues → Remove old procedures → Purge audit history"
+    ]
+  }
+]
+
+const businessProcesses = [
+  {
+    title: "Loan Application Processing Workflow",
+    steps: [
+      "1. Application Intake → Receive financing request → Verify applicant identity → Collect required documents",
+      "2. Credit Assessment → Run credit bureau checks → Analyze financial statements → Evaluate payment history",
+      "3. Risk Evaluation → Assess collateral value → Calculate debt-to-income ratios → Review industry risks",
+      "4. Underwriting Decision → Apply approval criteria → Calculate loan terms → Determine interest rates",
+      "5. Approval Process → Generate loan agreement → Set payment schedules → Coordinate fund disbursement",
+      "6. Post-Approval Management → Monitor payment performance → Manage collections → Provide customer service"
+    ]
+  },
+  {
+    title: "Portfolio Risk Management Process",
+    steps: [
+      "1. Risk Monitoring → Track payment patterns → Monitor market conditions → Identify early warning signs",
+      "2. Risk Assessment → Evaluate portfolio health → Calculate risk metrics → Stress test scenarios",
+      "3. Mitigation Strategy → Develop action plans → Adjust lending criteria → Implement controls",
+      "4. Collection Management → Contact delinquent accounts → Negotiate payment plans → Initiate recovery procedures",
+      "5. Loss Mitigation → Evaluate workout options → Coordinate asset recovery → Document losses",
+      "6. Regulatory Reporting → Prepare compliance reports → Submit regulatory filings → Maintain audit trails"
     ]
   }
 ]
@@ -138,16 +163,20 @@ export default function FinancierManual() {
           <div className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Financing Products</CardTitle>
+                <CardTitle>Business Process Workflows</CardTitle>
                 <CardDescription>
-                  Types of financing you can offer
+                  Core financing and risk management processes
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-2">
-                {loanTypes.map((loan, index) => (
-                  <div key={index} className="flex items-center p-2 bg-muted rounded">
-                    <CreditCard className="h-4 w-4 mr-2 text-primary" />
-                    <span className="text-sm">{loan}</span>
+              <CardContent className="space-y-4">
+                {businessProcesses.map((process, index) => (
+                  <div key={index} className="p-3 bg-muted rounded-lg">
+                    <Badge className="mb-3">{process.title}</Badge>
+                    <div className="space-y-1">
+                      {process.steps.map((step, stepIndex) => (
+                        <p key={stepIndex} className="text-xs leading-relaxed">{step}</p>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </CardContent>
