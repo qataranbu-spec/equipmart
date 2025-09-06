@@ -1,46 +1,12 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom"
+import { Card, CardContent } from "@/components/ui/card"
+import { getCategoriesWithChildren } from "@/features/admin/data/categoryMockData"
 
 const CategoriesSection = () => {
-  const categories = [
-    {
-      name: "Excavators",
-      count: "1,200+ listings",
-      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop",
-      link: "/categories/excavators"
-    },
-    {
-      name: "Bulldozers",
-      count: "800+ listings",
-      image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=400&h=300&fit=crop",
-      link: "/categories/bulldozers"
-    },
-    {
-      name: "Cranes",
-      count: "600+ listings",
-      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=300&fit=crop",
-      link: "/categories/cranes"
-    },
-    {
-      name: "Loaders",
-      count: "950+ listings",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
-      link: "/categories/loaders"
-    },
-    {
-      name: "Dump Trucks",
-      count: "720+ listings",
-      image: "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?w=400&h=300&fit=crop",
-      link: "/categories/trucks"
-    },
-    {
-      name: "Concrete Mixers",
-      count: "450+ listings",
-      image: "https://images.unsplash.com/photo-1572919733405-b8b80114c5ac?w=400&h=300&fit=crop",
-      link: "/categories/concrete-mixers"
-    }
-  ];
+  const categories = getCategoriesWithChildren()
+    .filter(cat => cat.isActive && cat.equipmentCount > 0)
+    .slice(0, 6) // Show top 6 categories
 
   return (
     <section className="py-20 bg-background">
@@ -53,10 +19,10 @@ const CategoriesSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categories.map((category, index) => (
+          {categories.map((category) => (
             <Link 
-              key={index}
-              to={category.link}
+              key={category.id}
+              to={`/categories/${category.slug}`}
               className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow"
             >
               <div className="aspect-[4/3] relative">
@@ -68,11 +34,20 @@ const CategoriesSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-4 left-4 text-white">
                   <h3 className="text-2xl font-bold mb-1">{category.name}</h3>
-                  <p className="text-white/90">{category.count}</p>
+                  <p className="text-white/90">{category.equipmentCount}+ listings</p>
                 </div>
               </div>
             </Link>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Link 
+            to="/categories" 
+            className="inline-flex items-center px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors"
+          >
+            View All Categories
+          </Link>
         </div>
       </div>
     </section>

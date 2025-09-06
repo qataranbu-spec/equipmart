@@ -10,6 +10,7 @@ import Services from './pages/Services'
 import Procurement from './pages/Procurement'
 import NotFound from './pages/NotFound'
 import EquipmentsFinderPage from './pages/EquipmentsFinderPage'
+import CategoriesPage from './pages/CategoriesPage'
 
 // Import feature modules
 import { 
@@ -59,7 +60,8 @@ import {
   ServiceManagement,
   AdvertisementManagement,
   Analytics,
-  Settings
+  Settings,
+  CategoryManagement
 } from './features/admin'
 import { MarketplaceManagement } from './features/admin/pages/marketplace'
 import { 
@@ -179,6 +181,7 @@ function App() {
           <Route path="/networking-hub" element={<NetworkingHubPage />} />
           
           {/* Category routes */}
+          <Route path="/categories" element={<CategoriesPage />} />
           <Route path="/categories/excavators" element={<Excavators />} />
           <Route path="/categories/cranes" element={<Cranes />} />
           <Route path="/categories/bulldozers" element={<Bulldozers />} />
@@ -259,6 +262,7 @@ function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboardPage />} />
             <Route path="equipment" element={<EquipmentManagement />} />
+            <Route path="categories" element={<CategoryManagement />} />
             <Route path="auctions" element={<AuctionManagement />} />
             <Route path="users" element={<UserManagement />} />
             <Route path="services" element={<ServiceManagement />} />

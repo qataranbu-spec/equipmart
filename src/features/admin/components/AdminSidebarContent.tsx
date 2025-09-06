@@ -25,7 +25,7 @@ const menuItems = [
     icon: Package,
     items: [
       { title: 'All Equipment', url: '/admin/equipment' },
-      { title: 'Categories', url: '/admin/equipment/categories' },
+      { title: 'Categories', url: '/admin/categories' },
       { title: 'Inventory', url: '/admin/equipment/inventory' },
     ]
   },

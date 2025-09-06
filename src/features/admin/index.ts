@@ -10,3 +10,4 @@ export * from './pages/services';
 export * from './pages/advertisements';
 export * from './pages/analytics';
 export * from './pages/settings';
+export * from './pages/categories';
