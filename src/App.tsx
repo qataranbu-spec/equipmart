@@ -222,13 +222,18 @@ function App() {
           {/* Contractor Portal */}
           <Route path="/contractor-portal" element={<ContractorPortal />} />
           
-          {/* Financing Platform Routes */}
-          <Route path="/financing" element={<FinancingMarketplace />} />
-          <Route path="/financing/dashboard" element={<BuyerFinancingDashboard />} />
-          <Route path="/financing/apply" element={<LoanApplicationPage />} />
-          <Route path="/financing/company" element={<CompanyDashboard />} />
-          <Route path="/financing/company/products" element={<ProductManagement />} />
-          <Route path="/financing/company/recovery" element={<RecoveryCenter />} />
+           {/* Financing Platform Routes */}
+           <Route path="/financing" element={<FinancingMarketplace />} />
+           <Route path="/financing/buyer/dashboard" element={<BuyerFinancingDashboard />} />
+           <Route path="/financing/buyer/apply" element={<LoanApplicationPage />} />
+           <Route path="/financing/company/dashboard" element={<CompanyDashboard />} />
+           <Route path="/financing/company/products" element={<ProductManagement />} />
+           <Route path="/financing/company/recovery" element={<RecoveryCenter />} />
+           
+           {/* Financing Marketplace Routes */}
+           <Route path="/financing/marketplace/buyer" element={<BuyerMarketplace />} />
+           <Route path="/financing/marketplace/seller" element={<SellerDashboard />} />
+           <Route path="/financing/marketplace/financier" element={<FinancierDashboard />} />
           
           {/* Spare Parts Platform */}
           <Route path="/spare-parts" element={<SparePartsMarketplace />} />
@@ -245,9 +250,10 @@ function App() {
             <Route path="auctions" element={<AuctionManagement />} />
             <Route path="users" element={<UserManagement />} />
             <Route path="services" element={<ServiceManagement />} />
-            <Route path="advertisements" element={<AdvertisementManagement />} />
-            <Route path="analytics" element={<Analytics />} />
-            <Route path="settings" element={<Settings />} />
+             <Route path="advertisements" element={<AdvertisementManagement />} />
+             <Route path="marketplace" element={<MarketplaceManagement />} />
+             <Route path="analytics" element={<Analytics />} />
+             <Route path="settings" element={<Settings />} />
           </Route>
           
           <Route path="*" element={<NotFound />} />
