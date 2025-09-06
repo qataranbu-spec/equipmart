@@ -152,6 +152,18 @@ function App() {
       <div className="min-h-screen bg-background">
         <Routes>
           <Route path="/" element={<Index />} />
+          
+          {/* User Manual Routes */}
+          <Route path="/manuals" element={<UserManualsIndex />} />
+          <Route path="/manuals/buyer" element={<BuyerManual />} />
+          <Route path="/manuals/supplier" element={<SupplierManual />} />
+          <Route path="/manuals/service-provider" element={<ServiceProviderManual />} />
+          <Route path="/manuals/insurance-provider" element={<InsuranceProviderManual />} />
+          <Route path="/manuals/financier" element={<FinancierManual />} />
+          <Route path="/manuals/contractor" element={<ContractorManual />} />
+          <Route path="/manuals/expert" element={<ExpertManual />} />
+          <Route path="/manuals/admin" element={<AdminManual />} />
+          
           <Route path="/equipments-finder" element={<EquipmentsFinderPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
