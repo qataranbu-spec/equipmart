@@ -133,6 +133,7 @@ import { SparePartsMarketplace, SupplierDashboard } from './features/spareparts'
 import ContactUs from './pages/ContactUs'
 import TermsOfService from './pages/TermsOfService'
 import PrivacyPolicy from './pages/PrivacyPolicy'
+import Sitemap from './pages/Sitemap'
 
 function App() {
   return (
@@ -252,6 +253,7 @@ function App() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/sitemap" element={<Sitemap />} />
           
           {/* Admin routes */}
           <Route path="/admin" element={<AdminLayout />}>
