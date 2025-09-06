@@ -88,6 +88,16 @@ import {
   SupplierManagementPage,
   EAuctionPage
 } from './features/procurement'
+
+// Import Financing pages
+import {
+  FinancingMarketplace,
+  BuyerFinancingDashboard,
+  LoanApplicationPage,
+  CompanyDashboard,
+  ProductManagement,
+  RecoveryCenter
+} from './features/financing'
 import {
   BrowseRentalsPage,
   MyRentalsPage,
@@ -209,9 +219,12 @@ function App() {
           <Route path="/contractor-portal" element={<ContractorPortal />} />
           
           {/* Financing Platform Routes */}
-          <Route path="/financing/marketplace" element={<div>Financing Marketplace Coming Soon</div>} />
-          <Route path="/financing/dashboard" element={<div>Buyer Financing Dashboard Coming Soon</div>} />
-          <Route path="/financing/company/dashboard" element={<div>Company Dashboard Coming Soon</div>} />
+          <Route path="/financing" element={<FinancingMarketplace />} />
+          <Route path="/financing/dashboard" element={<BuyerFinancingDashboard />} />
+          <Route path="/financing/apply" element={<LoanApplicationPage />} />
+          <Route path="/financing/company" element={<CompanyDashboard />} />
+          <Route path="/financing/company/products" element={<ProductManagement />} />
+          <Route path="/financing/company/recovery" element={<RecoveryCenter />} />
           
           {/* Spare Parts Platform */}
           <Route path="/spare-parts" element={<SparePartsMarketplace />} />
