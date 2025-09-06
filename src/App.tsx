@@ -65,14 +65,19 @@ import { MarketplaceManagement } from './features/admin/pages/marketplace'
 import { 
   FinancingMarketplace, 
   BuyerFinancingDashboard, 
-  LoanApplicationPage,
-  CompanyDashboard,
-  ProductManagement,
+  LoanApplicationPage, 
+  CompanyDashboard, 
+  ProductManagement, 
   RecoveryCenter,
   BuyerMarketplace,
   SellerDashboard,
   FinancierDashboard
 } from './features/financing'
+import {
+  InsuranceMarketplace,
+  BuyerInsuranceDashboard,
+  ProviderDashboard
+} from './features/insurance'
 
 // Import advertisement pages
 import Advertising from './pages/Advertising'
@@ -234,6 +239,11 @@ function App() {
            <Route path="/financing/marketplace/buyer" element={<BuyerMarketplace />} />
            <Route path="/financing/marketplace/seller" element={<SellerDashboard />} />
            <Route path="/financing/marketplace/financier" element={<FinancierDashboard />} />
+           
+           {/* Insurance Platform Routes */}
+           <Route path="/insurance/marketplace" element={<InsuranceMarketplace />} />
+           <Route path="/insurance/buyer/dashboard" element={<BuyerInsuranceDashboard />} />
+           <Route path="/insurance/provider/dashboard" element={<ProviderDashboard />} />
           
           {/* Spare Parts Platform */}
           <Route path="/spare-parts" element={<SparePartsMarketplace />} />
