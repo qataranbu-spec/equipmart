@@ -82,7 +82,8 @@ const Footer = () => {
           <p>© 2025 EQP MART. All rights reserved. | 
             <Link to="/privacy-policy" className="hover:text-primary ml-1">Privacy Policy</Link> | 
             <Link to="/terms-of-service" className="hover:text-primary ml-1">Terms of Service</Link> | 
-            <Link to="/sitemap" className="hover:text-primary ml-1">Sitemap</Link>
+            <Link to="/sitemap" className="hover:text-primary ml-1">Sitemap</Link> | 
+            <Link to="/manuals" className="hover:text-primary ml-1">User Manuals</Link>
           </p>
         </div>
       </div>
