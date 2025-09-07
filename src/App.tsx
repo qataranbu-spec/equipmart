@@ -145,6 +145,7 @@ import ContactUs from './pages/ContactUs'
 import TermsOfService from './pages/TermsOfService'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import Sitemap from './pages/Sitemap'
+import StorefrontPage from './pages/StorefrontPage'
 
 function App() {
   return (
@@ -278,6 +279,9 @@ function App() {
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/sitemap" element={<Sitemap />} />
+          
+          {/* Storefront routes */}
+          <Route path="/storefront/:type/:id" element={<StorefrontPage />} />
           
           {/* Admin routes */}
           <Route path="/admin" element={<AdminLayout />}>
