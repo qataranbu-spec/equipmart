@@ -31,6 +31,7 @@ import {
   BuyEquipmentPage, 
   SellEquipmentPage, 
   EquipmentDetailsPage,
+  EquipmentProfilePage,
   BookEquipmentPage,
   ContactSellerPage 
 } from './features/marketplace'
@@ -182,6 +183,7 @@ function App() {
           <Route path="/supplier-network" element={<SupplierNetworkPage />} />
           <Route path="/experts-network" element={<ExpertsNetworkPage />} />
           <Route path="/equipment/:id" element={<EquipmentDetailsPage />} />
+          <Route path="/equipment-profile/:id" element={<EquipmentProfilePage />} />
           
           {/* Additional routes */}
           <Route path="/book-equipment" element={<BookEquipmentPage />} />
