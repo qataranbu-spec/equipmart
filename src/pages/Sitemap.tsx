@@ -36,6 +36,7 @@ const Sitemap = () => {
         { name: "Marketplace", path: "/marketplace" },
         { name: "Buy Equipment", path: "/marketplace/buy" },
         { name: "Sell Equipment", path: "/marketplace/sell" },
+        { name: "Equipment Profile", path: "/equipment-profile" },
         { name: "Book Equipment", path: "/book-equipment" },
         { name: "Contact Seller", path: "/contact-seller" },
         { name: "Manufacturers", path: "/manufacturers" },
