@@ -13,6 +13,21 @@ const Sitemap = () => {
         { name: "Dashboard", path: "/dashboard" },
         { name: "Equipment Finder", path: "/equipments-finder" },
         { name: "Contact Us", path: "/contact-us" },
+        { name: "Sitemap", path: "/sitemap" },
+      ]
+    },
+    {
+      category: "User Manuals",
+      pages: [
+        { name: "Manual Index", path: "/manuals" },
+        { name: "Buyer Manual", path: "/manuals/buyer" },
+        { name: "Supplier Manual", path: "/manuals/supplier" },
+        { name: "Service Provider Manual", path: "/manuals/service-provider" },
+        { name: "Insurance Provider Manual", path: "/manuals/insurance-provider" },
+        { name: "Financier Manual", path: "/manuals/financier" },
+        { name: "Contractor Manual", path: "/manuals/contractor" },
+        { name: "Expert Manual", path: "/manuals/expert" },
+        { name: "Admin Manual", path: "/manuals/admin" },
       ]
     },
     {
@@ -29,6 +44,7 @@ const Sitemap = () => {
     {
       category: "Equipment Categories",
       pages: [
+        { name: "All Categories", path: "/categories" },
         { name: "Excavators", path: "/categories/excavators" },
         { name: "Cranes", path: "/categories/cranes" },
         { name: "Bulldozers", path: "/categories/bulldozers" },
@@ -155,6 +171,32 @@ const Sitemap = () => {
       ]
     },
     {
+      category: "Admin Panel",
+      pages: [
+        { name: "Admin Dashboard", path: "/admin" },
+        { name: "Equipment Management", path: "/admin/equipment" },
+        { name: "Category Management", path: "/admin/categories" },
+        { name: "User Management", path: "/admin/users" },
+        { name: "Auction Management", path: "/admin/auctions" },
+        { name: "Service Management", path: "/admin/services" },
+        { name: "Advertisement Management", path: "/admin/advertisements" },
+        { name: "Marketplace Management", path: "/admin/marketplace" },
+        { name: "Analytics", path: "/admin/analytics" },
+        { name: "Settings", path: "/admin/settings" },
+      ]
+    },
+    {
+      category: "Supplier Storefronts",
+      pages: [
+        { name: "Equipment Supplier", path: "/storefront/supplier/123" },
+        { name: "Service Provider", path: "/storefront/service-provider/123" },
+        { name: "Financier", path: "/storefront/financier/123" },
+        { name: "Insurance Provider", path: "/storefront/insurance-provider/123" },
+        { name: "Contractor", path: "/storefront/contractor/123" },
+        { name: "Expert Consultant", path: "/storefront/expert/123" },
+      ]
+    },
+    {
       category: "Legal & Policies",
       pages: [
         { name: "Terms of Service", path: "/terms-of-service" },
@@ -212,16 +254,16 @@ const Sitemap = () => {
                 <div className="text-muted-foreground">Equipment Categories</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-primary">10K+</div>
+                <div className="text-2xl font-bold text-primary">15K+</div>
                 <div className="text-muted-foreground">Active Listings</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-primary">50+</div>
+                <div className="text-2xl font-bold text-primary">75+</div>
                 <div className="text-muted-foreground">Countries Served</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-primary">24/7</div>
-                <div className="text-muted-foreground">Customer Support</div>
+                <div className="text-2xl font-bold text-primary">9</div>
+                <div className="text-muted-foreground">Business Modules</div>
               </div>
             </div>
           </div>
