@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
-import { Building, Truck, Calendar, Wrench, Settings, HardHat, CreditCard } from 'lucide-react';
+import { Building, Truck, Calendar, Wrench, Settings, HardHat, CreditCard, Shield } from 'lucide-react';
 
 const WhoWeServeSection = () => {
   const customers = [
@@ -112,6 +112,22 @@ const WhoWeServeSection = () => {
         "Real-time equipment tracking & usage monitoring",
         "Automated recovery tools for repossessed assets",
         "Credit scoring & risk assessment integration"
+      ]
+    },
+    {
+      icon: Shield,
+      title: "Insurance Providers",
+      description: "Equipment insurance companies, underwriters, brokers",
+      needs: [
+        "High claim fraud rates",
+        "Poor equipment condition assessment",
+        "Limited real-time risk monitoring"
+      ],
+      valueProps: [
+        "Verified equipment listings with condition reports",
+        "Real-time usage & maintenance tracking integration",
+        "Digital claim processing with photo evidence",
+        "Risk assessment tools & predictive analytics"
       ]
     }
   ];
