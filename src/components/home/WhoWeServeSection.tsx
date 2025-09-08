@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
-import { Building, Truck, Calendar, Wrench, Settings, HardHat } from 'lucide-react';
+import { Building, Truck, Calendar, Wrench, Settings, HardHat, CreditCard } from 'lucide-react';
 
 const WhoWeServeSection = () => {
   const customers = [
@@ -96,6 +96,22 @@ const WhoWeServeSection = () => {
         "Affordable rental options with short terms",
         "Mobile-first interface in Arabic",
         "Access to financing/leasing (future roadmap)"
+      ]
+    },
+    {
+      icon: CreditCard,
+      title: "Equipment Financiers",
+      description: "Banks, NBFCs, leasing companies, equipment financing firms",
+      needs: [
+        "High default rates on equipment loans",
+        "Poor asset tracking & recovery processes",
+        "Limited visibility into equipment usage"
+      ],
+      valueProps: [
+        "Integrated financing marketplace with verified borrowers",
+        "Real-time equipment tracking & usage monitoring",
+        "Automated recovery tools for repossessed assets",
+        "Credit scoring & risk assessment integration"
       ]
     }
   ];
