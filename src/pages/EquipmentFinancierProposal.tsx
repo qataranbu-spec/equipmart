@@ -1,11 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, TrendingUp, Users, DollarSign, Shield, Clock, Network, Target } from "lucide-react";
+import { CheckCircle, TrendingUp, Users, DollarSign, Shield, Clock, Network, Target, Gavel, CreditCard } from "lucide-react";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 
 export default function EquipmentFinancierProposal() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted">
+    <div className="min-h-screen">
+      <Header />
+      <div className="bg-gradient-to-br from-background to-muted">
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
@@ -33,7 +37,7 @@ export default function EquipmentFinancierProposal() {
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">Why Partner With Us</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
             <Card>
               <CardHeader>
                 <Target className="h-8 w-8 text-primary mb-2" />
@@ -75,6 +79,28 @@ export default function EquipmentFinancierProposal() {
               <CardContent>
                 <p className="text-sm text-muted-foreground">
                   Streamlined application and approval processes reduce time-to-funding by 60%.
+                </p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CreditCard className="h-8 w-8 text-primary mb-2" />
+                <CardTitle className="text-lg">Loan Products</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Sell loan products directly to qualified leads with verified equipment financing needs.
+                </p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <Gavel className="h-8 w-8 text-primary mb-2" />
+                <CardTitle className="text-lg">NPA Auction Platform</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  List non-performing assets for sale through our integrated auction platform.
                 </p>
               </CardContent>
             </Card>
@@ -177,6 +203,14 @@ export default function EquipmentFinancierProposal() {
               {
                 title: "Technology Integration",
                 description: "API access for seamless integration with your existing lending and CRM systems."
+              },
+              {
+                title: "Loan Product Distribution",
+                description: "Direct access to sell your loan products to qualified equipment buyers and dealers."
+              },
+              {
+                title: "NPA Recovery Platform",
+                description: "Auction platform for non-performing assets with nationwide buyer network and professional valuations."
               }
             ].map((benefit, index) => (
               <div key={index} className="flex items-start gap-4 p-6 bg-card rounded-lg border">
@@ -336,6 +370,8 @@ export default function EquipmentFinancierProposal() {
           </div>
         </div>
       </section>
+      </div>
+      <Footer />
     </div>
   );
 }
