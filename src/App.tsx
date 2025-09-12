@@ -170,7 +170,8 @@ function App() {
           <Route path="/equipments-finder" element={<EquipmentsFinderPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/browse-equipment" element={<Dashboard />} />
           <Route path="/marketplace" element={<MarketplacePage />} />
           <Route path="/marketplace/buy" element={<BuyEquipmentPage />} />
           <Route path="/marketplace/sell" element={<SellEquipmentPage />} />

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import { TwoColumnLayout } from '@/components/layout/TwoColumnLayout';
 import { DashboardSidebar } from '@/components/dashboard/DashboardSidebar';
+import { BrowseEquipment } from '@/components/dashboard/BrowseEquipment';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -11,10 +13,14 @@ import { ShoppingBag, Package, DollarSign, TrendingUp, Eye, Heart, MessageCircle
 import { Link } from 'react-router-dom';
 const Dashboard = () => {
   const [userRole, setUserRole] = useState('buyer'); // buyer, seller, service_provider
+  const location = useLocation();
 
   const handleRoleChange = (role: string) => {
     setUserRole(role);
   };
+
+  // Check if we should show browse equipment view
+  const showBrowseEquipment = location.pathname === '/dashboard/browse-equipment';
   const buyerStats = {
     totalOrders: 12,
     pendingOrders: 3,
@@ -85,19 +91,23 @@ const Dashboard = () => {
       <Header />
       
       <TwoColumnLayout sidebar={<DashboardSidebar userRole={userRole} onRoleChange={handleRoleChange} />} sidebarTitle={`${userRole.charAt(0).toUpperCase() + userRole.slice(1)} Portal`} defaultSidebarWidth={300} minSidebarWidth={250} maxSidebarWidth={400} className="py-0">
-        {/* Page Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
-          <div>
-            <h1 className="text-3xl font-bold mb-2">Dashboard</h1>
-            <p className="text-muted-foreground">Welcome back, John Doe</p>
-          </div>
-          <div className="flex items-center space-x-2 mt-4 sm:mt-0">
-            <Button variant="outline" size="sm">
-              <Settings className="h-4 w-4 mr-2" />
-              Settings
-            </Button>
-          </div>
-        </div>
+        {showBrowseEquipment ? (
+          <BrowseEquipment />
+        ) : (
+          <>
+            {/* Page Header */}
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
+              <div>
+                <h1 className="text-3xl font-bold mb-2">Dashboard</h1>
+                <p className="text-muted-foreground">Welcome back, John Doe</p>
+              </div>
+              <div className="flex items-center space-x-2 mt-4 sm:mt-0">
+                <Button variant="outline" size="sm">
+                  <Settings className="h-4 w-4 mr-2" />
+                  Settings
+                </Button>
+              </div>
+            </div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -375,6 +385,8 @@ const Dashboard = () => {
             </div>
           </TabsContent>
         </Tabs>
+          </>
+        )}
       </TwoColumnLayout>
 
       <Footer />

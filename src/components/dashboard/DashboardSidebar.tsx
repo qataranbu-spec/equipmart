@@ -56,7 +56,7 @@ export function DashboardSidebar({ userRole, onRoleChange }: DashboardSidebarPro
     {
       title: "Marketplace",
       items: [
-        { label: "Browse Equipment", path: "/marketplace", icon: Search },
+        { label: "Browse Equipment", path: "/dashboard/browse-equipment", icon: Search },
         { label: "Buy Equipment", path: "/marketplace/buy", icon: ShoppingBag },
         { label: "Equipment Details", path: "/equipment/1", icon: Eye },
         { label: "Contact Seller", path: "/contact-seller", icon: MessageCircle },
