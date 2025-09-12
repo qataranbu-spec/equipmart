@@ -127,6 +127,9 @@ const Header = () => {
                       <Link to="/partnership-opportunity" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
                         Partnership Program
                       </Link>
+                      <Link to="/equipment-financier-proposal" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
+                        Financier Partnership
+                      </Link>
                     </div>
                   </div>}
               </div>
@@ -227,8 +230,11 @@ const Header = () => {
                   <Link to="/investor-proposal" className="block text-foreground hover:text-primary transition-colors mb-2">
                     Investor Proposal
                   </Link>
-                  <Link to="/partnership-opportunity" className="block text-foreground hover:text-primary transition-colors">
+                  <Link to="/partnership-opportunity" className="block text-foreground hover:text-primary transition-colors mb-2">
                     Partnership Program
+                  </Link>
+                  <Link to="/equipment-financier-proposal" className="block text-foreground hover:text-primary transition-colors">
+                    Financier Partnership
                   </Link>
                 </div>
                 

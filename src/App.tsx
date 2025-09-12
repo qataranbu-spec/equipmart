@@ -109,6 +109,7 @@ import StartFreeTrial from './pages/StartFreeTrial'
 import RequestDemo from './pages/RequestDemo'
 import InvestorProposal from './pages/InvestorProposal'
 import PartnershipOpportunity from './pages/PartnershipOpportunity'
+import EquipmentFinancierProposal from './pages/EquipmentFinancierProposal'
 
 // Import E-Procurement pages
 import {
@@ -224,6 +225,7 @@ function App() {
           <Route path="/request-demo" element={<RequestDemo />} />
           <Route path="/investor-proposal" element={<InvestorProposal />} />
           <Route path="/partnership-opportunity" element={<PartnershipOpportunity />} />
+          <Route path="/equipment-financier-proposal" element={<EquipmentFinancierProposal />} />
           
           {/* E-Procurement routes */}
           <Route path="/procurement/create-rfq" element={<CreateRFQPage />} />
