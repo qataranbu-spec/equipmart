@@ -8,7 +8,7 @@ import StatsSection from '../components/home/StatsSection';
 
 import WhoWeServeSection from '../components/home/WhoWeServeSection';
 import KeyFeaturesSection from '../components/home/KeyFeaturesSection';
-import ServiceOfferingsSection from '../components/home/ServiceOfferingsSection';
+
 import BuyersAdvantageSection from '../components/home/BuyersAdvantageSection';
 import VendorPartnershipSection from '../components/home/VendorPartnershipSection';
 import MarketOpportunitiesSection from '../components/home/MarketOpportunitiesSection';
@@ -24,7 +24,7 @@ const Index = () => {
       <VendorPartnershipSection />
       <MarketOpportunitiesSection />
       <KeyFeaturesSection />
-      <ServiceOfferingsSection />
+      
       <StatsSection />
       <FeaturesSection />
       <Footer />

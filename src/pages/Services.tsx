@@ -37,6 +37,7 @@ import {
   RefreshCw
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ServiceOfferingsSection from '../components/home/ServiceOfferingsSection';
 
 const Services = () => {
   const serviceCategories = [
@@ -266,6 +267,8 @@ const Services = () => {
         </div>
       </section>
 
+      <ServiceOfferingsSection />
+      
       <main className="container mx-auto px-4 py-12">
         {/* Service Categories */}
         <section className="mb-12">
