@@ -18,12 +18,10 @@ const Header = () => {
   const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const businessTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const networksTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
   const openLoginModal = () => {
     setAuthModalTab('login');
     setAuthModalOpen(true);
   };
-
   const openSignupModal = () => {
     setAuthModalTab('signup');
     setAuthModalOpen(true);
@@ -31,34 +29,16 @@ const Header = () => {
 
   // Improved hover handlers with delays
   const handleDropdownEnter = (dropdown: 'marketplace' | 'services' | 'business' | 'networks') => {
-    const timeoutRef = dropdown === 'marketplace' ? marketplaceTimeoutRef 
-                    : dropdown === 'services' ? servicesTimeoutRef
-                    : dropdown === 'business' ? businessTimeoutRef
-                    : networksTimeoutRef;
-
+    const timeoutRef = dropdown === 'marketplace' ? marketplaceTimeoutRef : dropdown === 'services' ? servicesTimeoutRef : dropdown === 'business' ? businessTimeoutRef : networksTimeoutRef;
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
-
-    const setter = dropdown === 'marketplace' ? setShowMarketplaceDropdown
-                 : dropdown === 'services' ? setShowServicesDropdown
-                 : dropdown === 'business' ? setShowBusinessDropdown
-                 : setShowNetworksDropdown;
-    
+    const setter = dropdown === 'marketplace' ? setShowMarketplaceDropdown : dropdown === 'services' ? setShowServicesDropdown : dropdown === 'business' ? setShowBusinessDropdown : setShowNetworksDropdown;
     setter(true);
   };
-
   const handleDropdownLeave = (dropdown: 'marketplace' | 'services' | 'business' | 'networks') => {
-    const timeoutRef = dropdown === 'marketplace' ? marketplaceTimeoutRef 
-                    : dropdown === 'services' ? servicesTimeoutRef
-                    : dropdown === 'business' ? businessTimeoutRef
-                    : networksTimeoutRef;
-
-    const setter = dropdown === 'marketplace' ? setShowMarketplaceDropdown
-                 : dropdown === 'services' ? setShowServicesDropdown
-                 : dropdown === 'business' ? setShowBusinessDropdown
-                 : setShowNetworksDropdown;
-
+    const timeoutRef = dropdown === 'marketplace' ? marketplaceTimeoutRef : dropdown === 'services' ? servicesTimeoutRef : dropdown === 'business' ? businessTimeoutRef : networksTimeoutRef;
+    const setter = dropdown === 'marketplace' ? setShowMarketplaceDropdown : dropdown === 'services' ? setShowServicesDropdown : dropdown === 'business' ? setShowBusinessDropdown : setShowNetworksDropdown;
     timeoutRef.current = setTimeout(() => {
       setter(false);
     }, 150);
@@ -118,7 +98,7 @@ const Header = () => {
                 </button>
                  {showServicesDropdown && <div className="absolute top-full left-0 pt-1">
                      <div className="bg-background border border-border rounded-lg shadow-lg py-3 w-56 z-50">
-                       <p className="text-xs font-semibold text-muted-foreground px-4 pb-2 mb-2 border-b border-border">Services & Solutions</p>
+                       <p className="text-xs font-semibold text-muted-foreground px-4 pb-2 mb-2 border-b border-border">Solutions</p>
                         <Link to="/procurement" className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors">
                           E-Trade
                         </Link>
