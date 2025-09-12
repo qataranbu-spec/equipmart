@@ -93,7 +93,7 @@ const Header = () => {
               {/* Services & Solutions Group */}
               <div className="relative group" onMouseEnter={() => handleDropdownEnter('services')} onMouseLeave={() => handleDropdownLeave('services')}>
                 <button className="flex items-center text-foreground hover:text-primary transition-colors py-2">
-                  Services & Solutions
+                  Solutions
                   <ChevronDown className="h-4 w-4 ml-1" />
                 </button>
                  {showServicesDropdown && <div className="absolute top-full left-0 pt-1">
