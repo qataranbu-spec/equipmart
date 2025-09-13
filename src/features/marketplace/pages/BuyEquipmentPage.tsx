@@ -1,7 +1,5 @@
 
 import React, { useState } from 'react';
-import Header from '../../../components/layout/Header';
-import Footer from '../../../components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -76,7 +74,6 @@ const BuyEquipment = () => {
 
   return (
     <div className="min-h-screen">
-      <Header />
       <main className="container mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="mb-8">
@@ -272,7 +269,6 @@ const BuyEquipment = () => {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

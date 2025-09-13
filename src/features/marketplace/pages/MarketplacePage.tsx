@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../../../components/layout/Header';
-import Footer from '../../../components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -131,7 +129,6 @@ const Marketplace = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       
       {/* Page Header */}
       <div className="bg-secondary py-8">
@@ -330,8 +327,6 @@ const Marketplace = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };

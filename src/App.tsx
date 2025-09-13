@@ -150,6 +150,9 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import Sitemap from './pages/Sitemap'
 import StorefrontPage from './pages/StorefrontPage'
 
+// Import layout components
+import { BuyerDashboardLayout, SellerDashboardLayout } from './components/layouts'
+
 function App() {
   return (
     <Router>
@@ -171,11 +174,57 @@ function App() {
           <Route path="/equipments-finder" element={<EquipmentsFinderPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          
+          {/* Buyer Portal - Protected Routes with Dashboard Layout */}
+          <Route path="/buyer" element={<BuyerDashboardLayout />}>
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="marketplace" element={<MarketplacePage />} />
+            <Route path="marketplace/buy" element={<BuyEquipmentPage />} />
+            <Route path="rentals/browse" element={<BrowseRentalsPage />} />
+            <Route path="rentals/my-rentals" element={<MyRentalsPage />} />
+            <Route path="rentals/requests" element={<RentalRequestsPage />} />
+            <Route path="financing/dashboard" element={<BuyerFinancingDashboard />} />
+            <Route path="financing/apply" element={<LoanApplicationPage />} />
+            <Route path="financing/marketplace" element={<BuyerMarketplace />} />
+            <Route path="insurance/dashboard" element={<BuyerInsuranceDashboard />} />
+            <Route path="insurance/marketplace" element={<InsuranceMarketplace />} />
+            <Route path="services/dashboard" element={<ServiceBuyerDashboard />} />
+            <Route path="services/marketplace" element={<ServicesMarketplace />} />
+            <Route path="services/messages" element={<ServiceMessaging />} />
+            <Route path="procurement/create-rfq" element={<CreateRFQPage />} />
+            <Route path="procurement/active-rfqs" element={<ActiveRFQsPage />} />
+            <Route path="procurement/supplier-management" element={<SupplierManagementPage />} />
+            <Route path="procurement/e-auction" element={<EAuctionPage />} />
+          </Route>
+
+          {/* Seller Portal - Protected Routes with Dashboard Layout */}
+          <Route path="/seller" element={<SellerDashboardLayout />}>
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="marketplace/sell" element={<SellEquipmentPage />} />
+            <Route path="rentals/list-equipment" element={<ListEquipmentPage />} />
+            <Route path="rentals/listings" element={<RentalListingsPage />} />
+            <Route path="rentals/bookings" element={<RentalBookingsPage />} />
+            <Route path="financing/company/dashboard" element={<CompanyDashboard />} />
+            <Route path="financing/company/products" element={<ProductManagement />} />
+            <Route path="financing/company/recovery" element={<RecoveryCenter />} />
+            <Route path="financing/marketplace/seller" element={<SellerDashboard />} />
+            <Route path="financing/marketplace/financier" element={<FinancierDashboard />} />
+            <Route path="insurance/provider/dashboard" element={<ProviderDashboard />} />
+            <Route path="services/provider/dashboard" element={<ServiceProviderDashboard />} />
+            <Route path="supplier-dashboard" element={<SupplierDashboard />} />
+          </Route>
+
+          {/* Legacy routes - maintain backwards compatibility */}
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/dashboard/browse-equipment" element={<Dashboard />} />
-          <Route path="/marketplace" element={<MarketplacePage />} />
-          <Route path="/marketplace/buy" element={<BuyEquipmentPage />} />
-          <Route path="/marketplace/sell" element={<SellEquipmentPage />} />
+          {/* Marketplace routes - Wrapped in appropriate layouts */}
+          <Route path="/marketplace" element={<BuyerDashboardLayout />}>
+            <Route index element={<MarketplacePage />} />
+            <Route path="buy" element={<BuyEquipmentPage />} />
+          </Route>
+          <Route path="/marketplace/sell" element={<SellerDashboardLayout />}>
+            <Route index element={<SellEquipmentPage />} />
+          </Route>
           <Route path="/rentals" element={<Rentals />} />
           <Route path="/services" element={<Services />} />
           <Route path="/advertising" element={<Advertising />} />
@@ -230,26 +279,36 @@ function App() {
           <Route path="/equipment-financier-proposal" element={<EquipmentFinancierProposal />} />
           <Route path="/construction-contractor-proposal" element={<ConstructionContractorProposal />} />
           
-          {/* E-Procurement routes */}
-          <Route path="/procurement/create-rfq" element={<CreateRFQPage />} />
-          <Route path="/procurement/active-rfqs" element={<ActiveRFQsPage />} />
-          <Route path="/procurement/supplier-management" element={<SupplierManagementPage />} />
-          <Route path="/procurement/e-auction" element={<EAuctionPage />} />
+          {/* E-Procurement routes - Wrapped in Buyer Layout */}
+          <Route path="/procurement" element={<BuyerDashboardLayout />}>
+            <Route path="create-rfq" element={<CreateRFQPage />} />
+            <Route path="active-rfqs" element={<ActiveRFQsPage />} />
+            <Route path="supplier-management" element={<SupplierManagementPage />} />
+            <Route path="e-auction" element={<EAuctionPage />} />
+          </Route>
           
           {/* Rental Platform Routes - Buyer Portal */}
-          <Route path="/rentals/browse" element={<BrowseRentalsPage />} />
-          <Route path="/rentals/my-rentals" element={<MyRentalsPage />} />
-          <Route path="/rentals/requests" element={<RentalRequestsPage />} />
+          <Route path="/rentals" element={<BuyerDashboardLayout />}>
+            <Route path="browse" element={<BrowseRentalsPage />} />
+            <Route path="my-rentals" element={<MyRentalsPage />} />
+            <Route path="requests" element={<RentalRequestsPage />} />
+          </Route>
 
           {/* Rental Platform Routes - Seller Portal */}
-          <Route path="/rentals/seller/list-equipment" element={<ListEquipmentPage />} />
-          <Route path="/rentals/seller/listings" element={<RentalListingsPage />} />
-          <Route path="/rentals/seller/bookings" element={<RentalBookingsPage />} />
+          <Route path="/rentals/seller" element={<SellerDashboardLayout />}>
+            <Route path="list-equipment" element={<ListEquipmentPage />} />
+            <Route path="listings" element={<RentalListingsPage />} />
+            <Route path="bookings" element={<RentalBookingsPage />} />
+          </Route>
           
           {/* Service Platform Routes */}
           <Route path="/services/marketplace" element={<ServicesMarketplace />} />
-          <Route path="/services/buyer/dashboard" element={<ServiceBuyerDashboard />} />
-          <Route path="/services/provider/dashboard" element={<ServiceProviderDashboard />} />
+          <Route path="/services/buyer" element={<BuyerDashboardLayout />}>
+            <Route path="dashboard" element={<ServiceBuyerDashboard />} />
+          </Route>
+          <Route path="/services/provider" element={<SellerDashboardLayout />}>
+            <Route path="dashboard" element={<ServiceProviderDashboard />} />
+          </Route>
           <Route path="/services/booking/:providerId" element={<ServiceBooking />} />
           <Route path="/services/messages" element={<ServiceMessaging />} />
           <Route path="/find-service-providers" element={<FindServiceProviders />} />
@@ -260,26 +319,44 @@ function App() {
           {/* Contractor Portal */}
           <Route path="/contractor-portal" element={<ContractorPortal />} />
           
-           {/* Financing Platform Routes */}
-           <Route path="/financing" element={<FinancingMarketplace />} />
-           <Route path="/financing/buyer/dashboard" element={<BuyerFinancingDashboard />} />
-           <Route path="/financing/buyer/apply" element={<LoanApplicationPage />} />
-           <Route path="/financing/company/dashboard" element={<CompanyDashboard />} />
-           <Route path="/financing/company/products" element={<ProductManagement />} />
-           <Route path="/financing/company/recovery" element={<RecoveryCenter />} />
-           
-           {/* Financing Marketplace Routes */}
-           <Route path="/financing/marketplace/buyer" element={<BuyerMarketplace />} />
-           <Route path="/financing/marketplace/seller" element={<SellerDashboard />} />
-           <Route path="/financing/marketplace/financier" element={<FinancierDashboard />} />
-           
-           {/* Insurance Platform Routes */}
-           <Route path="/insurance/marketplace" element={<InsuranceMarketplace />} />
-           <Route path="/insurance/buyer/dashboard" element={<BuyerInsuranceDashboard />} />
-           <Route path="/insurance/provider/dashboard" element={<ProviderDashboard />} />
+           {/* Financing Platform Routes - Wrapped in Buyer Layout */}
+            <Route path="/financing" element={<FinancingMarketplace />} />
+            <Route path="/financing/buyer" element={<BuyerDashboardLayout />}>
+              <Route path="dashboard" element={<BuyerFinancingDashboard />} />
+              <Route path="apply" element={<LoanApplicationPage />} />
+            </Route>
+            
+            {/* Financing Company Routes - Wrapped in Seller Layout */}
+            <Route path="/financing/company" element={<SellerDashboardLayout />}>
+              <Route path="dashboard" element={<CompanyDashboard />} />
+              <Route path="products" element={<ProductManagement />} />
+              <Route path="recovery" element={<RecoveryCenter />} />
+            </Route>
+            
+            {/* Financing Marketplace Routes - Wrapped in appropriate layouts */}
+            <Route path="/financing/marketplace" element={<BuyerDashboardLayout />}>
+              <Route path="buyer" element={<BuyerMarketplace />} />
+            </Route>
+            <Route path="/financing/marketplace" element={<SellerDashboardLayout />}>
+              <Route path="seller" element={<SellerDashboard />} />
+              <Route path="financier" element={<FinancierDashboard />} />
+            </Route>
+            
+            {/* Insurance Platform Routes */}
+            <Route path="/insurance/marketplace" element={<InsuranceMarketplace />} />
+            <Route path="/insurance/buyer" element={<BuyerDashboardLayout />}>
+              <Route path="dashboard" element={<BuyerInsuranceDashboard />} />
+            </Route>
+            <Route path="/insurance/provider" element={<SellerDashboardLayout />}>
+              <Route path="dashboard" element={<ProviderDashboard />} />
+            </Route>
           
           {/* Spare Parts Platform */}
           <Route path="/spare-parts" element={<SparePartsMarketplace />} />
+          <Route path="/supplier" element={<SellerDashboardLayout />}>
+            <Route path="dashboard" element={<SupplierDashboard />} />
+          </Route>
+          {/* Legacy route for backwards compatibility */}
           <Route path="/supplier-dashboard" element={<SupplierDashboard />} />
           
           <Route path="/contact-us" element={<ContactUs />} />
