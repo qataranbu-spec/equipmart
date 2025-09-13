@@ -9,8 +9,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 
 interface SparePart {
   id: string;
@@ -219,9 +217,7 @@ const SparePartsMarketplace: React.FC = () => {
   };
 
   return (
-    <>
-      <Header />
-      <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="bg-primary/5 py-12">
           <div className="container mx-auto px-4">
@@ -611,8 +607,7 @@ const SparePartsMarketplace: React.FC = () => {
           </div>
         </section>
       </div>
-      <Footer />
-    </>
+    </div>
   );
 };
 

@@ -353,7 +353,9 @@ function App() {
             </Route>
           
           {/* Spare Parts Platform */}
-          <Route path="/spare-parts" element={<SparePartsMarketplace />} />
+        <Route path="/spare-parts" element={<BuyerDashboardLayout />}>
+          <Route index element={<SparePartsMarketplace />} />
+        </Route>
           <Route path="/supplier" element={<SellerDashboardLayout />}>
             <Route path="dashboard" element={<SupplierDashboard />} />
           </Route>
