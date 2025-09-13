@@ -607,7 +607,6 @@ const SparePartsMarketplace: React.FC = () => {
           </div>
         </section>
       </div>
-    </div>
   );
 };
 
