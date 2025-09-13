@@ -191,12 +191,11 @@ function App() {
             <Route path="services/dashboard" element={<ServiceBuyerDashboard />} />
             <Route path="services/marketplace" element={<ServicesMarketplace />} />
             <Route path="services/messages" element={<ServiceMessaging />} />
-             <Route path="procurement/create-rfq" element={<CreateRFQPage />} />
-             <Route path="procurement/active-rfqs" element={<ActiveRFQsPage />} />
-             <Route path="procurement/supplier-management" element={<SupplierManagementPage />} />
-             <Route path="procurement/e-auction" element={<EAuctionPage />} />
-             <Route path="messages" element={<MessagesPage />} />
-           </Route>
+            <Route path="procurement/create-rfq" element={<CreateRFQPage />} />
+            <Route path="procurement/active-rfqs" element={<ActiveRFQsPage />} />
+            <Route path="procurement/supplier-management" element={<SupplierManagementPage />} />
+            <Route path="procurement/e-auction" element={<EAuctionPage />} />
+          </Route>
 
           {/* Seller Portal - Protected Routes with Dashboard Layout */}
           <Route path="/seller" element={<SellerDashboardLayout />}>
@@ -353,9 +352,7 @@ function App() {
             </Route>
           
           {/* Spare Parts Platform */}
-        <Route path="/spare-parts" element={<BuyerDashboardLayout />}>
-          <Route index element={<SparePartsMarketplace />} />
-        </Route>
+          <Route path="/spare-parts" element={<SparePartsMarketplace />} />
           <Route path="/supplier" element={<SellerDashboardLayout />}>
             <Route path="dashboard" element={<SupplierDashboard />} />
           </Route>
