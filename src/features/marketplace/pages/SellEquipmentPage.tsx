@@ -63,9 +63,8 @@ const SellEquipment = () => {
   ];
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main className="container mx-auto px-4 py-8">
+    <div className="space-y-6">
+      <div className="container mx-auto px-4 py-8">
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Sell Your Construction Equipment</h1>
@@ -342,8 +341,7 @@ const SellEquipment = () => {
             </Card>
           </div>
         </div>
-      </main>
-      <Footer />
+      </div>
     </div>
   );
 };

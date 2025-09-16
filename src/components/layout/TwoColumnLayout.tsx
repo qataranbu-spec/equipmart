@@ -1,7 +1,8 @@
 import React, { useState, ReactNode, useCallback, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Menu, ArrowLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface TwoColumnLayoutProps {
   sidebar: ReactNode;
@@ -25,6 +26,7 @@ export function TwoColumnLayout({
   onSidebarToggle
 }: TwoColumnLayoutProps) {
   const [sidebarVisible, setSidebarVisible] = useState(true);
+  const navigate = useNavigate();
   const [sidebarWidth, setSidebarWidth] = useState(defaultSidebarWidth);
   const [isDragging, setIsDragging] = useState(false);
   const dragStartX = useRef(0);
@@ -75,6 +77,30 @@ export function TwoColumnLayout({
 
   return (
     <div className={`container mx-auto px-4 py-8 ${className}`}>
+      {/* Page Header */}
+      <div className="flex items-center justify-between mb-6 pb-4 border-b">
+        <div className="flex items-center gap-3">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Go Back
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={toggleSidebar}
+            className="flex items-center gap-2"
+          >
+            <Menu className="h-4 w-4" />
+            {sidebarVisible ? 'Hide Sidebar' : 'Show Sidebar'}
+          </Button>
+        </div>
+      </div>
+      
       <div className="flex flex-col lg:flex-row gap-2">
         {/* Sidebar */}
         <div 
