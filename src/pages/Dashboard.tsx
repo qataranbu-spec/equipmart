@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import { TwoColumnLayout } from '@/components/layout/TwoColumnLayout';
@@ -9,14 +9,20 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { ShoppingBag, Package, DollarSign, TrendingUp, Eye, Heart, MessageCircle, Settings, Plus, Edit, BarChart3, Users, FileText, Gavel } from 'lucide-react';
+import { ShoppingBag, Package, DollarSign, TrendingUp, Eye, Heart, MessageCircle, Settings, Plus, Edit, BarChart3, Users, FileText, Gavel, ArrowLeft, Menu } from 'lucide-react';
 import { Link } from 'react-router-dom';
 const Dashboard = () => {
   const [userRole, setUserRole] = useState('buyer'); // buyer, seller, service_provider
+  const [sidebarVisible, setSidebarVisible] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleRoleChange = (role: string) => {
     setUserRole(role);
+  };
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!sidebarVisible);
   };
 
   // Check if we should show browse equipment view
@@ -95,6 +101,28 @@ const Dashboard = () => {
           <BrowseEquipment />
         ) : (
           <>
+            {/* Action Buttons */}
+            <div className="flex items-center gap-3 mb-6 pb-4 border-b">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => navigate(-1)}
+                className="flex items-center gap-2"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Go Back
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={toggleSidebar}
+                className="flex items-center gap-2"
+              >
+                <Menu className="h-4 w-4" />
+                {sidebarVisible ? 'Hide Sidebar' : 'Show Sidebar'}
+              </Button>
+            </div>
+            
             {/* Page Header */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
               <div>
